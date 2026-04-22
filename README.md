@@ -14,7 +14,7 @@
 
 ### Untuk mencoba versi Quarkus tertentu:
 * Rename pom-3.xx.x.xml menjadi menjadi __pom.xml__.
-    ```yml
+    ```yaml
     pom-3.3x.1.xml
     pom-3.3x.2.xml
     ```

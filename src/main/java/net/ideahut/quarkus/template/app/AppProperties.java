@@ -27,7 +27,7 @@ import net.ideahut.quarkus.definition.TaskDefinition;
 import net.ideahut.quarkus.helper.ObjectHelper;
 
 /*
- * Class properties yang definisinya sama dengan application.yml
+ * Class properties yang definisinya sama dengan application.yaml
  */
 @ConfigMapping(prefix = "config", namingStrategy = NamingStrategy.VERBATIM)
 public interface AppProperties {

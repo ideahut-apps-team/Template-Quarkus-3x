@@ -1,5 +1,13 @@
 {
   "reflection" : [ {
+    "type" : "android.os.Build$VERSION"
+  }, {
+    "type" : "apple.security.AppleProvider",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
     "type" : "boolean[]"
   }, {
     "type" : "byte[]"
@@ -5511,6 +5519,18 @@
     } ]
   }, {
     "type" : "com.sun.crypto.provider.GaloisCounterMode$AESGCM",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "com.sun.crypto.provider.HKDFKeyDerivation$HKDFSHA384",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ "javax.crypto.KDFParameters" ]
+    } ]
+  }, {
+    "type" : "com.sun.crypto.provider.HmacCore$HmacSHA384",
     "methods" : [ {
       "name" : "<init>",
       "parameterTypes" : [ ]
@@ -15371,7 +15391,15 @@
       "parameterTypes" : [ ]
     } ]
   }, {
+    "type" : "java.security.interfaces.ECPrivateKey"
+  }, {
+    "type" : "java.security.interfaces.ECPublicKey"
+  }, {
     "type" : "java.security.interfaces.EdECKey"
+  }, {
+    "type" : "java.security.interfaces.RSAPrivateKey"
+  }, {
+    "type" : "java.security.interfaces.RSAPublicKey"
   }, {
     "type" : "java.security.interfaces.XECKey"
   }, {
@@ -16666,8 +16694,6 @@
       "name" : "asList",
       "parameterTypes" : [ "java.lang.Object[]" ]
     } ]
-  }, {
-    "type" : "java.util.Arrays$ArrayList"
   }, {
     "type" : "java.util.Calendar[]"
   }, {
@@ -55217,11 +55243,193 @@
       "parameterTypes" : [ ]
     } ]
   }, {
+    "type" : "org.apache.commons.dbcp2.DataSourceMXBean"
+  }, {
+    "type" : "org.apache.commons.dbcp2.DelegatingDatabaseMetaData",
+    "methods" : [ {
+      "name" : "getCatalogSeparator",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getCatalogTerm",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getCatalogs",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getClientInfoProperties",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getConnection",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getDatabaseMajorVersion",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getDatabaseMinorVersion",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getDatabaseProductName",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getDatabaseProductVersion",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getDefaultTransactionIsolation",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getDelegate",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getDriverMajorVersion",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getDriverMinorVersion",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getDriverName",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getDriverVersion",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getExtraNameCharacters",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getIdentifierQuoteString",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getInnermostDelegate",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getJDBCMajorVersion",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getJDBCMinorVersion",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getMaxBinaryLiteralLength",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getMaxCatalogNameLength",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getMaxCharLiteralLength",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getMaxColumnNameLength",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getMaxColumnsInGroupBy",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getMaxColumnsInIndex",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getMaxColumnsInOrderBy",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getMaxColumnsInSelect",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getMaxColumnsInTable",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getMaxConnections",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getMaxCursorNameLength",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getMaxIndexLength",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getMaxLogicalLobSize",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getMaxProcedureNameLength",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getMaxRowSize",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getMaxSchemaNameLength",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getMaxStatementLength",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getMaxStatements",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getMaxTableNameLength",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getMaxTablesInSelect",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getMaxUserNameLength",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getNumericFunctions",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getProcedureTerm",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getResultSetHoldability",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getRowIdLifetime",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getSQLKeywords",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getSQLStateType",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getSchemaTerm",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getSchemas",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getSearchStringEscape",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getStringFunctions",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getSystemFunctions",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getTableTypes",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getTimeDateFunctions",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getTypeInfo",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getURL",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getUserName",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
     "type" : "org.apache.commons.pool2.impl.DefaultEvictionPolicy",
     "methods" : [ {
       "name" : "<init>",
       "parameterTypes" : [ ]
     } ]
+  }, {
+    "type" : "org.apache.commons.pool2.impl.DefaultPooledObjectInfo"
+  }, {
+    "type" : "org.apache.commons.pool2.impl.GenericObjectPool"
+  }, {
+    "type" : "org.apache.commons.pool2.impl.GenericObjectPoolMXBean"
   }, {
     "type" : "org.apache.http.HttpEntity"
   }, {
@@ -58060,6 +58268,12 @@
       "parameterTypes" : [ ]
     } ]
   }, {
+    "type" : "sun.security.provider.certpath.PKIXCertPathValidator",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
     "type" : "sun.security.rsa.PSSParameters",
     "methods" : [ {
       "name" : "<init>",
@@ -58079,6 +58293,12 @@
     } ]
   }, {
     "type" : "sun.security.rsa.RSASignature$SHA224withRSA",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "sun.security.rsa.RSASignature$SHA256withRSA",
     "methods" : [ {
       "name" : "<init>",
       "parameterTypes" : [ ]
@@ -58121,6 +58341,12 @@
     } ]
   }, {
     "type" : "sun.security.x509.CertificatePoliciesExtension",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ "java.lang.Boolean", "java.lang.Object" ]
+    } ]
+  }, {
+    "type" : "sun.security.x509.ExtendedKeyUsageExtension",
     "methods" : [ {
       "name" : "<init>",
       "parameterTypes" : [ "java.lang.Boolean", "java.lang.Object" ]
