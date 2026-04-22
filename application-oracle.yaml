@@ -1,0 +1,48 @@
+config:    
+    #
+    # TRX MANAGER
+    #
+    trxManager:
+        primary:
+            datasource:
+                hikari:
+                    driverClassName: 'oracle.jdbc.OracleDriver'
+                    jdbcUrl: 'jdbc:oracle:thin:@<HOST>:<PORT>/XEPDB1'
+                    username: 'TEMPLATE_QUARKUS_MAIN_1'
+                    password: '<PASSWORD>'
+                agroal:
+                    jdbcUrl: 'jdbc:oracle:thin:@<HOST>:<PORT>/XEPDB1'
+                    username: 'TEMPLATE_QUARKUS_MAIN_1'
+                    password: '<PASSWORD>'
+                dbcp:
+                    driverClassName: 'oracle.jdbc.OracleDriver'
+                    jdbcUrl: 'jdbc:oracle:thin:@<HOST>:<PORT>/XEPDB1'
+                    username: 'TEMPLATE_QUARKUS_MAIN_1'
+                    password: '<PASSWORD>'
+                basic:
+                    driverClassName: 'oracle.jdbc.OracleDriver'
+                    jdbcUrl: 'jdbc:oracle:thin:@<HOST>:<PORT>/XEPDB1'
+                    username: 'TEMPLATE_QUARKUS_MAIN_1'
+                    password: '<PASSWORD>'
+            audit:
+                datasource:
+                    hikari:
+                        driverClassName: 'oracle.jdbc.OracleDriver'
+                        jdbcUrl: 'jdbc:oracle:thin:@<HOST>:<PORT>/XEPDB1'
+                        username: 'TEMPLATE_QUARKUS_AUDIT_1'
+                        password: '<PASSWORD>'
+
+        secondary:
+            datasource:
+                hikari:
+                    driverClassName: 'oracle.jdbc.OracleDriver'
+                    jdbcUrl: 'jdbc:oracle:thin:@<HOST>:<PORT>/XEPDB1'
+                    username: 'TEMPLATE_QUARKUS_MAIN_2'
+                    password: '<PASSWORD>'
+            audit:
+                datasource:
+                    hikari:
+                        driverClassName: 'oracle.jdbc.OracleDriver'
+                        jdbcUrl: 'jdbc:oracle:thin:@<HOST>:<PORT>/XEPDB1'
+                        username: 'TEMPLATE_QUARKUS_AUDIT_2'
+                        password: '<PASSWORD>'

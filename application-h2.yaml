@@ -1,0 +1,48 @@
+config:    
+    #
+    # TRX MANAGER
+    #
+    trxManager:
+        primary:
+            datasource:
+                hikari:
+                    driverClassName: 'org.h2.Driver'
+                    jdbcUrl: 'jdbc:h2:file:<DIRECTORY>/template_quarkus_main_1;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
+                agroal:
+                    jdbcUrl: 'jdbc:h2:file:<DIRECTORY>/template_quarkus_main_1;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
+                dbcp:
+                    driverClassName: 'org.h2.Driver'
+                    jdbcUrl: 'jdbc:h2:file:<DIRECTORY>/template_quarkus_main_1;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
+                basic:
+                    driverClassName: 'org.h2.Driver'
+                    jdbcUrl: 'jdbc:h2:file:<DIRECTORY>/template_quarkus_main_1;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
+            audit:
+                datasource:
+                    hikari:
+                        driverClassName: 'org.h2.Driver'
+                        jdbcUrl: 'jdbc:h2:file:<DIRECTORY>/template_quarkus_audit_1;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE'
+                        username: '<USERNAME>'
+                        password: '<PASSWORD>'
+
+        secondary:
+            datasource:
+                hikari:
+                    driverClassName: 'org.h2.Driver'
+                    jdbcUrl: 'jdbc:h2:file:<DIRECTORY>/template_quarkus_main_2;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
+            audit:
+                datasource:
+                    hikari:
+                        driverClassName: 'org.h2.Driver'
+                        jdbcUrl: 'jdbc:h2:file:<DIRECTORY>/template_quarkus_audit_2;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE'
+                        username: '<USERNAME>'
+                        password: '<PASSWORD>'

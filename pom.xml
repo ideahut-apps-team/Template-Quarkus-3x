@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>net.ideahut.quarkus.template</groupId>
+    <artifactId>Template-Quarkus-3x</artifactId>
+    <version>1.0.0</version>
+
+	<properties>
+
+		<compiler-plugin.version>3.14.1</compiler-plugin.version>
+		<maven.compiler.release>17</maven.compiler.release>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
+		<quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
+		<skipITs>true</skipITs>
+		
+		<quarkus.platform.version>3.34.5</quarkus.platform.version>
+		
+		<surefire-plugin.version>3.5.4</surefire-plugin.version>
+		<version.ideahut>26.04.04</version.ideahut>
+
+		<version.commons-beanutils>1.11.0</version.commons-beanutils>
+		<version.commons-dbcp2>2.10.0</version.commons-dbcp2>
+		<version.hessian>4.0.66</version.hessian>
+		<version.hikari>7.0.2</version.hikari>
+		<version.jakarta.mail>2.0.2</version.jakarta.mail>
+		<version.jasperreports>6.21.5</version.jasperreports>
+		<version.jbcrypt>0.4</version.jbcrypt>
+		<version.jjwt>0.13.0</version.jjwt>
+		<version.kryo>5.6.2</version.kryo>
+		<version.lombok>1.18.42</version.lombok>
+		<version.okhttp3>4.12.0</version.okhttp3>
+
+	</properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>${quarkus.platform.group-id}</groupId>
+                <artifactId>${quarkus.platform.artifact-id}</artifactId>
+                <version>${quarkus.platform.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+
+		<!-- IDEAHUT -->
+		<dependency>
+    		<groupId>net.ideahut</groupId>
+			<artifactId>ideahut-quarkus-3x</artifactId>
+			<version>${version.ideahut}</version>
+		</dependency>
+		<dependency>
+    		<groupId>net.ideahut</groupId>
+			<artifactId>ideahut-quarkus-3.3x.2</artifactId>
+			<version>${version.ideahut}</version>
+		</dependency>
+
+
+		<!-- YAML CONFIG -->
+		<dependency>
+		    <groupId>io.quarkus</groupId>
+		    <artifactId>quarkus-config-yaml</artifactId>
+		</dependency>
+
+
+		<!-- ARC -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-arc</artifactId>
+        </dependency>
+
+
+		<!-- KAFKA -->
+        <dependency>
+			<groupId>io.vertx</groupId>
+			<artifactId>vertx-kafka-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-clients</artifactId>
+		</dependency>
+
+
+		<!-- REST -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-rest</artifactId>
+        </dependency>
+        <dependency>
+		    <groupId>io.quarkus</groupId>
+		    <artifactId>quarkus-rest-jackson</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>io.quarkus</groupId>
+		    <artifactId>quarkus-rest-jaxb</artifactId>
+		</dependency>
+
+
+		<!-- HIBERNATE -->
+		<dependency>
+		    <groupId>io.quarkus</groupId>
+		    <artifactId>quarkus-hibernate-orm</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.hibernate.orm</groupId>
+		    <artifactId>hibernate-community-dialects</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>io.quarkus</groupId>
+		    <artifactId>quarkus-hibernate-validator</artifactId>
+		</dependency>
+
+
+		<!-- HIKARI -->
+		<dependency>
+		    <groupId>com.zaxxer</groupId>
+		    <artifactId>HikariCP</artifactId>
+		    <version>${version.hikari}</version>
+		    <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
+		</dependency>
+		
+		
+		<!-- COMMON DBCP2 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>${version.commons-dbcp2}</version>
+		</dependency>
+
+
+		<!-- APACHE COMMONS -->
+        <dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId> 
+		</dependency>
+		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>commons-beanutils</groupId>
+		    <artifactId>commons-beanutils</artifactId>
+		    <version>${version.commons-beanutils}</version>
+		</dependency>
+
+
+		<!-- JACKSON -->
+		<dependency>
+			<groupId>io.quarkus</groupId>
+			<artifactId>quarkus-jackson</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>com.fasterxml.jackson.dataformat</groupId>
+		    <artifactId>jackson-dataformat-yaml</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+		</dependency>
+
+
+		<!-- HESSIAN -->
+		<dependency>
+		    <groupId>com.caucho</groupId>
+		    <artifactId>hessian</artifactId>
+		    <version>${version.hessian}</version>
+		</dependency>
+
+
+		<!-- APACHE HTTP MIME -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+		</dependency>
+
+
+		<!-- LOMBOK -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${version.lombok}</version>
+		</dependency>
+
+
+		<!-- REDIS -->
+		<dependency>
+		    <groupId>io.quarkus</groupId>
+		    <artifactId>quarkus-redis-client</artifactId>
+		</dependency>
+
+
+		<!-- QUARTZ -->
+		<dependency>
+		    <groupId>org.quartz-scheduler</groupId>
+		    <artifactId>quartz</artifactId>
+		</dependency>
+
+
+		<!-- MAIL -->
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+		    <artifactId>jakarta.mail</artifactId>
+		    <version>${version.jakarta.mail}</version>
+		</dependency>
+
+
+		<!-- JBCRYPT -->
+		<dependency>
+		    <groupId>org.mindrot</groupId>
+		    <artifactId>jbcrypt</artifactId>
+		    <version>${version.jbcrypt}</version>
+		</dependency>
+
+
+		<!-- OKHTTP -->
+		<dependency>
+			<groupId>com.squareup.okhttp3</groupId>
+			<artifactId>okhttp</artifactId>
+			<version>${version.okhttp3}</version>
+		</dependency>
+
+
+		<!-- JJWT -->
+		<dependency>
+		    <groupId>io.jsonwebtoken</groupId>
+		    <artifactId>jjwt-api</artifactId>
+		    <version>${version.jjwt}</version>
+		</dependency>
+		<dependency>
+		    <groupId>io.jsonwebtoken</groupId>
+		    <artifactId>jjwt-impl</artifactId>
+		    <version>${version.jjwt}</version>
+		</dependency>
+		<dependency>
+		    <groupId>io.jsonwebtoken</groupId>
+		    <artifactId>jjwt-jackson</artifactId>
+		    <version>${version.jjwt}</version>
+		</dependency>
+
+
+		<!-- JASPER REPORT -->
+		<dependency>
+		    <groupId>net.sf.jasperreports</groupId>
+		    <artifactId>jasperreports</artifactId>
+		    <version>${version.jasperreports}</version>
+		</dependency>
+
+		
+		<!--
+		 +++++++++++++++++
+		 +               +
+		 +  JDBC DRIVER  +
+		 +               +
+		 +++++++++++++++++ 
+		-->
+		
+		<!-- DB2 -->
+		<!--
+		<dependency>
+		    <groupId>io.quarkus</groupId>
+		    <artifactId>quarkus-jdbc-db2</artifactId>
+		</dependency>
+		-->
+		
+		<!-- H2 -->
+		<!--
+		<dependency>
+		    <groupId>io.quarkus</groupId>
+		    <artifactId>quarkus-jdbc-h2</artifactId>
+		</dependency>
+		-->
+		
+		<!-- MARIADB -->
+		<!--
+		<dependency>
+		    <groupId>io.quarkus</groupId>
+		    <artifactId>quarkus-jdbc-mariadb</artifactId>
+		</dependency>
+		-->
+		
+		<!-- MYSQL -->
+		<dependency>
+		    <groupId>io.quarkus</groupId>
+		    <artifactId>quarkus-jdbc-mysql</artifactId>
+		</dependency>
+		
+		<!-- ORACLE -->
+		<!--
+		<dependency>
+		    <groupId>io.quarkus</groupId>
+		    <artifactId>quarkus-jdbc-oracle</artifactId>
+		</dependency>
+		-->
+		
+		<!-- POSTGRESQL -->
+		<!--
+		<dependency>
+		    <groupId>io.quarkus</groupId>
+		    <artifactId>quarkus-jdbc-postgresql</artifactId>
+		</dependency>
+		-->
+		
+		<!-- SQLSERVER -->
+		<!--
+		<dependency>
+		    <groupId>io.quarkus</groupId>
+		    <artifactId>quarkus-jdbc-mssql</artifactId>
+		</dependency>
+		-->
+        
+    </dependencies>
+
+    <build>
+        <plugins>
+			
+			<plugin>
+                <groupId>${quarkus.platform.group-id}</groupId>
+                <artifactId>quarkus-maven-plugin</artifactId>
+                <version>${quarkus.platform.version}</version>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build</goal>
+                            <goal>generate-code</goal>
+                            <goal>generate-code-tests</goal>
+                            <goal>native-image-agent</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${compiler-plugin.version}</version>
+                <configuration>
+                    <parameters>true</parameters>
+                    <annotationProcessorPaths>
+			            <path>
+			                <groupId>org.projectlombok</groupId>
+			                <artifactId>lombok</artifactId>
+			                <version>${version.lombok}</version>
+			            </path>
+			        </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${surefire-plugin.version}</version>
+                <configuration>
+					<argLine>@{argLine}</argLine>
+                    <systemPropertyVariables>
+                        <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
+                        <maven.home>${maven.home}</maven.home>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${surefire-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+					<argLine>@{argLine}</argLine>
+                    <systemPropertyVariables>
+						<native.image.path>${project.build.directory}/${project.build.finalName}-runner</native.image.path>
+                        <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
+                        <maven.home>${maven.home}</maven.home>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+            
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>native</id>
+            <activation>
+                <property>
+                    <name>native</name>
+                </property>
+            </activation>
+            <properties>
+                <skipITs>true</skipITs>
+                <quarkus.package.jar.enabled>true</quarkus.package.jar.enabled>
+                <quarkus.package.type>native</quarkus.package.type>
+                <quarkus.native.enabled>true</quarkus.native.enabled>
+	            <quarkus.native.additional-build-args>
+					-march=native,
+					-J-Xmx9g,
+					-R:MaxHeapSize=512m,
+	                -H:+ReportExceptionStackTraces,
+	                --verbose,
+	                --no-fallback,
+	                --allow-incomplete-classpath,
+	                --report-unsupported-elements-at-runtime,
+	                --enable-native-access=ALL-UNNAMED,
+	                --initialize-at-run-time=net.ideahut.quarkus,
+                    --initialize-at-build-time=net.ideahut.quarkus.admin,
+                    --initialize-at-build-time=net.ideahut.quarkus.object,
+                    --initialize-at-build-time=net.ideahut.quarkus.support,
+	                --initialize-at-build-time=com.fasterxml,
+                    --initialize-at-build-time=com.fasterxml.jackson.databind,
+	                --initialize-at-run-time=io.jsonwebtoken,
+	                --initialize-at-build-time=io.vertx.core,
+                    --initialize-at-run-time=com.sun.jmx,
+                    --initialize-at-build-time=com.sun.jmx.mbeanserver,
+                    --trace-object-instantiation=com.sun.jmx.mbeanserver.JmxMBeanServer,
+                    --trace-object-instantiation=sun.management.MemoryPoolImpl,
+	                --initialize-at-run-time=oracle,
+                    --initialize-at-build-time=oracle.i18n.text,
+                    --initialize-at-build-time=oracle.i18n.util.builder,
+                    --initialize-at-run-time=org.apache.commons.dbcp2,
+                    --initialize-at-run-time=org.jose4j,
+                    --initialize-at-run-time=oracle.jdbc.driver.AbstractShardingConnection,
+                    --initialize-at-run-time=org.hibernate.dialect.OracleOsonJacksonHelper$FactoryHolder,
+                    --initialize-at-run-time=org.hibernate.type.format.jakartajson.JakartaJsonIntegration,
+                    --initialize-at-run-time=org.hibernate.dialect.OracleOsonJdbcType,
+                    --initialize-at-run-time=org.hibernate.type.format.jakartajson,
+                    --initialize-at-run-time=java.rmi.server.ObjID,
+					--initialize-at-run-time=sun.rmi.transport.ObjectTable,
+					--initialize-at-run-time=sun.rmi.transport.Transport,
+					--initialize-at-run-time=sun.rmi.transport.tcp.TCPEndpoint,
+					--initialize-at-run-time=sun.rmi.registry.RegistryImpl,
+					--initialize-at-run-time=sun.rmi.transport.DGCImpl,
+					--initialize-at-run-time=sun.rmi.transport.DGCClient,
+	                --initialize-at-build-time=net.ideahut.quarkus.template,
+                    --initialize-at-build-time=net.ideahut.quarkus.template.config.WebConfig$ResponseFilter_ClientProxy,
+                    --initialize-at-build-time=net.ideahut.quarkus.template.config.WebConfig$RequestFilter_ClientProxy              
+	            </quarkus.native.additional-build-args>
+            </properties>
+            
+            <dependencies>
+
+				<!-- IDEAHUT PATCH -->
+				<dependency>
+		    		<groupId>net.ideahut</groupId>
+					<artifactId>Patch-Quarkus-3x</artifactId>
+					<version>${version.ideahut}</version>
+					<exclusions>
+        				<exclusion>
+							<groupId>com.zaxxer</groupId>
+		    				<artifactId>HikariCP</artifactId>
+						</exclusion>
+						<exclusion>
+			                <groupId>com.sun.mail</groupId>
+			                <artifactId>jakarta.mail</artifactId>
+			            </exclusion>
+			            <exclusion>
+			                <groupId>net.sf.jasperreports</groupId>
+			                <artifactId>jasperreports</artifactId>
+			            </exclusion>
+			            <exclusion>
+							<groupId>org.apache.commons</groupId>
+							<artifactId>commons-dbcp2</artifactId>
+						</exclusion>
+					</exclusions>
+				</dependency>
+
+				<!-- JOSE4 -->
+				<dependency>
+					<groupId>org.bitbucket.b_c</groupId>
+					<artifactId>jose4j</artifactId>
+				</dependency>
+
+				<!-- JAKARTA JSON BIND -->
+				<dependency>
+					<groupId>jakarta.json.bind</groupId>
+					<artifactId>jakarta.json.bind-api</artifactId>
+				</dependency>
+							
+			</dependencies>
+			
+        </profile>
+    </profiles>
+    
+</project>

@@ -1,0 +1,67 @@
+config:    
+    #
+    # TRX MANAGER
+    #
+    trxManager:
+        primary:
+            datasource:
+                hikari:
+                    driverClassName: 'org.postgresql.Driver'
+                    jdbcUrl: 'jdbc:postgresql://<HOST>:<PORT>/template_quarkus_main_1'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
+                agroal:
+                    jdbcUrl: 'jdbc:postgresql://<HOST>:<PORT>/template_quarkus_main_1'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
+                dbcp:
+                    driverClassName: 'org.postgresql.Driver'
+                    jdbcUrl: 'jdbc:postgresql://<HOST>:<PORT>/template_quarkus_main_1'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
+                basic:
+                    driverClassName: 'org.postgresql.Driver'
+                    jdbcUrl: 'jdbc:postgresql://<HOST>:<PORT>/template_quarkus_main_1'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
+            settings:
+                hibernate:
+                    jdbc:
+                        lob:
+                            non_contextual_creation: true
+            audit:
+                datasource:
+                    hikari:
+                        driverClassName: 'org.postgresql.Driver'
+                        jdbcUrl: 'jdbc:postgresql://<HOST>:<PORT>/template_quarkus_audit_1'
+                        username: '<USERNAME>'
+                        password: '<PASSWORD>'
+                settings:
+                    hibernate:
+                        jdbc:
+                            lob:
+                                non_contextual_creation: true
+        secondary:
+            datasource:
+                hikari:
+                    driverClassName: 'org.postgresql.Driver'
+                    jdbcUrl: 'jdbc:postgresql://<HOST>:<PORT>/template_quarkus_main_2'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
+            settings:
+                hibernate:
+                    jdbc:
+                        lob:
+                            non_contextual_creation: true
+            audit:
+                datasource:
+                    hikari:
+                        driverClassName: 'org.postgresql.Driver'
+                        jdbcUrl: 'jdbc:postgresql://<HOST>:<PORT>/template_quarkus_audit_2'
+                        username: '<USERNAME>'
+                        password: '<PASSWORD>'
+                settings:
+                    hibernate:
+                        jdbc:
+                            lob:
+                                non_contextual_creation: true

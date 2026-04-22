@@ -1,0 +1,506 @@
+#
+# QUARKUS
+#
+quarkus:
+    #profile: 'db2'
+    #profile: 'h2'
+    #profile: 'mariadb'
+    profile: 'mysql'
+    #profile: 'oracle'
+    #profile: 'postgresql'
+    #profile: 'sqlserver'
+    
+    http:
+        port: 5403
+        auth:
+            form:
+                # SRCFG00040: The config property quarkus.http.auth.form.error-page-query-params is defined as the empty String
+                error-page-query-params: error_code,session_id
+                # SRCFG00040: The config property quarkus.http.auth.form.landing-page-query-params is defined as the empty String
+                landing-page-query-params: hello
+    banner:
+        enabled: false
+    devservices:
+        enabled: false
+    virtual-threads:
+        enabled: true
+        name-prefix: template-quarkus-vt-
+    test:
+        continuous-testing: disabled
+    log:
+        file:
+            enabled: true
+            #format: '%d{yyyy-MM-dd HH:mm:ss,SSS} %h %N[%i] %-5p [%c{3.}] (%t) [%X{traceId}] %s%e%n'
+            format: '%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p [%c{3.}] (%t) [%X{traceId}] %s%e%n'
+            level: DEBUG
+            path: logs/template-quarkus-3x.log
+            #async: true
+            rotation:
+                file-suffix: .yyyy-MM-dd
+        console:
+            enabled: true
+            format: '%d %p [%X{traceId}] %C(%M:%L) : %m%n'
+            level: TRACE
+
+#
+# CONFIG
+#
+config:
+    publicBaseUrl:
+    logAllError: true
+    binarySerializer: hessian2
+    autoStartScheduler: true
+    messagePath: 'file:{user.dir}/extras/message/'
+    reportPath: 'file:{user.dir}/extras/report/'
+
+    #
+    # LAUNCHER
+    #
+    launcher:
+        waitAllProcess: true
+        init:
+            mapper: true
+            validation: true
+            endpoint: true
+        log:
+            initHandler: true
+            beanInitialize: true
+            beanConfigure: true
+            beanShutdown: true
+            version: true
+            application: true
+        configure:
+            concurrency: 0
+            beans:
+                - net.ideahut.quarkus.collector.RequestInfoCollector
+                - net.ideahut.quarkus.entity.EntityTrxManager
+                - net.ideahut.quarkus.sysparam.SysParamHandler
+                - net.ideahut.quarkus.audit.AuditHandler
+    
+    #
+    # FILTER
+    #
+    filter:
+        traceEnable: true
+        resultTimeEnable: true
+        resultTimeUnit: NANOSECONDS
+        headers:
+            Access-Control-Allow-Credentials: 'true'
+            Access-Control-Allow-Origin: '*'
+            Access-Control-Allow-Methods: '*'
+            Access-Control-Max-Age: '3600'
+            Access-Control-Allow-Headers: '*'
+            Access-Control-Expose-Headers: '*'
+    
+    #
+    # Model / Entity yang punya annotation @ForeignKeyEntity akan dieksekusi
+    # Beberapa database tidak support "... on update (CASCADE/SET_NULL)"
+    #
+    foreignKey:
+        enableExecution: true
+        asyncExecution: true
+        dropBeforeCreate: true
+        onUpdateAction: true
+
+    #
+    # CRUD
+    # 
+    crud:
+        enableApiService: false
+        enablePermission: false
+        alwaysUseNative: false
+        defaultMaxLimit: 100
+        infoEnabled: true
+        bulkEnabled: true
+        maxBulkSize: 0
+        maxBulkLayer: 0
+
+    #
+    # AUDIT
+    #
+    audit:
+        useMultiTable: true
+        rejectNonAuditEntity: true
+        properties:
+            generate:
+                table: true
+            enable:
+                audit: true
+            table:
+                prefix: _a_
+
+    #
+    # TASK
+    #
+    task:
+        primary:
+            threadNamePrefix: TASK-PRIMARY
+            corePoolSize: 2
+            maxPoolSize: 8
+            waitForJobsToCompleteOnShutdown: true
+        audit:
+            threadNamePrefix: TASK-AUDIT
+            corePoolSize: 2
+            maxPoolSize: 8
+            waitForJobsToCompleteOnShutdown: true
+        rest:
+            threadNamePrefix: TASK-REST
+            corePoolSize: 16
+            maxPoolSize: 1000
+            waitForJobsToCompleteOnShutdown: true
+        webAsync:
+            threadNamePrefix: WEB-ASYNC
+            corePoolSize: 8
+            maxPoolSize: 100
+            waitForJobsToCompleteOnShutdown: true
+
+    #
+    # REDIS
+    #
+    redis:
+        primary:
+            connectionString: 'redis://<HOST>:<PORT>/0'
+            password: '<PASSWORD>'
+        access:
+            connectionString: 'redis://<HOST>:<PORT>/1'
+            password: '<PASSWORD>'
+                
+    #
+    # ADMIN
+    #
+    admin:
+        handler:
+            configurationFile: 'file:{user.dir}/extras/admin/configuration.yaml'
+            apiPath: /_/api
+            webPath: /_/web
+            webLocation: 'file:{user.dir}/extras/admin/web/'
+            webEnabled: true
+            storageKeyParam:
+                prefix: ADMIN-HANDLER
+                appIdEnabled: true
+                encryptEnabled: true
+        credential:
+            useLocalMemory: false
+            credentialFile: 'file:{user.dir}/extras/admin/credential.yaml'
+            
+            # LocalMemoryCredential
+            checkInterval:
+                unit: SECONDS
+                value: 30
+
+            # RedisMemoryCredential
+            storageKeyParam:
+                prefix: ADMIN-CREDENTIAL
+                appIdEnabled: true
+                encryptEnabled: true
+        security:
+            useBasicAuth: false
+
+            # Basic Auth
+            realm: Admin
+
+            # Admin Auth
+            enableRemoteHost: false
+            enableUserAgent: false
+            headerKey: Authorization
+
+    #
+    # API
+    #
+    api:
+        handler:
+            enableCrud: true
+            enableSync: false
+            enableConsumer: true
+            configureThreads: 2
+            redisParam:
+                prefix: API-HANDLER
+                appIdEnabled: true
+                encryptEnabled: true
+        service:
+            apiName: TEMPLATE-QUARKUS-3X
+            redisExpiry:
+                unit: MINUTES
+                accessNull: 2
+                accessObject: 5
+                consumerNull: 2
+                consumerObject: 10
+            redisParam:
+                prefix: API-SERVICE
+                appIdEnabled: true
+                encryptEnabled: true
+        token:
+            consumerTokenStorageIndex: 1
+            useApiTokenInProcessor: true
+            processorJwtParam:
+                secret: 77ea06ac-808b-4399-895c-a546b033d533
+                digest: SHA-256
+                expiry:
+                    unit: MINUTES
+                    value: 60
+            consumerJwtParam:
+                secret: df7c7d71-ec05-4ad4-9b36-1580b1a6590f
+                digest: SHA-256
+                expiry:
+                    unit: HOURS
+                    value: 24
+            ## toleransi waktu atas/bawah timestamp
+            signatureTimeSpan:
+                unit: SECONDS
+                value: 60
+    
+    #
+    # REST
+    #
+    rest:
+        clientDestroyable: true
+        enableExecutionTime: true
+        enableRequestLimit: true
+        defaultRestClient:
+            # set false jika menggunakan proxy
+            noProxy: true
+            proxy:
+                # DIRECT / HTTP / SOCKS
+                type: DIRECT
+                port:
+                username:
+                password:
+                authorization:
+            followRedirects: true
+            timeout:
+                timeUnit: SECONDS
+                connect: 10
+                call:
+                read: 30
+                write:
+    
+    #
+    # CACHE         
+    #
+    cache:
+        useLocalMemory: false
+        redisParam:
+            prefix: CACHE
+            appIdEnabled: true
+            encryptEnabled: true
+        groups:
+            -
+                name: TEST1
+                limit: 20
+                expiry:
+                    unit: SECONDS
+                    value: 3600
+                nullable: true
+            -
+                name: TEST2
+                limit: -1
+                expiry:
+                    unit: SECONDS
+                    value: 0
+                nullable: true
+
+    #
+    # GRID
+    #
+    grid:
+        useLocalMemory: false
+        storageKeyParam:
+            appIdEnabled: true
+            encryptEnabled: true
+        location: 'file:{user.dir}/extras/grid/**/*.json'
+        #definition: 'file:{user.dir}/extras/grid/grid.def'
+    
+    #
+    # MAIL
+    #
+    mail:
+        host: 'smtp.gmail.com'
+        port: 587
+        username: '<USERNAME>'
+        password: '<PASSWORD>'
+        properties:
+            mail.smtp.host: smtp.gmail.com
+            mail.smtp.ssl.trust: smtp.gmail.com
+            mail.smtp.port: 587
+            mail.smtp.auth: true
+            mail.smtp.starttls.enable: true
+            mail.imap.ssl.enable: true
+            mail.transport.protocol: smtp
+            mail.debug: true
+            mail.smtp.ssl.protocols: TLSv1.2
+
+    #
+    # KAFKA
+    #
+    kafka:
+        kafkaEnabled: true
+        configurationFile: 'file:{user.dir}/extras/kafka/localhost.yaml'
+        deleteUnusedGroupAndTopic: true
+        reloadEnabled: true
+        broadcastEnabled: true
+        broadcastTopic: 'template-quarkus-3x'
+
+    #
+    # TRX MANAGER
+    #
+    trxManager:
+        primary:
+            datasource:
+                # Type datasource bisa diubah-ubah, pilihan: HIKARI / AGROAL / DBCP / BASIC
+                # Untuk JNDI bisa menambahkan 'jndiName' di type 'BASIC'
+                type: HIKARI
+                hikari:
+                    connectionTimeout:
+                        unit: SECONDS
+                        value: 15
+                    minimumIdle: 10
+                    maximumPoolSize: 10
+                    idleTimeout:
+                        unit: SECONDS
+                        value: 600
+                    maxLifetime:
+                        unit: SECONDS
+                        value: 1800
+                    poolName: PrimaryMain
+                    enableVirtualThread: true
+                agroal:
+                    initialSize: 10
+                    maxSize: 10
+                    minSize: 10
+                dbcp:
+                    testWhileIdle: true
+                    initialSize: 10
+                    maxIdle: 10
+                    maxTotal: 10
+                    jmxName: PrimaryMain
+                basic:
+                    #jndiName: TemplateQuarkusJNDI
+            settings:
+                hibernate:
+                    hbm2ddl:
+                        auto: update
+                    show_sql: true
+                    generate_statistics: true
+            useReflection: false
+            entityPackages:
+                - net.ideahut.quarkus.api.entity
+                - net.ideahut.quarkus.job.entity
+                - net.ideahut.quarkus.message.entity
+                - net.ideahut.quarkus.sysparam.entity
+                - net.ideahut.quarkus.template.entity
+            entityClasses:
+                - net.ideahut.quarkus.entity.replica.ReplicaInfo
+                
+                #
+                # Aktifkan daftar entity di bawah pada saat jalan sebagai native
+                # Package scanning tidak berfungsi di native image.
+                #
+                
+                # API
+                #- net.ideahut.quarkus.api.entity.ApiConnect
+                #- net.ideahut.quarkus.api.entity.ApiConnectRole
+                #- net.ideahut.quarkus.api.entity.ApiCrud
+                #- net.ideahut.quarkus.api.entity.ApiCrudExclude
+                #- net.ideahut.quarkus.api.entity.ApiCrudField
+                #- net.ideahut.quarkus.api.entity.ApiItemCrud
+                #- net.ideahut.quarkus.api.entity.ApiItemRequest
+                #- net.ideahut.quarkus.api.entity.ApiProvider
+                #- net.ideahut.quarkus.api.entity.ApiProviderConfig
+                #- net.ideahut.quarkus.api.entity.ApiProviderCrud
+                #- net.ideahut.quarkus.api.entity.ApiProviderCrudAction
+                #- net.ideahut.quarkus.api.entity.ApiProviderCrudFilter
+                #- net.ideahut.quarkus.api.entity.ApiProviderHost
+                #- net.ideahut.quarkus.api.entity.ApiProviderRequest
+                #- net.ideahut.quarkus.api.entity.ApiRole
+                #- net.ideahut.quarkus.api.entity.ApiRoleCrud
+                #- net.ideahut.quarkus.api.entity.ApiRoleCrudAction
+                #- net.ideahut.quarkus.api.entity.ApiRoleCrudFilter
+                #- net.ideahut.quarkus.api.entity.ApiRoleRequest
+                
+                # JOB
+                #- net.ideahut.quarkus.job.entity.JobGroup
+                #- net.ideahut.quarkus.job.entity.JobInstance
+                #- net.ideahut.quarkus.job.entity.JobTrigger
+                #- net.ideahut.quarkus.job.entity.JobTriggerConfig
+                #- net.ideahut.quarkus.job.entity.JobType
+                #- net.ideahut.quarkus.job.entity.JobTypeParam
+                
+                # MESSAGE
+                #- net.ideahut.quarkus.message.entity.Language
+                #- net.ideahut.quarkus.message.entity.Message
+                
+                # SYSPARAM
+                #- net.ideahut.quarkus.sysparam.entity.SysParam
+                
+                # APPLICATION
+                #- net.ideahut.quarkus.template.entity.AutoGenLongIdHardDel
+                #- net.ideahut.quarkus.template.entity.AutoGenStrIdHardDel
+                #- net.ideahut.quarkus.template.entity.AutoGenStrIdSoftDel
+                #- net.ideahut.quarkus.template.entity.CompositeHardDel
+                #- net.ideahut.quarkus.template.entity.CompositeSoftDel
+                #- net.ideahut.quarkus.template.entity.EmbeddedHardDel
+                #- net.ideahut.quarkus.template.entity.EmbeddedSoftDel
+                #- net.ideahut.quarkus.template.entity.EmbeddedWithoutAttribute
+                #- net.ideahut.quarkus.template.entity.Information
+                #- net.ideahut.quarkus.template.entity.InformationLink
+                #- net.ideahut.quarkus.template.entity.IntegerIdWithBytes
+                #- net.ideahut.quarkus.template.entity.LongIdJoinComposite
+                #- net.ideahut.quarkus.template.entity.LongIdJoinEmbedded
+                #- net.ideahut.quarkus.template.entity.ManualGenStrIdSoftDel
+                #- net.ideahut.quarkus.template.entity.Menu
+                #- net.ideahut.quarkus.template.entity.MenuRole
+                #- net.ideahut.quarkus.template.entity.Role
+                #- net.ideahut.quarkus.template.entity.User
+                #- net.ideahut.quarkus.template.entity.UserDetail
+                #- net.ideahut.quarkus.template.entity.UserFavorite
+                
+            audit:
+                id: template_quarkus_1
+                datasource:
+                    type: HIKARI
+                    hikari:
+                        poolName: PrimaryAudit
+                        enableVirtualThread: true
+                settings:
+                    hibernate:
+                        show_sql: true
+                        generate_statistics: true 
+
+        secondary:
+            datasource:
+                type: HIKARI
+                hikari:
+                    connectionTimeout:
+                        unit: SECONDS
+                        value: 15
+                    minimumIdle: 10
+                    maximumPoolSize: 10
+                    idleTimeout:
+                        unit: SECONDS
+                        value: 600
+                    maxLifetime:
+                        unit: SECONDS
+                        value: 1800
+                    poolName: SecondaryMain
+                    enableVirtualThread: true
+            settings:
+                hibernate:
+                    hbm2ddl:
+                        auto: update
+                    show_sql: true
+                    generate_statistics: true
+            useReflection: false
+            entityClasses:
+                - net.ideahut.quarkus.template.entity.Information
+                - net.ideahut.quarkus.template.entity.CompositeHardDel
+            audit:
+                id: template_quarkus_2
+                datasource:
+                    type: HIKARI
+                    hikari:
+                        poolName: SecondaryAudit
+                        enableVirtualThread: true
+                settings:
+                    hibernate:
+                        show_sql: true
+                        generate_statistics: true
