@@ -58912,8 +58912,6 @@
   }, {
     "glob" : "META-INF/microprofile-config.yaml"
   }, {
-    "glob" : "META-INF/microprofile-config.yml"
-  }, {
     "glob" : "META-INF/services/com.fasterxml.jackson.databind.Module"
   }, {
     "glob" : "META-INF/services/io.agroal.api.AgroalDataSourceProvider"
@@ -59029,8 +59027,6 @@
     "glob" : "application.properties"
   }, {
     "glob" : "application.yaml"
-  }, {
-    "glob" : "application.yml"
   }, {
     "glob" : "com/mysql/cj/LocalizedErrorMessages.properties"
   }, {
