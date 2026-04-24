@@ -1,5 +1,4 @@
 /serialization.tmp
-/multimedia/
 .quasar
 .DS_Store
 .thumbs.db
@@ -13,6 +12,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .env
+__data
 __MACOSX/
 
 # Editor directories and files
