@@ -1,0 +1,48 @@
+config:    
+    #
+    # TRX MANAGER
+    #
+    trxManager:
+        primary:
+            datasource:
+                hikari:
+                    driverClassName: 'org.mariadb.jdbc.Driver'
+                    jdbcUrl: 'jdbc:mariadb://<HOST>:<PORT>/template_quarkus_main_1?createDatabaseIfNotExist=true&autoReconnect=true'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
+                agroal:
+                    jdbcUrl: 'jdbc:mariadb://<HOST>:<PORT>/template_quarkus_main_1?createDatabaseIfNotExist=true&autoReconnect=true'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
+                dbcp:
+                    driverClassName: 'org.mariadb.jdbc.Driver'
+                    jdbcUrl: 'jdbc:mariadb://<HOST>:<PORT>/template_quarkus_main_1?createDatabaseIfNotExist=true&autoReconnect=true'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
+                basic:
+                    driverClassName: 'org.mariadb.jdbc.Driver'
+                    jdbcUrl: 'jdbc:mariadb://<HOST>:<PORT>/template_quarkus_main_1?createDatabaseIfNotExist=true&autoReconnect=true'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
+            audit:
+                datasource:
+                    hikari:
+                        driverClassName: 'org.mariadb.jdbc.Driver'
+                        jdbcUrl: 'jdbc:mariadb://<HOST>:<PORT>/template_quarkus_audit_1?createDatabaseIfNotExist=true&autoReconnect=true'
+                        username: '<USERNAME>'
+                        password: '<PASSWORD>'
+
+        secondary:
+            datasource:
+                hikari:
+                    driverClassName: 'org.mariadb.jdbc.Driver'
+                    jdbcUrl: 'jdbc:mariadb://<HOST>:<PORT>/template_quarkus_main_2?createDatabaseIfNotExist=true&autoReconnect=true'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
+            audit:
+                datasource:
+                    hikari:
+                        driverClassName: 'org.mariadb.jdbc.Driver'
+                        jdbcUrl: 'jdbc:mariadb://<HOST>:<PORT>/template_quarkus_audit_2?createDatabaseIfNotExist=true&autoReconnect=true'
+                        username: '<USERNAME>'
+                        password: '<PASSWORD>'

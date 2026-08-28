@@ -1,0 +1,48 @@
+config:    
+    #
+    # TRX MANAGER
+    #
+    trxManager:
+        primary:
+            datasource:
+                hikari:
+                    driverClassName: 'com.ibm.db2.jcc.DB2Driver'
+                    jdbcUrl: 'jdbc:db2://<HOST>:<PORT>/<DBNAME>'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
+                agroal:
+                    jdbcUrl: 'jdbc:db2://<HOST>:<PORT>/<DBNAME>'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
+                dbcp:
+                    driverClassName: 'com.ibm.db2.jcc.DB2Driver'
+                    jdbcUrl: 'jdbc:db2://<HOST>:<PORT>/<DBNAME>'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
+                basic:
+                    driverClassName: 'com.ibm.db2.jcc.DB2Driver'
+                    jdbcUrl: 'jdbc:db2://<HOST>:<PORT>/<DBNAME>'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
+            audit:
+                datasource:
+                    hikari:
+                        driverClassName: 'com.ibm.db2.jcc.DB2Driver'
+                        jdbcUrl: 'jdbc:db2://<HOST>:<PORT>/<DBNAME>'
+                        username: '<USERNAME>'
+                        password: '<PASSWORD>'
+
+        secondary:
+            datasource:
+                hikari:
+                    driverClassName: 'com.ibm.db2.jcc.DB2Driver'
+                    jdbcUrl: 'jdbc:db2://<HOST>:<PORT>/<DBNAME>'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
+            audit:
+                datasource:
+                    hikari:
+                        driverClassName: 'com.ibm.db2.jcc.DB2Driver'
+                        jdbcUrl: 'jdbc:db2://<HOST>:<PORT>/<DBNAME>'
+                        username: '<USERNAME>'
+                        password: '<PASSWORD>'
