@@ -6226,6 +6226,7 @@
     } ]
   }, {
     "type" : "com.fasterxml.jackson.databind.node.NodeSerialization",
+    "unsafeAllocated" : true,
     "fields" : [ {
       "name" : "LONGEST_EAGER_ALLOC"
     }, {
@@ -6255,6 +6256,8 @@
       "name" : "writeExternal",
       "parameterTypes" : [ "java.io.ObjectOutput" ]
     } ]
+  }, {
+    "type" : "com.fasterxml.jackson.databind.node.NodeSerializationHessianDeserializer"
   }, {
     "type" : "com.fasterxml.jackson.databind.node.NodeSerializationHessianSerializer"
   }, {
@@ -6745,13 +6748,7 @@
       "parameterTypes" : [ ]
     } ]
   }, {
-    "type" : "com.sun.crypto.provider.HKDFKeyDerivation$HKDFSHA384",
-    "methods" : [ {
-      "name" : "<init>",
-      "parameterTypes" : [ "javax.crypto.KDFParameters" ]
-    } ]
-  }, {
-    "type" : "com.sun.crypto.provider.HmacCore$HmacSHA384",
+    "type" : "com.sun.crypto.provider.HmacCore$HmacSHA256",
     "methods" : [ {
       "name" : "<init>",
       "parameterTypes" : [ ]
@@ -15935,6 +15932,8 @@
   }, {
     "type" : "java.nio.file.Path"
   }, {
+    "type" : "java.nio.file.Watchable"
+  }, {
     "type" : "java.security.AccessController"
   }, {
     "type" : "java.security.AlgorithmParametersSpi"
@@ -15958,10 +15957,6 @@
       "name" : "toString",
       "parameterTypes" : [ ]
     } ]
-  }, {
-    "type" : "java.security.interfaces.ECPrivateKey"
-  }, {
-    "type" : "java.security.interfaces.ECPublicKey"
   }, {
     "type" : "java.security.interfaces.EdECKey"
   }, {
@@ -17625,6 +17620,12 @@
       "name" : "toArray",
       "parameterTypes" : [ "java.lang.Object[]" ]
     } ]
+  }, {
+    "type" : "java.util.ImmutableCollections$AbstractImmutableCollection"
+  }, {
+    "type" : "java.util.ImmutableCollections$AbstractImmutableList"
+  }, {
+    "type" : "java.util.ImmutableCollections$ListN"
   }, {
     "type" : "java.util.Iterator",
     "methods" : [ {
@@ -21944,6 +21945,7 @@
     "type" : "net.ideahut.quarkus.annotation.Public"
   }, {
     "type" : "net.ideahut.quarkus.api.ApiAccess",
+    "unsafeAllocated" : true,
     "fields" : [ {
       "name" : "apiKey"
     }, {
@@ -22045,6 +22047,10 @@
       "parameterTypes" : [ ]
     } ]
   }, {
+    "type" : "net.ideahut.quarkus.api.ApiAccessHessianDeserializer"
+  }, {
+    "type" : "net.ideahut.quarkus.api.ApiAccessHessianSerializer"
+  }, {
     "type" : "net.ideahut.quarkus.api.ApiAccessInternalService",
     "methods" : [ {
       "name" : "getApiAccessInternal",
@@ -22058,6 +22064,7 @@
     } ]
   }, {
     "type" : "net.ideahut.quarkus.api.ApiAuth",
+    "unsafeAllocated" : true,
     "fields" : [ {
       "name" : "apiAccess"
     }, {
@@ -22108,6 +22115,10 @@
       "name" : "setScheme",
       "parameterTypes" : [ "java.lang.String" ]
     } ]
+  }, {
+    "type" : "net.ideahut.quarkus.api.ApiAuthHessianDeserializer"
+  }, {
+    "type" : "net.ideahut.quarkus.api.ApiAuthHessianSerializer"
   }, {
     "type" : "net.ideahut.quarkus.api.ApiCache",
     "fields" : [ {
@@ -23608,6 +23619,7 @@
     } ]
   }, {
     "type" : "net.ideahut.quarkus.api.ApiUser",
+    "unsafeAllocated" : true,
     "fields" : [ {
       "name" : "id"
     }, {
@@ -23652,6 +23664,10 @@
       "name" : "getInstance",
       "parameterTypes" : [ ]
     } ]
+  }, {
+    "type" : "net.ideahut.quarkus.api.ApiUserHessianDeserializer"
+  }, {
+    "type" : "net.ideahut.quarkus.api.ApiUserHessianSerializer"
   }, {
     "type" : "net.ideahut.quarkus.api.HelperUnmodifiable$UnmodifiableApiAccess",
     "fields" : [ {
@@ -24959,6 +24975,7 @@
     } ]
   }, {
     "type" : "net.ideahut.quarkus.api.dto.ApiRoleDto",
+    "unsafeAllocated" : true,
     "fields" : [ {
       "name" : "apiRoleCode"
     }, {
@@ -24991,7 +25008,12 @@
       "parameterTypes" : [ "java.lang.Character" ]
     } ]
   }, {
+    "type" : "net.ideahut.quarkus.api.dto.ApiRoleDtoHessianDeserializer"
+  }, {
+    "type" : "net.ideahut.quarkus.api.dto.ApiRoleDtoHessianSerializer"
+  }, {
     "type" : "net.ideahut.quarkus.api.dto.ApiRoleRequestDto",
+    "unsafeAllocated" : true,
     "fields" : [ {
       "name" : "apiRole"
     }, {
@@ -25079,6 +25101,10 @@
       "name" : "setProduces",
       "parameterTypes" : [ "java.lang.String" ]
     } ]
+  }, {
+    "type" : "net.ideahut.quarkus.api.dto.ApiRoleRequestDtoHessianDeserializer"
+  }, {
+    "type" : "net.ideahut.quarkus.api.dto.ApiRoleRequestDtoHessianSerializer"
   }, {
     "type" : "net.ideahut.quarkus.api.entity.ApiConnect",
     "fields" : [ {
@@ -38058,6 +38084,10 @@
       "name" : "updateJobTriggerContext",
       "parameterTypes" : [ "org.quartz.JobExecutionContext", "net.ideahut.quarkus.job.dto.JobTriggerDto" ]
     } ]
+  }, {
+    "type" : "net.ideahut.quarkus.job.JobBaseBeanInfo"
+  }, {
+    "type" : "net.ideahut.quarkus.job.JobBaseCustomizer"
   }, {
     "type" : "net.ideahut.quarkus.job.JobEntityClass",
     "fields" : [ {
@@ -58020,6 +58050,10 @@
       "parameterTypes" : [ "org.quartz.JobExecutionContext" ]
     } ]
   }, {
+    "type" : "net.ideahut.quarkus.template.job.PageScrapperJobBeanInfo"
+  }, {
+    "type" : "net.ideahut.quarkus.template.job.PageScrapperJobCustomizer"
+  }, {
     "type" : "net.ideahut.quarkus.template.job.PrintSystemNanoJob",
     "methods" : [ {
       "name" : "<init>",
@@ -58028,6 +58062,10 @@
       "name" : "run",
       "parameterTypes" : [ "org.quartz.JobExecutionContext" ]
     } ]
+  }, {
+    "type" : "net.ideahut.quarkus.template.job.PrintSystemNanoJobBeanInfo"
+  }, {
+    "type" : "net.ideahut.quarkus.template.job.PrintSystemNanoJobCustomizer"
   }, {
     "type" : "net.ideahut.quarkus.template.listener.entity.AppEntityPostListener",
     "fields" : [ {
@@ -58532,6 +58570,7 @@
     } ]
   }, {
     "type" : "net.ideahut.quarkus.template.object.CacheData",
+    "unsafeAllocated" : true,
     "fields" : [ {
       "name" : "content"
     }, {
@@ -58571,6 +58610,10 @@
       "name" : "setTimestamp",
       "parameterTypes" : [ "java.lang.Long" ]
     } ]
+  }, {
+    "type" : "net.ideahut.quarkus.template.object.CacheDataHessianDeserializer"
+  }, {
+    "type" : "net.ideahut.quarkus.template.object.CacheDataHessianSerializer"
   }, {
     "type" : "net.ideahut.quarkus.template.object.ReportData",
     "fields" : [ {
@@ -61927,6 +61970,8 @@
   }, {
     "type" : "org.hibernate.engine.spi.EntityEntry"
   }, {
+    "type" : "org.hibernate.engine.spi.InstanceIdentity"
+  }, {
     "type" : "org.hibernate.engine.spi.Managed"
   }, {
     "type" : "org.hibernate.engine.spi.ManagedComposite",
@@ -62799,6 +62844,57 @@
       "parameterTypes" : [ ]
     } ]
   }, {
+    "type" : "org.quartz.simpl.CascadingClassLoadHelper",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "org.quartz.simpl.RAMJobStore",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "setInstanceId",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "setInstanceName",
+      "parameterTypes" : [ "java.lang.String" ]
+    } ]
+  }, {
+    "type" : "org.quartz.simpl.RAMJobStoreBeanInfo"
+  }, {
+    "type" : "org.quartz.simpl.RAMJobStoreCustomizer"
+  }, {
+    "type" : "org.quartz.simpl.SimpleThreadPool",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "setInstanceId",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "setInstanceName",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "setThreadCount",
+      "parameterTypes" : [ "int" ]
+    }, {
+      "name" : "setThreadPriority",
+      "parameterTypes" : [ "int" ]
+    }, {
+      "name" : "setThreadsInheritContextClassLoaderOfInitializingThread",
+      "parameterTypes" : [ "boolean" ]
+    } ]
+  }, {
+    "type" : "org.quartz.simpl.SimpleThreadPoolBeanInfo"
+  }, {
+    "type" : "org.quartz.simpl.SimpleThreadPoolCustomizer"
+  }, {
+    "type" : "org.quartz.spi.JobStore"
+  }, {
+    "type" : "org.quartz.spi.ThreadPool"
+  }, {
     "type" : "org.slf4j.impl.JBossSlf4jServiceProvider"
   }, {
     "type" : "org.wildfly.transaction.client.ContextTransactionManager"
@@ -62862,6 +62958,8 @@
     }, {
       "name" : "selectedKeys"
     } ]
+  }, {
+    "type" : "sun.nio.fs.UnixPath"
   }, {
     "type" : "sun.security.pkcs12.PKCS12KeyStore",
     "methods" : [ {
@@ -62941,12 +63039,6 @@
       "parameterTypes" : [ ]
     } ]
   }, {
-    "type" : "sun.security.provider.certpath.PKIXCertPathValidator",
-    "methods" : [ {
-      "name" : "<init>",
-      "parameterTypes" : [ ]
-    } ]
-  }, {
     "type" : "sun.security.rsa.PSSParameters",
     "methods" : [ {
       "name" : "<init>",
@@ -62966,6 +63058,18 @@
     } ]
   }, {
     "type" : "sun.security.rsa.RSASignature$SHA224withRSA",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "sun.security.ssl.KeyManagerFactoryImpl$SunX509",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "sun.security.ssl.SSLContextImpl$DefaultSSLContext",
     "methods" : [ {
       "name" : "<init>",
       "parameterTypes" : [ ]
@@ -63013,12 +63117,6 @@
       "parameterTypes" : [ "java.lang.Boolean", "java.lang.Object" ]
     } ]
   }, {
-    "type" : "sun.security.x509.ExtendedKeyUsageExtension",
-    "methods" : [ {
-      "name" : "<init>",
-      "parameterTypes" : [ "java.lang.Boolean", "java.lang.Object" ]
-    } ]
-  }, {
     "type" : "sun.security.x509.KeyUsageExtension",
     "methods" : [ {
       "name" : "<init>",
@@ -63056,6 +63154,12 @@
     "type" : "sun.text.resources.cldr.FormatData_en_US"
   }, {
     "type" : "sun.util.resources.cldr.CalendarData"
+  }, {
+    "type" : "sun.util.resources.cldr.TimeZoneNames"
+  }, {
+    "type" : "sun.util.resources.cldr.TimeZoneNames_en"
+  }, {
+    "type" : "sun.util.resources.cldr.TimeZoneNames_en_US"
   }, {
     "type" : "tools.jackson.databind.json.JsonMapper"
   }, {
@@ -63561,6 +63665,8 @@
     "glob" : "META-INF/services/com.fasterxml.jackson.databind.Module"
   }, {
     "glob" : "META-INF/services/io.agroal.api.AgroalDataSourceProvider"
+  }, {
+    "glob" : "META-INF/services/io.jsonwebtoken.io.Serializer"
   }, {
     "glob" : "META-INF/services/io.opentelemetry.context.ContextStorageProvider"
   }, {
