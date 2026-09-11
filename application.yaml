@@ -159,11 +159,9 @@ config:
     #
     redis:
         primary:
-            connectionString: 'redis://<HOST>:<PORT>/0'
-            password: '<PASSWORD>'
+            connectionString: "redis://<HOST>:<PORT>/0"
         access:
-            connectionString: 'redis://<HOST>:<PORT>/1'
-            password: '<PASSWORD>'
+            connectionString: "redis://<HOST>:<PORT>/1"
                 
     #
     # ADMIN
@@ -400,8 +398,8 @@ config:
                 - net.ideahut.quarkus.entity.replica.ReplicaInfo
                 
                 #
-                # Aktifkan daftar entity di bawah pada saat jalan sebagai native
-                # Package scanning tidak berfungsi di native image.
+                # Aktifkan daftar entity di bawah pada saat jalan sebagai native image.
+                # Karena package scanning tidak berfungsi di native image.
                 #
                 
                 # API

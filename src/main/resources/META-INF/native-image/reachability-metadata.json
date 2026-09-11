@@ -1373,6 +1373,21 @@
       "parameterTypes" : [ ]
     } ]
   }, {
+    "type" : "com.fasterxml.jackson.annotation.JsonInclude",
+    "methods" : [ {
+      "name" : "content",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "contentFilter",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "value",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "valueFilter",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
     "type" : "com.fasterxml.jackson.core.JsonGenerator",
     "fields" : [ {
       "name" : "DEFAULT_BINARY_WRITE_CAPABILITIES"
@@ -1796,6 +1811,457 @@
       "parameterTypes" : [ "byte[]", "int", "int" ]
     } ]
   }, {
+    "type" : "com.fasterxml.jackson.core.JsonParser",
+    "fields" : [ {
+      "name" : "DEFAULT_READ_CAPABILITIES"
+    }, {
+      "name" : "MAX_BYTE_I"
+    }, {
+      "name" : "MAX_SHORT_I"
+    }, {
+      "name" : "MIN_BYTE_I"
+    }, {
+      "name" : "MIN_SHORT_I"
+    }, {
+      "name" : "_features"
+    }, {
+      "name" : "_requestPayload"
+    } ],
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "<init>",
+      "parameterTypes" : [ "int" ]
+    }, {
+      "name" : "_codec",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "_constructError",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "_constructReadException",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "_constructReadException",
+      "parameterTypes" : [ "java.lang.String", "com.fasterxml.jackson.core.JsonLocation" ]
+    }, {
+      "name" : "_constructReadException",
+      "parameterTypes" : [ "java.lang.String", "java.lang.Object" ]
+    }, {
+      "name" : "_constructReadException",
+      "parameterTypes" : [ "java.lang.String", "java.lang.Object", "java.lang.Object" ]
+    }, {
+      "name" : "_constructReadException",
+      "parameterTypes" : [ "java.lang.String", "java.lang.Object", "java.lang.Object", "java.lang.Object" ]
+    }, {
+      "name" : "_constructReadException",
+      "parameterTypes" : [ "java.lang.String", "java.lang.Throwable" ]
+    }, {
+      "name" : "_reportUnsupportedOperation",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "assignCurrentValue",
+      "parameterTypes" : [ "java.lang.Object" ]
+    }, {
+      "name" : "canParseAsync",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "canReadObjectId",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "canReadTypeId",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "canUseSchema",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.FormatSchema" ]
+    }, {
+      "name" : "clearCurrentToken",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "close",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "configure",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser$Feature", "boolean" ]
+    }, {
+      "name" : "currentLocation",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "currentName",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "currentToken",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "currentTokenCount",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "currentTokenId",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "currentTokenLocation",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "currentValue",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "disable",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser$Feature" ]
+    }, {
+      "name" : "enable",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser$Feature" ]
+    }, {
+      "name" : "finishToken",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getBigIntegerValue",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getBinaryValue",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getBinaryValue",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.Base64Variant" ]
+    }, {
+      "name" : "getBooleanValue",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getByteValue",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getCodec",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getCurrentLocation",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getCurrentName",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getCurrentToken",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getCurrentTokenId",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getCurrentValue",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getDecimalValue",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getDoubleValue",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getEmbeddedObject",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getFeatureMask",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getFloatValue",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getFormatFeatures",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getInputSource",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getIntValue",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getLastClearedToken",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getLongValue",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getNonBlockingInputFeeder",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getNumberType",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getNumberTypeFP",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getNumberValue",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getNumberValueDeferred",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getNumberValueExact",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getObjectId",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getParsingContext",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getReadCapabilities",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getSchema",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getShortValue",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getText",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getText",
+      "parameterTypes" : [ "java.io.Writer" ]
+    }, {
+      "name" : "getTextCharacters",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getTextLength",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getTextOffset",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getTokenLocation",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getTypeId",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getValueAsBoolean",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getValueAsBoolean",
+      "parameterTypes" : [ "boolean" ]
+    }, {
+      "name" : "getValueAsDouble",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getValueAsDouble",
+      "parameterTypes" : [ "double" ]
+    }, {
+      "name" : "getValueAsInt",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getValueAsInt",
+      "parameterTypes" : [ "int" ]
+    }, {
+      "name" : "getValueAsLong",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getValueAsLong",
+      "parameterTypes" : [ "long" ]
+    }, {
+      "name" : "getValueAsString",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getValueAsString",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "hasCurrentToken",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "hasTextCharacters",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "hasToken",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonToken" ]
+    }, {
+      "name" : "hasTokenId",
+      "parameterTypes" : [ "int" ]
+    }, {
+      "name" : "isClosed",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "isEnabled",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser$Feature" ]
+    }, {
+      "name" : "isEnabled",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.StreamReadFeature" ]
+    }, {
+      "name" : "isExpectedNumberIntToken",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "isExpectedStartArrayToken",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "isExpectedStartObjectToken",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "isNaN",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "nextBooleanValue",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "nextFieldName",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "nextFieldName",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.SerializableString" ]
+    }, {
+      "name" : "nextIntValue",
+      "parameterTypes" : [ "int" ]
+    }, {
+      "name" : "nextLongValue",
+      "parameterTypes" : [ "long" ]
+    }, {
+      "name" : "nextTextValue",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "nextToken",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "nextValue",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "overrideCurrentName",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "overrideFormatFeatures",
+      "parameterTypes" : [ "int", "int" ]
+    }, {
+      "name" : "overrideStdFeatures",
+      "parameterTypes" : [ "int", "int" ]
+    }, {
+      "name" : "readBinaryValue",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.Base64Variant", "java.io.OutputStream" ]
+    }, {
+      "name" : "readBinaryValue",
+      "parameterTypes" : [ "java.io.OutputStream" ]
+    }, {
+      "name" : "readValueAs",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.type.TypeReference" ]
+    }, {
+      "name" : "readValueAs",
+      "parameterTypes" : [ "java.lang.Class" ]
+    }, {
+      "name" : "readValueAsTree",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "readValuesAs",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.type.TypeReference" ]
+    }, {
+      "name" : "readValuesAs",
+      "parameterTypes" : [ "java.lang.Class" ]
+    }, {
+      "name" : "releaseBuffered",
+      "parameterTypes" : [ "java.io.OutputStream" ]
+    }, {
+      "name" : "releaseBuffered",
+      "parameterTypes" : [ "java.io.Writer" ]
+    }, {
+      "name" : "requiresCustomCodec",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "setCodec",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.ObjectCodec" ]
+    }, {
+      "name" : "setCurrentValue",
+      "parameterTypes" : [ "java.lang.Object" ]
+    }, {
+      "name" : "setFeatureMask",
+      "parameterTypes" : [ "int" ]
+    }, {
+      "name" : "setRequestPayloadOnError",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.util.RequestPayload" ]
+    }, {
+      "name" : "setRequestPayloadOnError",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "setRequestPayloadOnError",
+      "parameterTypes" : [ "byte[]", "java.lang.String" ]
+    }, {
+      "name" : "setSchema",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.FormatSchema" ]
+    }, {
+      "name" : "skipChildren",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "streamReadConstraints",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "version",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "com.fasterxml.jackson.core.JsonParser$Feature",
+    "fields" : [ {
+      "name" : "$VALUES"
+    }, {
+      "name" : "ALLOW_BACKSLASH_ESCAPING_ANY_CHARACTER"
+    }, {
+      "name" : "ALLOW_COMMENTS"
+    }, {
+      "name" : "ALLOW_LEADING_DECIMAL_POINT_FOR_NUMBERS"
+    }, {
+      "name" : "ALLOW_LEADING_PLUS_SIGN_FOR_NUMBERS"
+    }, {
+      "name" : "ALLOW_MISSING_VALUES"
+    }, {
+      "name" : "ALLOW_NON_NUMERIC_NUMBERS"
+    }, {
+      "name" : "ALLOW_NUMERIC_LEADING_ZEROS"
+    }, {
+      "name" : "ALLOW_RS_CONTROL_CHAR"
+    }, {
+      "name" : "ALLOW_SINGLE_QUOTES"
+    }, {
+      "name" : "ALLOW_TRAILING_COMMA"
+    }, {
+      "name" : "ALLOW_TRAILING_DECIMAL_POINT_FOR_NUMBERS"
+    }, {
+      "name" : "ALLOW_UNQUOTED_CONTROL_CHARS"
+    }, {
+      "name" : "ALLOW_UNQUOTED_FIELD_NAMES"
+    }, {
+      "name" : "ALLOW_YAML_COMMENTS"
+    }, {
+      "name" : "AUTO_CLOSE_SOURCE"
+    }, {
+      "name" : "CLEAR_CURRENT_TOKEN_ON_CLOSE"
+    }, {
+      "name" : "IGNORE_UNDEFINED"
+    }, {
+      "name" : "INCLUDE_SOURCE_IN_LOCATION"
+    }, {
+      "name" : "STRICT_DUPLICATE_DETECTION"
+    }, {
+      "name" : "USE_FAST_BIG_NUMBER_PARSER"
+    }, {
+      "name" : "USE_FAST_DOUBLE_PARSER"
+    }, {
+      "name" : "_defaultState"
+    }, {
+      "name" : "_mask"
+    } ],
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ "java.lang.String", "int", "boolean" ]
+    }, {
+      "name" : "collectDefaults",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "enabledByDefault",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "enabledIn",
+      "parameterTypes" : [ "int" ]
+    }, {
+      "name" : "getMask",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "valueOf",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "values",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
     "type" : "com.fasterxml.jackson.core.JsonPointer",
     "fields" : [ {
       "name" : "EMPTY"
@@ -1994,6 +2460,247 @@
       "parameterTypes" : [ "com.fasterxml.jackson.core.JsonGenerator", "java.lang.Object" ]
     } ]
   }, {
+    "type" : "com.fasterxml.jackson.core.StreamReadFeature",
+    "fields" : [ {
+      "name" : "$VALUES"
+    }, {
+      "name" : "AUTO_CLOSE_SOURCE"
+    }, {
+      "name" : "CLEAR_CURRENT_TOKEN_ON_CLOSE"
+    }, {
+      "name" : "IGNORE_UNDEFINED"
+    }, {
+      "name" : "INCLUDE_SOURCE_IN_LOCATION"
+    }, {
+      "name" : "STRICT_DUPLICATE_DETECTION"
+    }, {
+      "name" : "USE_FAST_BIG_NUMBER_PARSER"
+    }, {
+      "name" : "USE_FAST_DOUBLE_PARSER"
+    }, {
+      "name" : "_defaultState"
+    }, {
+      "name" : "_mappedFeature"
+    }, {
+      "name" : "_mask"
+    } ],
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ "java.lang.String", "int", "com.fasterxml.jackson.core.JsonParser$Feature" ]
+    }, {
+      "name" : "collectDefaults",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "enabledByDefault",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "enabledIn",
+      "parameterTypes" : [ "int" ]
+    }, {
+      "name" : "getMask",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "mappedFeature",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "valueOf",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "values",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "com.fasterxml.jackson.core.StreamWriteFeature",
+    "fields" : [ {
+      "name" : "$VALUES"
+    }, {
+      "name" : "AUTO_CLOSE_CONTENT"
+    }, {
+      "name" : "AUTO_CLOSE_TARGET"
+    }, {
+      "name" : "FLUSH_PASSED_TO_STREAM"
+    }, {
+      "name" : "IGNORE_UNKNOWN"
+    }, {
+      "name" : "STRICT_DUPLICATE_DETECTION"
+    }, {
+      "name" : "USE_FAST_DOUBLE_WRITER"
+    }, {
+      "name" : "WRITE_BIGDECIMAL_AS_PLAIN"
+    }, {
+      "name" : "_defaultState"
+    }, {
+      "name" : "_mappedFeature"
+    }, {
+      "name" : "_mask"
+    } ],
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ "java.lang.String", "int", "com.fasterxml.jackson.core.JsonGenerator$Feature" ]
+    }, {
+      "name" : "collectDefaults",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "enabledByDefault",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "enabledIn",
+      "parameterTypes" : [ "int" ]
+    }, {
+      "name" : "getMask",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "mappedFeature",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "valueOf",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "values",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "com.fasterxml.jackson.core.TokenStreamFactory",
+    "fields" : [ {
+      "name" : "serialVersionUID"
+    } ],
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "_checkRangeBoundsForByteArray",
+      "parameterTypes" : [ "byte[]", "int", "int" ]
+    }, {
+      "name" : "_checkRangeBoundsForCharArray",
+      "parameterTypes" : [ "char[]", "int", "int" ]
+    }, {
+      "name" : "_createDataOutputWrapper",
+      "parameterTypes" : [ "java.io.DataOutput" ]
+    }, {
+      "name" : "_fileInputStream",
+      "parameterTypes" : [ "java.io.File" ]
+    }, {
+      "name" : "_fileOutputStream",
+      "parameterTypes" : [ "java.io.File" ]
+    }, {
+      "name" : "_optimizedStreamFromURL",
+      "parameterTypes" : [ "java.net.URL" ]
+    }, {
+      "name" : "_reportRangeError",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "canHandleBinaryNatively",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "canParseAsync",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "canUseSchema",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.FormatSchema" ]
+    }, {
+      "name" : "createGenerator",
+      "parameterTypes" : [ "java.io.DataOutput" ]
+    }, {
+      "name" : "createGenerator",
+      "parameterTypes" : [ "java.io.DataOutput", "com.fasterxml.jackson.core.JsonEncoding" ]
+    }, {
+      "name" : "createGenerator",
+      "parameterTypes" : [ "java.io.File", "com.fasterxml.jackson.core.JsonEncoding" ]
+    }, {
+      "name" : "createGenerator",
+      "parameterTypes" : [ "java.io.OutputStream" ]
+    }, {
+      "name" : "createGenerator",
+      "parameterTypes" : [ "java.io.OutputStream", "com.fasterxml.jackson.core.JsonEncoding" ]
+    }, {
+      "name" : "createGenerator",
+      "parameterTypes" : [ "java.io.Writer" ]
+    }, {
+      "name" : "createNonBlockingByteArrayParser",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "createNonBlockingByteBufferParser",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "createParser",
+      "parameterTypes" : [ "java.io.DataInput" ]
+    }, {
+      "name" : "createParser",
+      "parameterTypes" : [ "java.io.File" ]
+    }, {
+      "name" : "createParser",
+      "parameterTypes" : [ "java.io.InputStream" ]
+    }, {
+      "name" : "createParser",
+      "parameterTypes" : [ "java.io.Reader" ]
+    }, {
+      "name" : "createParser",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "createParser",
+      "parameterTypes" : [ "java.net.URL" ]
+    }, {
+      "name" : "createParser",
+      "parameterTypes" : [ "byte[]" ]
+    }, {
+      "name" : "createParser",
+      "parameterTypes" : [ "byte[]", "int", "int" ]
+    }, {
+      "name" : "createParser",
+      "parameterTypes" : [ "char[]" ]
+    }, {
+      "name" : "createParser",
+      "parameterTypes" : [ "char[]", "int", "int" ]
+    }, {
+      "name" : "getFactoryFeatures",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getFormatGeneratorFeatures",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getFormatName",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getFormatParserFeatures",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getFormatReadFeatureType",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getFormatWriteFeatureType",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getGeneratorFeatures",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getParserFeatures",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "isEnabled",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonFactory$Feature" ]
+    }, {
+      "name" : "isEnabled",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonGenerator$Feature" ]
+    }, {
+      "name" : "isEnabled",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser$Feature" ]
+    }, {
+      "name" : "isEnabled",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.StreamReadFeature" ]
+    }, {
+      "name" : "isEnabled",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.StreamWriteFeature" ]
+    }, {
+      "name" : "requiresPropertyOrdering",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "streamReadConstraints",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "streamWriteConstraints",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
     "type" : "com.fasterxml.jackson.core.TreeCodec",
     "methods" : [ {
       "name" : "<init>",
@@ -2081,115 +2788,394 @@
       "parameterTypes" : [ ]
     } ]
   }, {
-    "type" : "com.fasterxml.jackson.databind.DatabindContext",
+    "type" : "com.fasterxml.jackson.core.type.TypeReference",
     "fields" : [ {
-      "name" : "MAX_ERROR_STR_LEN"
+      "name" : "_type"
     } ],
     "methods" : [ {
       "name" : "<init>",
       "parameterTypes" : [ ]
     }, {
-      "name" : "_colonConcat",
-      "parameterTypes" : [ "java.lang.String", "java.lang.String" ]
+      "name" : "compareTo",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.type.TypeReference" ]
     }, {
-      "name" : "_desc",
-      "parameterTypes" : [ "java.lang.String" ]
-    }, {
-      "name" : "_format",
-      "parameterTypes" : [ "java.lang.String", "java.lang.Object[]" ]
-    }, {
-      "name" : "_quotedString",
-      "parameterTypes" : [ "java.lang.String" ]
-    }, {
-      "name" : "_resolveAndValidateGeneric",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JavaType", "java.lang.String", "com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator", "int" ]
-    }, {
-      "name" : "_throwNotASubtype",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JavaType", "java.lang.String" ]
-    }, {
-      "name" : "_throwSubtypeClassNotAllowed",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JavaType", "java.lang.String", "com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator" ]
-    }, {
-      "name" : "_throwSubtypeNameNotAllowed",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JavaType", "java.lang.String", "com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator" ]
-    }, {
-      "name" : "_truncate",
-      "parameterTypes" : [ "java.lang.String" ]
-    }, {
-      "name" : "_validateTypeParameter",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JavaType", "com.fasterxml.jackson.databind.JavaType", "com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator", "com.fasterxml.jackson.databind.cfg.MapperConfig" ]
-    }, {
-      "name" : "canOverrideAccessModifiers",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "constructSpecializedType",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JavaType", "java.lang.Class" ]
-    }, {
-      "name" : "constructType",
-      "parameterTypes" : [ "java.lang.reflect.Type" ]
-    }, {
-      "name" : "converterInstance",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated", "java.lang.Object" ]
-    }, {
-      "name" : "getActiveView",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "getAnnotationIntrospector",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "getAttribute",
+      "name" : "compareTo",
       "parameterTypes" : [ "java.lang.Object" ]
     }, {
-      "name" : "getConfig",
+      "name" : "getType",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "com.fasterxml.jackson.core.util.JacksonFeature",
+    "methods" : [ {
+      "name" : "enabledByDefault",
       "parameterTypes" : [ ]
     }, {
-      "name" : "getDatatypeFeatures",
+      "name" : "enabledIn",
+      "parameterTypes" : [ "int" ]
+    }, {
+      "name" : "getMask",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "com.fasterxml.jackson.databind.AnnotationIntrospector",
+    "methods" : [ {
+      "name" : "<init>",
       "parameterTypes" : [ ]
     }, {
-      "name" : "getDefaultPropertyFormat",
+      "name" : "_findAnnotation",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated", "java.lang.Class" ]
+    }, {
+      "name" : "_hasAnnotation",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated", "java.lang.Class" ]
+    }, {
+      "name" : "_hasOneOf",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated", "java.lang.Class[]" ]
+    }, {
+      "name" : "allIntrospectors",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "allIntrospectors",
+      "parameterTypes" : [ "java.util.Collection" ]
+    }, {
+      "name" : "findAndAddVirtualProperties",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.cfg.MapperConfig", "com.fasterxml.jackson.databind.introspect.AnnotatedClass", "java.util.List" ]
+    }, {
+      "name" : "findAutoDetectVisibility",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.AnnotatedClass", "com.fasterxml.jackson.databind.introspect.VisibilityChecker" ]
+    }, {
+      "name" : "findClassDescription",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.AnnotatedClass" ]
+    }, {
+      "name" : "findContentDeserializer",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "findContentSerializer",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "findCreatorAnnotation",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.cfg.MapperConfig", "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "findCreatorBinding",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "findDefaultCreator",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.cfg.MapperConfig", "com.fasterxml.jackson.databind.introspect.AnnotatedClass", "java.util.List", "java.util.List" ]
+    }, {
+      "name" : "findDefaultEnumValue",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.AnnotatedClass", "java.lang.Enum[]" ]
+    }, {
+      "name" : "findDefaultEnumValue",
       "parameterTypes" : [ "java.lang.Class" ]
     }, {
-      "name" : "getLocale",
-      "parameterTypes" : [ ]
+      "name" : "findDeserializationContentConverter",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.AnnotatedMember" ]
     }, {
-      "name" : "getTimeZone",
-      "parameterTypes" : [ ]
+      "name" : "findDeserializationConverter",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
     }, {
-      "name" : "getTypeFactory",
-      "parameterTypes" : [ ]
+      "name" : "findDeserializer",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
     }, {
-      "name" : "invalidTypeIdException",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JavaType", "java.lang.String", "java.lang.String" ]
+      "name" : "findEnumAliases",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.cfg.MapperConfig", "com.fasterxml.jackson.databind.introspect.AnnotatedClass", "java.lang.Enum[]", "java.lang.String[][]" ]
     }, {
-      "name" : "isEnabled",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.MapperFeature" ]
+      "name" : "findEnumAliases",
+      "parameterTypes" : [ "java.lang.Class", "java.lang.Enum[]", "java.lang.String[][]" ]
     }, {
-      "name" : "isEnabled",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.cfg.DatatypeFeature" ]
+      "name" : "findEnumNamingStrategy",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.cfg.MapperConfig", "com.fasterxml.jackson.databind.introspect.AnnotatedClass" ]
     }, {
-      "name" : "objectIdGeneratorInstance",
+      "name" : "findEnumValue",
+      "parameterTypes" : [ "java.lang.Enum" ]
+    }, {
+      "name" : "findEnumValues",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.cfg.MapperConfig", "com.fasterxml.jackson.databind.introspect.AnnotatedClass", "java.lang.Enum[]", "java.lang.String[]" ]
+    }, {
+      "name" : "findEnumValues",
+      "parameterTypes" : [ "java.lang.Class", "java.lang.Enum[]", "java.lang.String[]" ]
+    }, {
+      "name" : "findFilterId",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "findFormat",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "findImplicitPropertyName",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.AnnotatedMember" ]
+    }, {
+      "name" : "findInjectableValue",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.AnnotatedMember" ]
+    }, {
+      "name" : "findInjectableValueId",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.AnnotatedMember" ]
+    }, {
+      "name" : "findKeyDeserializer",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "findKeySerializer",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "findMergeInfo",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "findNameForDeserialization",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "findNameForSerialization",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "findNamingStrategy",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.AnnotatedClass" ]
+    }, {
+      "name" : "findNullSerializer",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "findObjectIdInfo",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "findObjectReferenceInfo",
       "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated", "com.fasterxml.jackson.databind.introspect.ObjectIdInfo" ]
     }, {
-      "name" : "objectIdResolverInstance",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated", "com.fasterxml.jackson.databind.introspect.ObjectIdInfo" ]
+      "name" : "findPOJOBuilder",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.AnnotatedClass" ]
     }, {
-      "name" : "reportBadDefinition",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JavaType", "java.lang.String" ]
+      "name" : "findPOJOBuilderConfig",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.AnnotatedClass" ]
     }, {
-      "name" : "reportBadDefinition",
-      "parameterTypes" : [ "java.lang.Class", "java.lang.String" ]
+      "name" : "findPolymorphicTypeInfo",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.cfg.MapperConfig", "com.fasterxml.jackson.databind.introspect.Annotated" ]
     }, {
-      "name" : "reportBadTypeDefinition",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.BeanDescription", "java.lang.String", "java.lang.Object[]" ]
+      "name" : "findPropertyAccess",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
     }, {
-      "name" : "resolveAndValidateSubType",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JavaType", "java.lang.String", "com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator" ]
+      "name" : "findPropertyAliases",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
     }, {
-      "name" : "resolveSubType",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JavaType", "java.lang.String" ]
+      "name" : "findPropertyContentTypeResolver",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.cfg.MapperConfig", "com.fasterxml.jackson.databind.introspect.AnnotatedMember", "com.fasterxml.jackson.databind.JavaType" ]
     }, {
-      "name" : "setAttribute",
-      "parameterTypes" : [ "java.lang.Object", "java.lang.Object" ]
+      "name" : "findPropertyDefaultValue",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "findPropertyDescription",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "findPropertyIgnoralByName",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.cfg.MapperConfig", "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "findPropertyIgnorals",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "findPropertyInclusion",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "findPropertyInclusionByName",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.cfg.MapperConfig", "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "findPropertyIndex",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "findPropertyTypeResolver",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.cfg.MapperConfig", "com.fasterxml.jackson.databind.introspect.AnnotatedMember", "com.fasterxml.jackson.databind.JavaType" ]
+    }, {
+      "name" : "findReferenceType",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.AnnotatedMember" ]
+    }, {
+      "name" : "findRenameByField",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.cfg.MapperConfig", "com.fasterxml.jackson.databind.introspect.AnnotatedField", "com.fasterxml.jackson.databind.PropertyName" ]
+    }, {
+      "name" : "findRootName",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.AnnotatedClass" ]
+    }, {
+      "name" : "findSerializationContentConverter",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.AnnotatedMember" ]
+    }, {
+      "name" : "findSerializationConverter",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "findSerializationPropertyOrder",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.AnnotatedClass" ]
+    }, {
+      "name" : "findSerializationSortAlphabetically",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "findSerializationTyping",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "findSerializer",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "findSetterInfo",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "findSubtypes",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "findTypeName",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.AnnotatedClass" ]
+    }, {
+      "name" : "findTypeResolver",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.cfg.MapperConfig", "com.fasterxml.jackson.databind.introspect.AnnotatedClass", "com.fasterxml.jackson.databind.JavaType" ]
+    }, {
+      "name" : "findUnwrappingNameTransformer",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.AnnotatedMember" ]
+    }, {
+      "name" : "findValueInstantiator",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.AnnotatedClass" ]
+    }, {
+      "name" : "findViews",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "findWrapperName",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "hasAnyGetter",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "hasAnyGetterAnnotation",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.AnnotatedMethod" ]
+    }, {
+      "name" : "hasAnySetter",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "hasAnySetterAnnotation",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.AnnotatedMethod" ]
+    }, {
+      "name" : "hasAsKey",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.cfg.MapperConfig", "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "hasAsValue",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "hasAsValueAnnotation",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.AnnotatedMethod" ]
+    }, {
+      "name" : "hasCreatorAnnotation",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated" ]
+    }, {
+      "name" : "hasIgnoreMarker",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.AnnotatedMember" ]
+    }, {
+      "name" : "hasRequiredMarker",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.AnnotatedMember" ]
+    }, {
+      "name" : "isAnnotationBundle",
+      "parameterTypes" : [ "java.lang.annotation.Annotation" ]
+    }, {
+      "name" : "isIgnorableType",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.AnnotatedClass" ]
+    }, {
+      "name" : "isTypeId",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.AnnotatedMember" ]
+    }, {
+      "name" : "nopInstance",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "pair",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.AnnotationIntrospector", "com.fasterxml.jackson.databind.AnnotationIntrospector" ]
+    }, {
+      "name" : "refineDeserializationType",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.cfg.MapperConfig", "com.fasterxml.jackson.databind.introspect.Annotated", "com.fasterxml.jackson.databind.JavaType" ]
+    }, {
+      "name" : "refineSerializationType",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.cfg.MapperConfig", "com.fasterxml.jackson.databind.introspect.Annotated", "com.fasterxml.jackson.databind.JavaType" ]
+    }, {
+      "name" : "resolveSetterConflict",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.cfg.MapperConfig", "com.fasterxml.jackson.databind.introspect.AnnotatedMethod", "com.fasterxml.jackson.databind.introspect.AnnotatedMethod" ]
+    }, {
+      "name" : "version",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "com.fasterxml.jackson.databind.DeserializationFeature",
+    "fields" : [ {
+      "name" : "$VALUES"
+    }, {
+      "name" : "ACCEPT_EMPTY_ARRAY_AS_NULL_OBJECT"
+    }, {
+      "name" : "ACCEPT_EMPTY_STRING_AS_NULL_OBJECT"
+    }, {
+      "name" : "ACCEPT_FLOAT_AS_INT"
+    }, {
+      "name" : "ACCEPT_SINGLE_VALUE_AS_ARRAY"
+    }, {
+      "name" : "ADJUST_DATES_TO_CONTEXT_TIME_ZONE"
+    }, {
+      "name" : "EAGER_DESERIALIZER_FETCH"
+    }, {
+      "name" : "FAIL_ON_IGNORED_PROPERTIES"
+    }, {
+      "name" : "FAIL_ON_INVALID_SUBTYPE"
+    }, {
+      "name" : "FAIL_ON_MISSING_CREATOR_PROPERTIES"
+    }, {
+      "name" : "FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY"
+    }, {
+      "name" : "FAIL_ON_NULL_CREATOR_PROPERTIES"
+    }, {
+      "name" : "FAIL_ON_NULL_FOR_PRIMITIVES"
+    }, {
+      "name" : "FAIL_ON_NUMBERS_FOR_ENUMS"
+    }, {
+      "name" : "FAIL_ON_READING_DUP_TREE_KEY"
+    }, {
+      "name" : "FAIL_ON_SUBTYPE_CLASS_NOT_REGISTERED"
+    }, {
+      "name" : "FAIL_ON_TRAILING_TOKENS"
+    }, {
+      "name" : "FAIL_ON_UNEXPECTED_VIEW_PROPERTIES"
+    }, {
+      "name" : "FAIL_ON_UNKNOWN_INJECT_VALUE"
+    }, {
+      "name" : "FAIL_ON_UNKNOWN_PROPERTIES"
+    }, {
+      "name" : "FAIL_ON_UNRESOLVED_OBJECT_IDS"
+    }, {
+      "name" : "READ_DATE_TIMESTAMPS_AS_NANOSECONDS"
+    }, {
+      "name" : "READ_ENUMS_USING_TO_STRING"
+    }, {
+      "name" : "READ_UNKNOWN_ENUM_VALUES_AS_NULL"
+    }, {
+      "name" : "READ_UNKNOWN_ENUM_VALUES_USING_DEFAULT_VALUE"
+    }, {
+      "name" : "UNWRAP_ROOT_VALUE"
+    }, {
+      "name" : "UNWRAP_SINGLE_VALUE_ARRAYS"
+    }, {
+      "name" : "USE_BIG_DECIMAL_FOR_FLOATS"
+    }, {
+      "name" : "USE_BIG_INTEGER_FOR_INTS"
+    }, {
+      "name" : "USE_JAVA_ARRAY_FOR_JSON_ARRAY"
+    }, {
+      "name" : "USE_LONG_FOR_INTS"
+    }, {
+      "name" : "WRAP_EXCEPTIONS"
+    }, {
+      "name" : "_defaultState"
+    }, {
+      "name" : "_mask"
+    } ],
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ "java.lang.String", "int", "boolean" ]
+    }, {
+      "name" : "enabledByDefault",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "enabledIn",
+      "parameterTypes" : [ "int" ]
+    }, {
+      "name" : "getMask",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "valueOf",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "values",
+      "parameterTypes" : [ ]
     } ]
   }, {
     "type" : "com.fasterxml.jackson.databind.JsonNode",
@@ -2546,6 +3532,123 @@
     }, {
       "name" : "isEmpty",
       "parameterTypes" : [ "com.fasterxml.jackson.databind.SerializerProvider" ]
+    } ]
+  }, {
+    "type" : "com.fasterxml.jackson.databind.MapperFeature",
+    "fields" : [ {
+      "name" : "$VALUES"
+    }, {
+      "name" : "ACCEPT_CASE_INSENSITIVE_ENUMS"
+    }, {
+      "name" : "ACCEPT_CASE_INSENSITIVE_PROPERTIES"
+    }, {
+      "name" : "ACCEPT_CASE_INSENSITIVE_VALUES"
+    }, {
+      "name" : "ALLOW_COERCION_OF_SCALARS"
+    }, {
+      "name" : "ALLOW_EXPLICIT_PROPERTY_RENAMING"
+    }, {
+      "name" : "ALLOW_FINAL_FIELDS_AS_MUTATORS"
+    }, {
+      "name" : "ALLOW_IS_GETTERS_FOR_NON_BOOLEAN"
+    }, {
+      "name" : "ALLOW_VOID_VALUED_PROPERTIES"
+    }, {
+      "name" : "APPLY_DEFAULT_VALUES"
+    }, {
+      "name" : "AUTO_DETECT_CREATORS"
+    }, {
+      "name" : "AUTO_DETECT_FIELDS"
+    }, {
+      "name" : "AUTO_DETECT_GETTERS"
+    }, {
+      "name" : "AUTO_DETECT_IS_GETTERS"
+    }, {
+      "name" : "AUTO_DETECT_SETTERS"
+    }, {
+      "name" : "BLOCK_UNSAFE_POLYMORPHIC_BASE_TYPES"
+    }, {
+      "name" : "CAN_OVERRIDE_ACCESS_MODIFIERS"
+    }, {
+      "name" : "DEFAULT_VIEW_INCLUSION"
+    }, {
+      "name" : "FIX_FIELD_NAME_UPPER_CASE_PREFIX"
+    }, {
+      "name" : "IGNORE_DUPLICATE_MODULE_REGISTRATIONS"
+    }, {
+      "name" : "IGNORE_MERGE_FOR_UNMERGEABLE"
+    }, {
+      "name" : "INFER_BUILDER_TYPE_BINDINGS"
+    }, {
+      "name" : "INFER_CREATOR_FROM_CONSTRUCTOR_PROPERTIES"
+    }, {
+      "name" : "INFER_PROPERTY_MUTATORS"
+    }, {
+      "name" : "INVERSE_READ_WRITE_ACCESS"
+    }, {
+      "name" : "OVERRIDE_PUBLIC_ACCESS_MODIFIERS"
+    }, {
+      "name" : "PROPAGATE_TRANSIENT_MARKER"
+    }, {
+      "name" : "REQUIRE_HANDLERS_FOR_JAVA8_OPTIONALS"
+    }, {
+      "name" : "REQUIRE_HANDLERS_FOR_JAVA8_TIMES"
+    }, {
+      "name" : "REQUIRE_SETTERS_FOR_GETTERS"
+    }, {
+      "name" : "REQUIRE_TYPE_ID_FOR_SUBTYPES"
+    }, {
+      "name" : "SORT_CREATOR_PROPERTIES_BY_DECLARATION_ORDER"
+    }, {
+      "name" : "SORT_CREATOR_PROPERTIES_FIRST"
+    }, {
+      "name" : "SORT_PROPERTIES_ALPHABETICALLY"
+    }, {
+      "name" : "SORT_PROPERTIES_BY_INDEX"
+    }, {
+      "name" : "USE_ANNOTATIONS"
+    }, {
+      "name" : "USE_BASE_TYPE_AS_DEFAULT_IMPL"
+    }, {
+      "name" : "USE_GETTERS_AS_SETTERS"
+    }, {
+      "name" : "USE_STATIC_TYPING"
+    }, {
+      "name" : "USE_STD_BEAN_NAMING"
+    }, {
+      "name" : "USE_WRAPPER_NAME_AS_PROPERTY_NAME"
+    }, {
+      "name" : "_defaultState"
+    }, {
+      "name" : "_mask"
+    } ],
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ "java.lang.String", "int", "boolean" ]
+    }, {
+      "name" : "collectLongDefaults",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "enabledByDefault",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "enabledIn",
+      "parameterTypes" : [ "int" ]
+    }, {
+      "name" : "enabledIn",
+      "parameterTypes" : [ "long" ]
+    }, {
+      "name" : "getLongMask",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getMask",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "valueOf",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "values",
+      "parameterTypes" : [ ]
     } ]
   }, {
     "type" : "com.fasterxml.jackson.databind.Module",
@@ -3938,221 +5041,296 @@
       "parameterTypes" : [ "com.fasterxml.jackson.core.JsonGenerator", "java.lang.Object" ]
     } ]
   }, {
-    "type" : "com.fasterxml.jackson.databind.SerializerProvider",
+    "type" : "com.fasterxml.jackson.databind.SerializationFeature",
     "fields" : [ {
-      "name" : "CACHE_UNKNOWN_MAPPINGS"
+      "name" : "$VALUES"
     }, {
-      "name" : "DEFAULT_NULL_KEY_SERIALIZER"
+      "name" : "CLOSE_CLOSEABLE"
     }, {
-      "name" : "DEFAULT_UNKNOWN_SERIALIZER"
+      "name" : "EAGER_SERIALIZER_FETCH"
     }, {
-      "name" : "_attributes"
+      "name" : "FAIL_ON_EMPTY_BEANS"
     }, {
-      "name" : "_config"
+      "name" : "FAIL_ON_ORDER_MAP_BY_INCOMPARABLE_KEY"
     }, {
-      "name" : "_dateFormat"
+      "name" : "FAIL_ON_SELF_REFERENCES"
     }, {
-      "name" : "_keySerializer"
+      "name" : "FAIL_ON_UNWRAPPED_TYPE_IDENTIFIERS"
     }, {
-      "name" : "_knownSerializers"
+      "name" : "FLUSH_AFTER_WRITE_VALUE"
     }, {
-      "name" : "_nullKeySerializer"
+      "name" : "INDENT_OUTPUT"
     }, {
-      "name" : "_nullValueSerializer"
+      "name" : "ORDER_MAP_ENTRIES_BY_KEYS"
     }, {
-      "name" : "_serializationView"
+      "name" : "USE_EQUALITY_FOR_OBJECT_ID"
     }, {
-      "name" : "_serializerCache"
+      "name" : "WRAP_EXCEPTIONS"
     }, {
-      "name" : "_serializerFactory"
+      "name" : "WRAP_ROOT_VALUE"
     }, {
-      "name" : "_stdNullValueSerializer"
+      "name" : "WRITE_BIGDECIMAL_AS_PLAIN"
     }, {
-      "name" : "_unknownTypeSerializer"
+      "name" : "WRITE_CHAR_ARRAYS_AS_JSON_ARRAYS"
+    }, {
+      "name" : "WRITE_DATES_AS_TIMESTAMPS"
+    }, {
+      "name" : "WRITE_DATES_WITH_CONTEXT_TIME_ZONE"
+    }, {
+      "name" : "WRITE_DATES_WITH_ZONE_ID"
+    }, {
+      "name" : "WRITE_DATE_KEYS_AS_TIMESTAMPS"
+    }, {
+      "name" : "WRITE_DATE_TIMESTAMPS_AS_NANOSECONDS"
+    }, {
+      "name" : "WRITE_DURATIONS_AS_TIMESTAMPS"
+    }, {
+      "name" : "WRITE_EMPTY_JSON_ARRAYS"
+    }, {
+      "name" : "WRITE_ENUMS_USING_INDEX"
+    }, {
+      "name" : "WRITE_ENUMS_USING_TO_STRING"
+    }, {
+      "name" : "WRITE_ENUM_KEYS_USING_INDEX"
+    }, {
+      "name" : "WRITE_NULL_MAP_VALUES"
+    }, {
+      "name" : "WRITE_SELF_REFERENCES_AS_NULL"
+    }, {
+      "name" : "WRITE_SINGLE_ELEM_ARRAYS_UNWRAPPED"
+    }, {
+      "name" : "_defaultState"
+    }, {
+      "name" : "_mask"
     } ],
     "methods" : [ {
       "name" : "<init>",
+      "parameterTypes" : [ "java.lang.String", "int", "boolean" ]
+    }, {
+      "name" : "enabledByDefault",
       "parameterTypes" : [ ]
     }, {
-      "name" : "<init>",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.SerializerProvider" ]
-    }, {
-      "name" : "<init>",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.SerializerProvider", "com.fasterxml.jackson.databind.SerializationConfig", "com.fasterxml.jackson.databind.ser.SerializerFactory" ]
-    }, {
-      "name" : "<init>",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.SerializerProvider", "com.fasterxml.jackson.databind.ser.SerializerCache" ]
-    }, {
-      "name" : "_createAndCacheUntypedSerializer",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JavaType" ]
-    }, {
-      "name" : "_createAndCacheUntypedSerializer",
-      "parameterTypes" : [ "java.lang.Class" ]
-    }, {
-      "name" : "_createUntypedSerializer",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JavaType" ]
-    }, {
-      "name" : "_dateFormat",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "_findExplicitUntypedSerializer",
-      "parameterTypes" : [ "java.lang.Class" ]
-    }, {
-      "name" : "_handleContextualResolvable",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JsonSerializer", "com.fasterxml.jackson.databind.BeanProperty" ]
-    }, {
-      "name" : "_handleResolvable",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JsonSerializer" ]
-    }, {
-      "name" : "_reportIncompatibleRootType",
-      "parameterTypes" : [ "java.lang.Object", "com.fasterxml.jackson.databind.JavaType" ]
-    }, {
-      "name" : "bufferForValueConversion",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "bufferForValueConversion",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.ObjectCodec" ]
-    }, {
-      "name" : "canOverrideAccessModifiers",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "constructSpecializedType",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JavaType", "java.lang.Class" ]
-    }, {
-      "name" : "defaultSerializeDateKey",
-      "parameterTypes" : [ "long", "com.fasterxml.jackson.core.JsonGenerator" ]
-    }, {
-      "name" : "defaultSerializeDateKey",
-      "parameterTypes" : [ "java.util.Date", "com.fasterxml.jackson.core.JsonGenerator" ]
-    }, {
-      "name" : "defaultSerializeDateValue",
-      "parameterTypes" : [ "long", "com.fasterxml.jackson.core.JsonGenerator" ]
-    }, {
-      "name" : "defaultSerializeDateValue",
-      "parameterTypes" : [ "java.util.Date", "com.fasterxml.jackson.core.JsonGenerator" ]
-    }, {
-      "name" : "defaultSerializeField",
-      "parameterTypes" : [ "java.lang.String", "java.lang.Object", "com.fasterxml.jackson.core.JsonGenerator" ]
-    }, {
-      "name" : "defaultSerializeNull",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonGenerator" ]
-    }, {
-      "name" : "defaultSerializeValue",
-      "parameterTypes" : [ "java.lang.Object", "com.fasterxml.jackson.core.JsonGenerator" ]
-    }, {
-      "name" : "findContentValueSerializer",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JavaType", "com.fasterxml.jackson.databind.BeanProperty" ]
-    }, {
-      "name" : "findContentValueSerializer",
-      "parameterTypes" : [ "java.lang.Class", "com.fasterxml.jackson.databind.BeanProperty" ]
-    }, {
-      "name" : "findKeySerializer",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JavaType", "com.fasterxml.jackson.databind.BeanProperty" ]
-    }, {
-      "name" : "findKeySerializer",
-      "parameterTypes" : [ "java.lang.Class", "com.fasterxml.jackson.databind.BeanProperty" ]
-    }, {
-      "name" : "findNullKeySerializer",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JavaType", "com.fasterxml.jackson.databind.BeanProperty" ]
-    }, {
-      "name" : "findNullValueSerializer",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.BeanProperty" ]
-    }, {
-      "name" : "findObjectId",
-      "parameterTypes" : [ "java.lang.Object", "com.fasterxml.jackson.annotation.ObjectIdGenerator" ]
-    }, {
-      "name" : "findPrimaryPropertySerializer",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JavaType", "com.fasterxml.jackson.databind.BeanProperty" ]
-    }, {
-      "name" : "findPrimaryPropertySerializer",
-      "parameterTypes" : [ "java.lang.Class", "com.fasterxml.jackson.databind.BeanProperty" ]
-    }, {
-      "name" : "findTypeSerializer",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JavaType" ]
-    }, {
-      "name" : "findTypedValueSerializer",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JavaType", "boolean", "com.fasterxml.jackson.databind.BeanProperty" ]
-    }, {
-      "name" : "findTypedValueSerializer",
-      "parameterTypes" : [ "java.lang.Class", "boolean", "com.fasterxml.jackson.databind.BeanProperty" ]
-    }, {
-      "name" : "findValueSerializer",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JavaType" ]
-    }, {
-      "name" : "findValueSerializer",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JavaType", "com.fasterxml.jackson.databind.BeanProperty" ]
-    }, {
-      "name" : "findValueSerializer",
-      "parameterTypes" : [ "java.lang.Class" ]
-    }, {
-      "name" : "findValueSerializer",
-      "parameterTypes" : [ "java.lang.Class", "com.fasterxml.jackson.databind.BeanProperty" ]
-    }, {
-      "name" : "flushCachedSerializers",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "getActiveView",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "getAnnotationIntrospector",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "getAttribute",
-      "parameterTypes" : [ "java.lang.Object" ]
-    }, {
-      "name" : "getConfig",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "getDatatypeFeatures",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "getDefaultNullKeySerializer",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "getDefaultNullValueSerializer",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "getDefaultPropertyFormat",
-      "parameterTypes" : [ "java.lang.Class" ]
-    }, {
-      "name" : "getDefaultPropertyInclusion",
-      "parameterTypes" : [ "java.lang.Class" ]
-    }, {
-      "name" : "getFilterProvider",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "getGenerator",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "getLocale",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "getTimeZone",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "getTypeFactory",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "getUnknownTypeSerializer",
-      "parameterTypes" : [ "java.lang.Class" ]
-    }, {
-      "name" : "handlePrimaryContextualization",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JsonSerializer", "com.fasterxml.jackson.databind.BeanProperty" ]
-    }, {
-      "name" : "handleSecondaryContextualization",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JsonSerializer", "com.fasterxml.jackson.databind.BeanProperty" ]
-    }, {
-      "name" : "hasSerializationFeatures",
+      "name" : "enabledIn",
       "parameterTypes" : [ "int" ]
     }, {
-      "name" : "includeFilterInstance",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.BeanPropertyDefinition", "java.lang.Class" ]
+      "name" : "getMask",
+      "parameterTypes" : [ ]
     }, {
-      "name" : "includeFilterSuppressNulls",
-      "parameterTypes" : [ "java.lang.Object" ]
+      "name" : "valueOf",
+      "parameterTypes" : [ "java.lang.String" ]
     }, {
-      "name" : "invalidTypeIdException",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JavaType", "java.lang.String", "java.lang.String" ]
+      "name" : "values",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "com.fasterxml.jackson.databind.cfg.ConfigFeature",
+    "methods" : [ {
+      "name" : "enabledByDefault",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "enabledIn",
+      "parameterTypes" : [ "int" ]
+    }, {
+      "name" : "getMask",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "com.fasterxml.jackson.databind.cfg.DatatypeFeature",
+    "methods" : [ {
+      "name" : "featureIndex",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "com.fasterxml.jackson.databind.cfg.MapperBuilder",
+    "fields" : [ {
+      "name" : "_mapper"
+    } ],
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.ObjectMapper" ]
+    }, {
+      "name" : "_this",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "accessorNaming",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.AccessorNamingStrategy$Provider" ]
+    }, {
+      "name" : "activateDefaultTyping",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator" ]
+    }, {
+      "name" : "activateDefaultTyping",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator", "com.fasterxml.jackson.databind.ObjectMapper$DefaultTyping" ]
+    }, {
+      "name" : "activateDefaultTyping",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator", "com.fasterxml.jackson.databind.ObjectMapper$DefaultTyping", "com.fasterxml.jackson.annotation.JsonTypeInfo$As" ]
+    }, {
+      "name" : "activateDefaultTypingAsProperty",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator", "com.fasterxml.jackson.databind.ObjectMapper$DefaultTyping", "java.lang.String" ]
+    }, {
+      "name" : "addHandler",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.deser.DeserializationProblemHandler" ]
+    }, {
+      "name" : "addMixIn",
+      "parameterTypes" : [ "java.lang.Class", "java.lang.Class" ]
+    }, {
+      "name" : "addModule",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.Module" ]
+    }, {
+      "name" : "addModules",
+      "parameterTypes" : [ "java.lang.Iterable" ]
+    }, {
+      "name" : "addModules",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.Module[]" ]
+    }, {
+      "name" : "annotationIntrospector",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.AnnotationIntrospector" ]
+    }, {
+      "name" : "build",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "cacheProvider",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.cfg.CacheProvider" ]
+    }, {
+      "name" : "clearProblemHandlers",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "configure",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonGenerator$Feature", "boolean" ]
+    }, {
+      "name" : "configure",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser$Feature", "boolean" ]
+    }, {
+      "name" : "configure",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.StreamReadFeature", "boolean" ]
+    }, {
+      "name" : "configure",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.StreamWriteFeature", "boolean" ]
+    }, {
+      "name" : "configure",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationFeature", "boolean" ]
+    }, {
+      "name" : "configure",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.MapperFeature", "boolean" ]
+    }, {
+      "name" : "configure",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.SerializationFeature", "boolean" ]
+    }, {
+      "name" : "configure",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.cfg.DatatypeFeature", "boolean" ]
+    }, {
+      "name" : "constructorDetector",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.cfg.ConstructorDetector" ]
+    }, {
+      "name" : "deactivateDefaultTyping",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "defaultAttributes",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.cfg.ContextAttributes" ]
+    }, {
+      "name" : "defaultBase64Variant",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.Base64Variant" ]
+    }, {
+      "name" : "defaultDateFormat",
+      "parameterTypes" : [ "java.text.DateFormat" ]
+    }, {
+      "name" : "defaultLeniency",
+      "parameterTypes" : [ "java.lang.Boolean" ]
+    }, {
+      "name" : "defaultLocale",
+      "parameterTypes" : [ "java.util.Locale" ]
+    }, {
+      "name" : "defaultMergeable",
+      "parameterTypes" : [ "java.lang.Boolean" ]
+    }, {
+      "name" : "defaultPrettyPrinter",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.PrettyPrinter" ]
+    }, {
+      "name" : "defaultPropertyInclusion",
+      "parameterTypes" : [ "com.fasterxml.jackson.annotation.JsonInclude$Value" ]
+    }, {
+      "name" : "defaultSetterInfo",
+      "parameterTypes" : [ "com.fasterxml.jackson.annotation.JsonSetter$Value" ]
+    }, {
+      "name" : "defaultTimeZone",
+      "parameterTypes" : [ "java.util.TimeZone" ]
+    }, {
+      "name" : "disable",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonGenerator$Feature[]" ]
+    }, {
+      "name" : "disable",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser$Feature[]" ]
+    }, {
+      "name" : "disable",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.StreamReadFeature[]" ]
+    }, {
+      "name" : "disable",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.StreamWriteFeature[]" ]
+    }, {
+      "name" : "disable",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationFeature[]" ]
+    }, {
+      "name" : "disable",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.MapperFeature[]" ]
+    }, {
+      "name" : "disable",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.SerializationFeature[]" ]
+    }, {
+      "name" : "disable",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.cfg.DatatypeFeature[]" ]
+    }, {
+      "name" : "enable",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonGenerator$Feature[]" ]
+    }, {
+      "name" : "enable",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser$Feature[]" ]
+    }, {
+      "name" : "enable",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.StreamReadFeature[]" ]
+    }, {
+      "name" : "enable",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.StreamWriteFeature[]" ]
+    }, {
+      "name" : "enable",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationFeature[]" ]
+    }, {
+      "name" : "enable",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.MapperFeature[]" ]
+    }, {
+      "name" : "enable",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.SerializationFeature[]" ]
+    }, {
+      "name" : "enable",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.cfg.DatatypeFeature[]" ]
+    }, {
+      "name" : "enumNamingStrategy",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.EnumNamingStrategy" ]
+    }, {
+      "name" : "filterProvider",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.ser.FilterProvider" ]
+    }, {
+      "name" : "findAndAddModules",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "findModules",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "findModules",
+      "parameterTypes" : [ "java.lang.ClassLoader" ]
+    }, {
+      "name" : "handlerInstantiator",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.cfg.HandlerInstantiator" ]
+    }, {
+      "name" : "injectableValues",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.InjectableValues" ]
+    }, {
+      "name" : "isEnabled",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonGenerator$Feature" ]
+    }, {
+      "name" : "isEnabled",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser$Feature" ]
+    }, {
+      "name" : "isEnabled",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationFeature" ]
     }, {
       "name" : "isEnabled",
       "parameterTypes" : [ "com.fasterxml.jackson.databind.MapperFeature" ]
@@ -4160,53 +5338,65 @@
       "name" : "isEnabled",
       "parameterTypes" : [ "com.fasterxml.jackson.databind.SerializationFeature" ]
     }, {
-      "name" : "isEnabled",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.cfg.DatatypeFeature" ]
+      "name" : "nodeFactory",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.node.JsonNodeFactory" ]
     }, {
-      "name" : "isUnknownTypeSerializer",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JsonSerializer" ]
+      "name" : "polymorphicTypeValidator",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator" ]
     }, {
-      "name" : "mappingException",
-      "parameterTypes" : [ "java.lang.String", "java.lang.Object[]" ]
+      "name" : "propertyNamingStrategy",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.PropertyNamingStrategy" ]
     }, {
-      "name" : "mappingException",
-      "parameterTypes" : [ "java.lang.Throwable", "java.lang.String", "java.lang.Object[]" ]
+      "name" : "registerSubtypes",
+      "parameterTypes" : [ "java.util.Collection" ]
     }, {
-      "name" : "reportBadDefinition",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JavaType", "java.lang.String" ]
+      "name" : "registerSubtypes",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.jsontype.NamedType[]" ]
     }, {
-      "name" : "reportBadDefinition",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JavaType", "java.lang.String", "java.lang.Throwable" ]
+      "name" : "registerSubtypes",
+      "parameterTypes" : [ "java.lang.Class[]" ]
     }, {
-      "name" : "reportBadDefinition",
-      "parameterTypes" : [ "java.lang.Class", "java.lang.String", "java.lang.Throwable" ]
+      "name" : "removeMixIn",
+      "parameterTypes" : [ "java.lang.Class" ]
     }, {
-      "name" : "reportBadPropertyDefinition",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.BeanDescription", "com.fasterxml.jackson.databind.introspect.BeanPropertyDefinition", "java.lang.String", "java.lang.Object[]" ]
+      "name" : "secureGetServiceLoader",
+      "parameterTypes" : [ "java.lang.Class", "java.lang.ClassLoader" ]
     }, {
-      "name" : "reportBadTypeDefinition",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.BeanDescription", "java.lang.String", "java.lang.Object[]" ]
+      "name" : "serializationInclusion",
+      "parameterTypes" : [ "com.fasterxml.jackson.annotation.JsonInclude$Include" ]
     }, {
-      "name" : "reportMappingProblem",
-      "parameterTypes" : [ "java.lang.String", "java.lang.Object[]" ]
+      "name" : "serializerFactory",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.ser.SerializerFactory" ]
     }, {
-      "name" : "reportMappingProblem",
-      "parameterTypes" : [ "java.lang.Throwable", "java.lang.String", "java.lang.Object[]" ]
+      "name" : "setDefaultTyping",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.jsontype.TypeResolverBuilder" ]
     }, {
-      "name" : "serializerInstance",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.Annotated", "java.lang.Object" ]
+      "name" : "streamFactory",
+      "parameterTypes" : [ ]
     }, {
-      "name" : "setAttribute",
-      "parameterTypes" : [ "java.lang.Object", "java.lang.Object" ]
+      "name" : "subtypeResolver",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.jsontype.SubtypeResolver" ]
     }, {
-      "name" : "setDefaultKeySerializer",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JsonSerializer" ]
+      "name" : "typeFactory",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.type.TypeFactory" ]
     }, {
-      "name" : "setNullKeySerializer",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JsonSerializer" ]
+      "name" : "visibility",
+      "parameterTypes" : [ "com.fasterxml.jackson.annotation.PropertyAccessor", "com.fasterxml.jackson.annotation.JsonAutoDetect$Visibility" ]
     }, {
-      "name" : "setNullValueSerializer",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JsonSerializer" ]
+      "name" : "visibility",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.introspect.VisibilityChecker" ]
+    }, {
+      "name" : "withCoercionConfig",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.type.LogicalType", "java.util.function.Consumer" ]
+    }, {
+      "name" : "withCoercionConfig",
+      "parameterTypes" : [ "java.lang.Class", "java.util.function.Consumer" ]
+    }, {
+      "name" : "withCoercionConfigDefaults",
+      "parameterTypes" : [ "java.util.function.Consumer" ]
+    }, {
+      "name" : "withConfigOverride",
+      "parameterTypes" : [ "java.lang.Class", "java.util.function.Consumer" ]
     } ]
   }, {
     "type" : "com.fasterxml.jackson.databind.deser.BeanDeserializerModifier[]"
@@ -4216,329 +5406,6 @@
     "type" : "com.fasterxml.jackson.databind.deser.KeyDeserializers[]"
   }, {
     "type" : "com.fasterxml.jackson.databind.deser.ValueInstantiators[]"
-  }, {
-    "type" : "com.fasterxml.jackson.databind.deser.std.StdDeserializer",
-    "fields" : [ {
-      "name" : "F_MASK_ACCEPT_ARRAYS"
-    }, {
-      "name" : "F_MASK_INT_COERCIONS"
-    }, {
-      "name" : "_valueClass"
-    }, {
-      "name" : "_valueType"
-    }, {
-      "name" : "serialVersionUID"
-    } ],
-    "methods" : [ {
-      "name" : "<init>",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JavaType" ]
-    }, {
-      "name" : "<init>",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.deser.std.StdDeserializer" ]
-    }, {
-      "name" : "<init>",
-      "parameterTypes" : [ "java.lang.Class" ]
-    }, {
-      "name" : "_byteOverflow",
-      "parameterTypes" : [ "int" ]
-    }, {
-      "name" : "_checkBooleanToStringCoercion",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.Class" ]
-    }, {
-      "name" : "_checkCoercionFail",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext", "com.fasterxml.jackson.databind.cfg.CoercionAction", "java.lang.Class", "java.lang.Object", "java.lang.String" ]
-    }, {
-      "name" : "_checkDoubleSpecialValue",
-      "parameterTypes" : [ "java.lang.String" ]
-    }, {
-      "name" : "_checkFloatSpecialValue",
-      "parameterTypes" : [ "java.lang.String" ]
-    }, {
-      "name" : "_checkFloatToIntCoercion",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.Class" ]
-    }, {
-      "name" : "_checkFloatToStringCoercion",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.Class" ]
-    }, {
-      "name" : "_checkFromStringCoercion",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.String" ]
-    }, {
-      "name" : "_checkFromStringCoercion",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.String", "com.fasterxml.jackson.databind.type.LogicalType", "java.lang.Class" ]
-    }, {
-      "name" : "_checkIntToFloatCoercion",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.Class" ]
-    }, {
-      "name" : "_checkIntToStringCoercion",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.Class" ]
-    }, {
-      "name" : "_checkTextualNull",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.String" ]
-    }, {
-      "name" : "_checkToStringCoercion",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.Class", "java.lang.Object", "com.fasterxml.jackson.databind.cfg.CoercionInputShape" ]
-    }, {
-      "name" : "_coerceBooleanFromInt",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.Class" ]
-    }, {
-      "name" : "_coerceEmptyString",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext", "boolean" ]
-    }, {
-      "name" : "_coerceIntegral",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext" ]
-    }, {
-      "name" : "_coerceNullToken",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext", "boolean" ]
-    }, {
-      "name" : "_coerceTextualNull",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext", "boolean" ]
-    }, {
-      "name" : "_coercedTypeDesc",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "_coercedTypeDesc",
-      "parameterTypes" : [ "java.lang.Class" ]
-    }, {
-      "name" : "_deserializeFromArray",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext" ]
-    }, {
-      "name" : "_deserializeFromEmpty",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext" ]
-    }, {
-      "name" : "_deserializeFromEmptyString",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext", "com.fasterxml.jackson.databind.cfg.CoercionAction", "java.lang.Class", "java.lang.String" ]
-    }, {
-      "name" : "_deserializeFromString",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext" ]
-    }, {
-      "name" : "_deserializeWrappedValue",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext" ]
-    }, {
-      "name" : "_failDoubleToIntCoercion",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.String" ]
-    }, {
-      "name" : "_findCoercionFromBlankString",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext" ]
-    }, {
-      "name" : "_findCoercionFromEmptyArray",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext" ]
-    }, {
-      "name" : "_findCoercionFromEmptyString",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext" ]
-    }, {
-      "name" : "_findNullProvider",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext", "com.fasterxml.jackson.databind.BeanProperty", "com.fasterxml.jackson.annotation.Nulls", "com.fasterxml.jackson.databind.JsonDeserializer" ]
-    }, {
-      "name" : "_hasTextualNull",
-      "parameterTypes" : [ "java.lang.String" ]
-    }, {
-      "name" : "_intOverflow",
-      "parameterTypes" : [ "long" ]
-    }, {
-      "name" : "_isBlank",
-      "parameterTypes" : [ "java.lang.String" ]
-    }, {
-      "name" : "_isEmptyOrTextualNull",
-      "parameterTypes" : [ "java.lang.String" ]
-    }, {
-      "name" : "_isFalse",
-      "parameterTypes" : [ "java.lang.String" ]
-    }, {
-      "name" : "_isIntNumber",
-      "parameterTypes" : [ "java.lang.String" ]
-    }, {
-      "name" : "_isNaN",
-      "parameterTypes" : [ "java.lang.String" ]
-    }, {
-      "name" : "_isNegInf",
-      "parameterTypes" : [ "java.lang.String" ]
-    }, {
-      "name" : "_isPosInf",
-      "parameterTypes" : [ "java.lang.String" ]
-    }, {
-      "name" : "_isTrue",
-      "parameterTypes" : [ "java.lang.String" ]
-    }, {
-      "name" : "_neitherNull",
-      "parameterTypes" : [ "java.lang.Object", "java.lang.Object" ]
-    }, {
-      "name" : "_nonNullNumber",
-      "parameterTypes" : [ "java.lang.Number" ]
-    }, {
-      "name" : "_parseBoolean",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.Class" ]
-    }, {
-      "name" : "_parseBooleanFromInt",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext" ]
-    }, {
-      "name" : "_parseBooleanPrimitive",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext" ]
-    }, {
-      "name" : "_parseBooleanPrimitive",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext", "com.fasterxml.jackson.core.JsonParser", "java.lang.Class" ]
-    }, {
-      "name" : "_parseBytePrimitive",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext" ]
-    }, {
-      "name" : "_parseDate",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext" ]
-    }, {
-      "name" : "_parseDate",
-      "parameterTypes" : [ "java.lang.String", "com.fasterxml.jackson.databind.DeserializationContext" ]
-    }, {
-      "name" : "_parseDateFromArray",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext" ]
-    }, {
-      "name" : "_parseDouble",
-      "parameterTypes" : [ "java.lang.String" ]
-    }, {
-      "name" : "_parseDouble",
-      "parameterTypes" : [ "java.lang.String", "boolean" ]
-    }, {
-      "name" : "_parseDoublePrimitive",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext" ]
-    }, {
-      "name" : "_parseDoublePrimitive",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.String" ]
-    }, {
-      "name" : "_parseDoublePrimitive",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.String" ]
-    }, {
-      "name" : "_parseFloatPrimitive",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext" ]
-    }, {
-      "name" : "_parseFloatPrimitive",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.String" ]
-    }, {
-      "name" : "_parseFloatPrimitive",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.String" ]
-    }, {
-      "name" : "_parseIntPrimitive",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext" ]
-    }, {
-      "name" : "_parseIntPrimitive",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.String" ]
-    }, {
-      "name" : "_parseIntPrimitive",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.String" ]
-    }, {
-      "name" : "_parseInteger",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.Class" ]
-    }, {
-      "name" : "_parseInteger",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.String" ]
-    }, {
-      "name" : "_parseInteger",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.String" ]
-    }, {
-      "name" : "_parseLong",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.Class" ]
-    }, {
-      "name" : "_parseLong",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.String" ]
-    }, {
-      "name" : "_parseLong",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.String" ]
-    }, {
-      "name" : "_parseLongPrimitive",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext" ]
-    }, {
-      "name" : "_parseLongPrimitive",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.String" ]
-    }, {
-      "name" : "_parseLongPrimitive",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.String" ]
-    }, {
-      "name" : "_parseShortPrimitive",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext" ]
-    }, {
-      "name" : "_parseString",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext" ]
-    }, {
-      "name" : "_parseString",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext", "com.fasterxml.jackson.databind.deser.NullValueProvider" ]
-    }, {
-      "name" : "_reportFailedNullCoerce",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext", "boolean", "java.lang.Enum", "java.lang.String" ]
-    }, {
-      "name" : "_shortOverflow",
-      "parameterTypes" : [ "int" ]
-    }, {
-      "name" : "_streamReadConstraints",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext" ]
-    }, {
-      "name" : "_verifyEndArrayForSingle",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext" ]
-    }, {
-      "name" : "_verifyNullForPrimitive",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext" ]
-    }, {
-      "name" : "_verifyNullForPrimitiveCoercion",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.String" ]
-    }, {
-      "name" : "_verifyNullForScalarCoercion",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.String" ]
-    }, {
-      "name" : "_verifyNumberForScalarCoercion",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext", "com.fasterxml.jackson.core.JsonParser" ]
-    }, {
-      "name" : "_verifyStringForScalarCoercion",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.String" ]
-    }, {
-      "name" : "deserializeWithType",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext", "com.fasterxml.jackson.databind.jsontype.TypeDeserializer" ]
-    }, {
-      "name" : "findContentNullProvider",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext", "com.fasterxml.jackson.databind.BeanProperty", "com.fasterxml.jackson.databind.JsonDeserializer" ]
-    }, {
-      "name" : "findContentNullStyle",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext", "com.fasterxml.jackson.databind.BeanProperty" ]
-    }, {
-      "name" : "findConvertingContentDeserializer",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext", "com.fasterxml.jackson.databind.BeanProperty", "com.fasterxml.jackson.databind.JsonDeserializer" ]
-    }, {
-      "name" : "findDeserializer",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext", "com.fasterxml.jackson.databind.JavaType", "com.fasterxml.jackson.databind.BeanProperty" ]
-    }, {
-      "name" : "findFormatFeature",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext", "com.fasterxml.jackson.databind.BeanProperty", "java.lang.Class", "com.fasterxml.jackson.annotation.JsonFormat$Feature" ]
-    }, {
-      "name" : "findFormatOverrides",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext", "com.fasterxml.jackson.databind.BeanProperty", "java.lang.Class" ]
-    }, {
-      "name" : "findValueNullProvider",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext", "com.fasterxml.jackson.databind.deser.SettableBeanProperty", "com.fasterxml.jackson.databind.PropertyMetadata" ]
-    }, {
-      "name" : "getValueClass",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "getValueInstantiator",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "getValueType",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "getValueType",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.DeserializationContext" ]
-    }, {
-      "name" : "handleMissingEndArrayForSingle",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext" ]
-    }, {
-      "name" : "handleNestedArrayForSingle",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext" ]
-    }, {
-      "name" : "handleUnknownProperty",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext", "java.lang.Object", "java.lang.String" ]
-    }, {
-      "name" : "handledType",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "isDefaultDeserializer",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.JsonDeserializer" ]
-    }, {
-      "name" : "isDefaultKeyDeserializer",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.KeyDeserializer" ]
-    } ]
   }, {
     "type" : "com.fasterxml.jackson.databind.exc.InvalidDefinitionException"
   }, {
@@ -4587,6 +5454,30 @@
     }, {
       "name" : "version",
       "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "com.fasterxml.jackson.databind.json.JsonMapper$Builder",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.json.JsonMapper" ]
+    }, {
+      "name" : "configure",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.json.JsonReadFeature", "boolean" ]
+    }, {
+      "name" : "configure",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.json.JsonWriteFeature", "boolean" ]
+    }, {
+      "name" : "disable",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.json.JsonReadFeature[]" ]
+    }, {
+      "name" : "disable",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.json.JsonWriteFeature[]" ]
+    }, {
+      "name" : "enable",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.json.JsonReadFeature[]" ]
+    }, {
+      "name" : "enable",
+      "parameterTypes" : [ "com.fasterxml.jackson.core.json.JsonWriteFeature[]" ]
     } ]
   }, {
     "type" : "com.fasterxml.jackson.databind.module.SimpleModule",
@@ -5636,7 +6527,143 @@
   }, {
     "type" : "com.fasterxml.jackson.databind.ser.Serializers[]"
   }, {
-    "type" : "com.fasterxml.jackson.dataformat.xml.XmlMapper"
+    "type" : "com.fasterxml.jackson.databind.ser.std.ClassSerializer",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "com.fasterxml.jackson.dataformat.xml.XmlMapper",
+    "fields" : [ {
+      "name" : "DEFAULT_XML_MODULE"
+    }, {
+      "name" : "DEFAULT_XML_PRETTY_PRINTER"
+    }, {
+      "name" : "_xmlModule"
+    }, {
+      "name" : "serialVersionUID"
+    } ],
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "<init>",
+      "parameterTypes" : [ "com.fasterxml.jackson.dataformat.xml.JacksonXmlModule" ]
+    }, {
+      "name" : "<init>",
+      "parameterTypes" : [ "com.fasterxml.jackson.dataformat.xml.XmlFactory" ]
+    }, {
+      "name" : "<init>",
+      "parameterTypes" : [ "com.fasterxml.jackson.dataformat.xml.XmlFactory", "com.fasterxml.jackson.dataformat.xml.JacksonXmlModule" ]
+    }, {
+      "name" : "<init>",
+      "parameterTypes" : [ "com.fasterxml.jackson.dataformat.xml.XmlMapper" ]
+    }, {
+      "name" : "<init>",
+      "parameterTypes" : [ "javax.xml.stream.XMLInputFactory" ]
+    }, {
+      "name" : "<init>",
+      "parameterTypes" : [ "javax.xml.stream.XMLInputFactory", "javax.xml.stream.XMLOutputFactory" ]
+    }, {
+      "name" : "_constructDefaultTypeResolverBuilder",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.ObjectMapper$DefaultTyping", "com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator" ]
+    }, {
+      "name" : "builder",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "builder",
+      "parameterTypes" : [ "com.fasterxml.jackson.dataformat.xml.XmlFactory" ]
+    }, {
+      "name" : "configure",
+      "parameterTypes" : [ "com.fasterxml.jackson.dataformat.xml.deser.FromXmlParser$Feature", "boolean" ]
+    }, {
+      "name" : "configure",
+      "parameterTypes" : [ "com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator$Feature", "boolean" ]
+    }, {
+      "name" : "copy",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "createGenerator",
+      "parameterTypes" : [ "javax.xml.stream.XMLStreamWriter" ]
+    }, {
+      "name" : "createParser",
+      "parameterTypes" : [ "javax.xml.stream.XMLStreamReader" ]
+    }, {
+      "name" : "disable",
+      "parameterTypes" : [ "com.fasterxml.jackson.dataformat.xml.deser.FromXmlParser$Feature" ]
+    }, {
+      "name" : "disable",
+      "parameterTypes" : [ "com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator$Feature" ]
+    }, {
+      "name" : "enable",
+      "parameterTypes" : [ "com.fasterxml.jackson.dataformat.xml.deser.FromXmlParser$Feature" ]
+    }, {
+      "name" : "enable",
+      "parameterTypes" : [ "com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator$Feature" ]
+    }, {
+      "name" : "getFactory",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "readValue",
+      "parameterTypes" : [ "javax.xml.stream.XMLStreamReader", "com.fasterxml.jackson.core.type.TypeReference" ]
+    }, {
+      "name" : "readValue",
+      "parameterTypes" : [ "javax.xml.stream.XMLStreamReader", "com.fasterxml.jackson.databind.JavaType" ]
+    }, {
+      "name" : "readValue",
+      "parameterTypes" : [ "javax.xml.stream.XMLStreamReader", "java.lang.Class" ]
+    }, {
+      "name" : "setDefaultUseWrapper",
+      "parameterTypes" : [ "boolean" ]
+    }, {
+      "name" : "setXMLTextElementName",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "setXmlNameProcessor",
+      "parameterTypes" : [ "com.fasterxml.jackson.dataformat.xml.XmlNameProcessor" ]
+    }, {
+      "name" : "version",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "writeValue",
+      "parameterTypes" : [ "javax.xml.stream.XMLStreamWriter", "java.lang.Object" ]
+    }, {
+      "name" : "xmlBuilder",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "com.fasterxml.jackson.dataformat.xml.XmlMapper$Builder",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ "com.fasterxml.jackson.dataformat.xml.XmlMapper" ]
+    }, {
+      "name" : "configure",
+      "parameterTypes" : [ "com.fasterxml.jackson.dataformat.xml.deser.FromXmlParser$Feature", "boolean" ]
+    }, {
+      "name" : "configure",
+      "parameterTypes" : [ "com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator$Feature", "boolean" ]
+    }, {
+      "name" : "defaultUseWrapper",
+      "parameterTypes" : [ "boolean" ]
+    }, {
+      "name" : "disable",
+      "parameterTypes" : [ "com.fasterxml.jackson.dataformat.xml.deser.FromXmlParser$Feature[]" ]
+    }, {
+      "name" : "disable",
+      "parameterTypes" : [ "com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator$Feature[]" ]
+    }, {
+      "name" : "enable",
+      "parameterTypes" : [ "com.fasterxml.jackson.dataformat.xml.deser.FromXmlParser$Feature[]" ]
+    }, {
+      "name" : "enable",
+      "parameterTypes" : [ "com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator$Feature[]" ]
+    }, {
+      "name" : "nameForTextElement",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "xmlNameProcessor",
+      "parameterTypes" : [ "com.fasterxml.jackson.dataformat.xml.XmlNameProcessor" ]
+    } ]
   }, {
     "type" : "com.fasterxml.jackson.datatype.jdk8.Jdk8Module"
   }, {
@@ -5767,6 +6794,8 @@
     "type" : "com.sun.management.internal.DiagnosticCommandInfo[]"
   }, {
     "type" : "com.sun.management.internal.GarbageCollectorExtImpl"
+  }, {
+    "type" : "com.sun.management.internal.HotSpotAOTCacheImpl"
   }, {
     "type" : "com.sun.management.internal.HotSpotDiagnostic"
   }, {
@@ -8727,6 +9756,15 @@
   }, {
     "type" : "io.netty.channel.EventLoopGroup"
   }, {
+    "type" : "io.netty.handler.codec.haproxy.HAProxyMessageDecoder"
+  }, {
+    "type" : "io.netty.handler.timeout.IdleStateHandler"
+  }, {
+    "type" : "io.netty.util.AbstractReferenceCounted",
+    "fields" : [ {
+      "name" : "refCnt"
+    } ]
+  }, {
     "type" : "io.netty.util.DefaultAttributeMap"
   }, {
     "type" : "io.netty.util.Recycler$DefaultHandle"
@@ -9328,24 +10366,6 @@
   }, {
     "type" : "io.quarkus.resteasy.reactive.jackson.runtime.mappers.BuiltinMismatchedInputExceptionMapper"
   }, {
-    "type" : "io.quarkus.resteasy.reactive.jackson.runtime.mappers.GeneratedSerializer",
-    "methods" : [ {
-      "name" : "<init>",
-      "parameterTypes" : [ "java.lang.Class" ]
-    }, {
-      "name" : "serialize",
-      "parameterTypes" : [ "java.lang.Object", "com.fasterxml.jackson.core.JsonGenerator", "com.fasterxml.jackson.databind.SerializerProvider" ]
-    }, {
-      "name" : "serializeContent",
-      "parameterTypes" : [ "java.lang.Object", "com.fasterxml.jackson.core.JsonGenerator", "com.fasterxml.jackson.databind.SerializerProvider" ]
-    }, {
-      "name" : "serializeWithType",
-      "parameterTypes" : [ "java.lang.Object", "com.fasterxml.jackson.core.JsonGenerator", "com.fasterxml.jackson.databind.SerializerProvider", "com.fasterxml.jackson.databind.jsontype.TypeSerializer" ]
-    }, {
-      "name" : "unwrappingSerializer",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.util.NameTransformer" ]
-    } ]
-  }, {
     "type" : "io.quarkus.resteasy.reactive.jackson.runtime.mappers.NativeInvalidDefinitionExceptionMapper"
   }, {
     "type" : "io.quarkus.resteasy.reactive.jackson.runtime.mappers.NativeInvalidDefinitionExceptionMapper$ExceptionMapper$9b3903a6623e908ff3590aef8cbd6d07435aea0c"
@@ -9357,8 +10377,6 @@
     "type" : "io.quarkus.resteasy.reactive.jackson.runtime.serialisers.FullyFeaturedServerJacksonMessageBodyReader"
   }, {
     "type" : "io.quarkus.resteasy.reactive.jackson.runtime.serialisers.FullyFeaturedServerJacksonMessageBodyWriter"
-  }, {
-    "type" : "io.quarkus.resteasy.reactive.jackson.runtime.serialisers.GeneratedSerializersRegister"
   }, {
     "type" : "io.quarkus.resteasy.reactive.jackson.runtime.serialisers.ServerJacksonMessageBodyReader"
   }, {
@@ -10145,6 +11163,14 @@
   }, {
     "type" : "io.vertx.core.http.HttpServerResponse"
   }, {
+    "type" : "io.vertx.core.http.impl.Http1xUpgradeToH2CHandler"
+  }, {
+    "type" : "io.vertx.core.http.impl.HttpServerWorker$1"
+  }, {
+    "type" : "io.vertx.core.http.impl.VertxHttpRequestDecoder"
+  }, {
+    "type" : "io.vertx.core.http.impl.VertxHttpResponseEncoder"
+  }, {
     "type" : "io.vertx.core.json.JsonArray"
   }, {
     "type" : "io.vertx.core.json.JsonObject"
@@ -10152,6 +11178,8 @@
     "type" : "io.vertx.core.metrics.Measured"
   }, {
     "type" : "io.vertx.core.net.impl.ChannelProvider$2"
+  }, {
+    "type" : "io.vertx.core.net.impl.ServerChannelLoadBalancer"
   }, {
     "type" : "io.vertx.core.net.impl.VertxHandler"
   }, {
@@ -10165,7 +11193,12 @@
   }, {
     "type" : "io.vertx.ext.web.RoutingContext"
   }, {
-    "type" : "io.vertx.kafka.admin.impl.KafkaAdminClientImpl"
+    "type" : "io.vertx.ext.web.impl.RoutingContextImplBase"
+  }, {
+    "type" : "io.vertx.kafka.admin.impl.KafkaAdminClientImpl",
+    "fields" : [ {
+      "name" : "adminClient"
+    } ]
   }, {
     "type" : "io.vertx.mutiny.core.Vertx"
   }, {
@@ -14326,6 +15359,10 @@
       "parameterTypes" : [ ]
     } ]
   }, {
+    "type" : "java.lang.invoke.TypeDescriptor"
+  }, {
+    "type" : "java.lang.invoke.TypeDescriptor$OfField"
+  }, {
     "type" : "java.lang.management.BufferPoolMXBean"
   }, {
     "type" : "java.lang.management.ClassLoadingMXBean"
@@ -14390,7 +15427,13 @@
       "parameterTypes" : [ ]
     } ]
   }, {
+    "type" : "java.lang.reflect.Field[]"
+  }, {
+    "type" : "java.lang.reflect.GenericDeclaration"
+  }, {
     "type" : "java.lang.reflect.Method"
+  }, {
+    "type" : "java.lang.reflect.Method[]"
   }, {
     "type" : "java.lang.reflect.Parameter",
     "methods" : [ {
@@ -14406,6 +15449,8 @@
       "name" : "<init>",
       "parameterTypes" : [ "java.lang.String" ]
     } ]
+  }, {
+    "type" : "java.lang.reflect.Type"
   }, {
     "type" : "java.math.BigDecimal",
     "fields" : [ {
@@ -16197,6 +17242,8 @@
       "parameterTypes" : [ ]
     } ]
   }, {
+    "type" : "java.util.ArrayList$SubList"
+  }, {
     "type" : "java.util.ArrayListHessianSerializer"
   }, {
     "type" : "java.util.Arrays",
@@ -17822,8 +18869,6 @@
   }, {
     "type" : "javax.net.ssl.SSLEngine"
   }, {
-    "type" : "javax.persistence.EntityManagerFactory"
-  }, {
     "type" : "javax.sql.DataSource",
     "methods" : [ {
       "name" : "createConnectionBuilder",
@@ -17858,6 +18903,8 @@
       "name" : "getUnsafe",
       "parameterTypes" : [ ]
     } ]
+  }, {
+    "type" : "jdk.management.HotSpotAOTCacheMXBean"
   }, {
     "type" : "jdk.management.VirtualThreadSchedulerMXBean"
   }, {
@@ -20998,12 +22045,6 @@
       "parameterTypes" : [ ]
     } ]
   }, {
-    "type" : "net.ideahut.quarkus.api.ApiAccess$quarkusjacksonserializer",
-    "methods" : [ {
-      "name" : "<init>",
-      "parameterTypes" : [ ]
-    } ]
-  }, {
     "type" : "net.ideahut.quarkus.api.ApiAccessInternalService",
     "methods" : [ {
       "name" : "getApiAccessInternal",
@@ -21066,12 +22107,6 @@
     }, {
       "name" : "setScheme",
       "parameterTypes" : [ "java.lang.String" ]
-    } ]
-  }, {
-    "type" : "net.ideahut.quarkus.api.ApiAuth$quarkusjacksonserializer",
-    "methods" : [ {
-      "name" : "<init>",
-      "parameterTypes" : [ ]
     } ]
   }, {
     "type" : "net.ideahut.quarkus.api.ApiCache",
@@ -22615,12 +23650,6 @@
       "parameterTypes" : [ ]
     }, {
       "name" : "getInstance",
-      "parameterTypes" : [ ]
-    } ]
-  }, {
-    "type" : "net.ideahut.quarkus.api.ApiUser$quarkusjacksonserializer",
-    "methods" : [ {
-      "name" : "<init>",
       "parameterTypes" : [ ]
     } ]
   }, {
@@ -32729,11 +33758,15 @@
     }, {
       "name" : "AUDIT_SESSION_FACTORY"
     }, {
+      "name" : "DATABASE_TYPE"
+    }, {
       "name" : "ENTITY_POST_LISTENERS"
     }, {
       "name" : "ENTITY_PRE_LISTENERS"
     }, {
       "name" : "HBM2DDL_AUTO"
+    }, {
+      "name" : "OLD_VERSION"
     }, {
       "name" : "REGEX_AUDIT_ID"
     }, {
@@ -32851,25 +33884,31 @@
       "name" : "hasIdGenerator",
       "parameterTypes" : [ "java.lang.Class" ]
     }, {
-      "name" : "lambda$getAuditBeanName$6",
-      "parameterTypes" : [ "org.hibernate.SessionFactory" ]
+      "name" : "isOldVersion",
+      "parameterTypes" : [ ]
     }, {
-      "name" : "lambda$getAuditIdentifier$1",
+      "name" : "lambda$getAuditBeanName$7",
       "parameterTypes" : [ "org.hibernate.SessionFactory" ]
     }, {
       "name" : "lambda$getAuditIdentifier$2",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "lambda$getAuditSessionFactory$3",
       "parameterTypes" : [ "org.hibernate.SessionFactory" ]
     }, {
-      "name" : "lambda$setAuditIdentifier$0",
-      "parameterTypes" : [ "org.hibernate.SessionFactory", "java.lang.Object" ]
-    }, {
-      "name" : "lambda$setAuditSessionFactory$4",
+      "name" : "lambda$getAuditIdentifier$3",
       "parameterTypes" : [ ]
     }, {
+      "name" : "lambda$getAuditSessionFactory$4",
+      "parameterTypes" : [ "org.hibernate.SessionFactory" ]
+    }, {
+      "name" : "lambda$new$0",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "lambda$setAuditIdentifier$1",
+      "parameterTypes" : [ "org.hibernate.SessionFactory", "java.lang.Object" ]
+    }, {
       "name" : "lambda$setAuditSessionFactory$5",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "lambda$setAuditSessionFactory$6",
       "parameterTypes" : [ "java.lang.String" ]
     }, {
       "name" : "of",
@@ -36944,12 +37983,6 @@
     } ]
   }, {
     "type" : "net.ideahut.quarkus.init.InitRequest"
-  }, {
-    "type" : "net.ideahut.quarkus.init.InitRequest$quarkusjacksondeserializer",
-    "methods" : [ {
-      "name" : "<init>",
-      "parameterTypes" : [ ]
-    } ]
   }, {
     "type" : "net.ideahut.quarkus.job.JobApiTokenCallback",
     "methods" : [ {
@@ -41733,9 +42766,6 @@
       "name" : "createObjectNode",
       "parameterTypes" : [ ]
     }, {
-      "name" : "getProperties",
-      "parameterTypes" : [ ]
-    }, {
       "name" : "mapper",
       "parameterTypes" : [ "int" ]
     }, {
@@ -41816,8 +42846,6 @@
     "fields" : [ {
       "name" : "jsonMapper"
     }, {
-      "name" : "properties"
-    }, {
       "name" : "xmlMapper"
     } ],
     "methods" : [ {
@@ -41849,12 +42877,6 @@
       "parameterTypes" : [ ]
     }, {
       "name" : "createObjectNode",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "findAndRegisterModules",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "getProperties",
       "parameterTypes" : [ ]
     }, {
       "name" : "mapper",
@@ -41895,9 +42917,6 @@
     }, {
       "name" : "read",
       "parameterTypes" : [ "byte[]", "java.lang.Class", "int" ]
-    }, {
-      "name" : "registerModule",
-      "parameterTypes" : [ "com.fasterxml.jackson.databind.Module" ]
     }, {
       "name" : "setup",
       "parameterTypes" : [ "net.ideahut.quarkus.mapper.MapperProperties" ]
@@ -41947,13 +42966,18 @@
     }, {
       "name" : "findAndRegisterModules"
     }, {
+      "name" : "includeNullValue"
+    }, {
       "name" : "mapperFeatures"
     }, {
-      "name" : "serializationInclusion"
+      "name" : "modules"
     } ],
     "methods" : [ {
       "name" : "<init>",
       "parameterTypes" : [ ]
+    }, {
+      "name" : "addModule",
+      "parameterTypes" : [ "com.fasterxml.jackson.databind.Module" ]
     }, {
       "name" : "getAnnotationIntrospector",
       "parameterTypes" : [ ]
@@ -41964,10 +42988,13 @@
       "name" : "getFindAndRegisterModules",
       "parameterTypes" : [ ]
     }, {
+      "name" : "getIncludeNullValue",
+      "parameterTypes" : [ ]
+    }, {
       "name" : "getMapperFeatures",
       "parameterTypes" : [ ]
     }, {
-      "name" : "getSerializationInclusion",
+      "name" : "getModules",
       "parameterTypes" : [ ]
     }, {
       "name" : "setAnnotationIntrospector",
@@ -41982,14 +43009,17 @@
       "name" : "setFindAndRegisterModules",
       "parameterTypes" : [ "java.lang.Boolean" ]
     }, {
+      "name" : "setIncludeNullValue",
+      "parameterTypes" : [ "java.lang.Boolean" ]
+    }, {
       "name" : "setMapperFeature",
       "parameterTypes" : [ "java.lang.Object", "java.lang.Boolean" ]
     }, {
       "name" : "setMapperFeatures",
       "parameterTypes" : [ "java.util.Map" ]
     }, {
-      "name" : "setSerializationInclusion",
-      "parameterTypes" : [ "com.fasterxml.jackson.annotation.JsonInclude$Include" ]
+      "name" : "setModules",
+      "parameterTypes" : [ "java.util.Set" ]
     } ]
   }, {
     "type" : "net.ideahut.quarkus.mapper.YamlMapper"
@@ -43347,6 +44377,7 @@
     } ]
   }, {
     "type" : "net.ideahut.quarkus.object.ItemStringSet",
+    "unsafeAllocated" : true,
     "fields" : [ {
       "name" : "item"
     }, {
@@ -43365,6 +44396,8 @@
       "name" : "setItem",
       "parameterTypes" : [ "net.ideahut.quarkus.object.StringSet" ]
     } ]
+  }, {
+    "type" : "net.ideahut.quarkus.object.ItemStringSetHessianDeserializer"
   }, {
     "type" : "net.ideahut.quarkus.object.ItemStringSetHessianSerializer"
   }, {
@@ -43444,12 +44477,6 @@
       "parameterTypes" : [ "net.ideahut.quarkus.object.MapStringObject" ]
     } ]
   }, {
-    "type" : "net.ideahut.quarkus.object.MapStringObject$quarkusjacksonserializer",
-    "methods" : [ {
-      "name" : "<init>",
-      "parameterTypes" : [ ]
-    } ]
-  }, {
     "type" : "net.ideahut.quarkus.object.Message",
     "fields" : [ {
       "name" : "code"
@@ -43498,12 +44525,6 @@
     }, {
       "name" : "setText",
       "parameterTypes" : [ "java.lang.String" ]
-    } ]
-  }, {
-    "type" : "net.ideahut.quarkus.object.Message$quarkusjacksonserializer",
-    "methods" : [ {
-      "name" : "<init>",
-      "parameterTypes" : [ ]
     } ]
   }, {
     "type" : "net.ideahut.quarkus.object.Message[]"
@@ -43767,12 +44788,6 @@
     }, {
       "name" : "setTotal",
       "parameterTypes" : [ "java.lang.Integer" ]
-    } ]
-  }, {
-    "type" : "net.ideahut.quarkus.object.Page$quarkusjacksonserializer",
-    "methods" : [ {
-      "name" : "<init>",
-      "parameterTypes" : [ ]
     } ]
   }, {
     "type" : "net.ideahut.quarkus.object.ParameterInfo",
@@ -44092,12 +45107,6 @@
       "parameterTypes" : [ "java.lang.Object" ]
     } ]
   }, {
-    "type" : "net.ideahut.quarkus.object.Result$quarkusjacksonserializer",
-    "methods" : [ {
-      "name" : "<init>",
-      "parameterTypes" : [ ]
-    } ]
-  }, {
     "type" : "net.ideahut.quarkus.object.SelfReference",
     "fields" : [ {
       "name" : "serialVersionUID"
@@ -44174,11 +45183,7 @@
       "parameterTypes" : [ "net.ideahut.quarkus.object.StringList" ]
     } ]
   }, {
-    "type" : "net.ideahut.quarkus.object.StringList$quarkusjacksonserializer",
-    "methods" : [ {
-      "name" : "<init>",
-      "parameterTypes" : [ ]
-    } ]
+    "type" : "net.ideahut.quarkus.object.StringListHessianDeserializer"
   }, {
     "type" : "net.ideahut.quarkus.object.StringListHessianSerializer"
   }, {
@@ -44221,11 +45226,7 @@
       "parameterTypes" : [ "java.lang.Class", "java.lang.String", "java.lang.Object" ]
     } ]
   }, {
-    "type" : "net.ideahut.quarkus.object.StringMap$quarkusjacksonserializer",
-    "methods" : [ {
-      "name" : "<init>",
-      "parameterTypes" : [ ]
-    } ]
+    "type" : "net.ideahut.quarkus.object.StringMapHessianDeserializer"
   }, {
     "type" : "net.ideahut.quarkus.object.StringMapHessianSerializer"
   }, {
@@ -46997,6 +47998,7 @@
     } ]
   }, {
     "type" : "net.ideahut.quarkus.security.SecurityUser",
+    "unsafeAllocated" : true,
     "fields" : [ {
       "name" : "attributes"
     }, {
@@ -47108,6 +48110,8 @@
       "name" : "getInstance",
       "parameterTypes" : [ ]
     } ]
+  }, {
+    "type" : "net.ideahut.quarkus.security.SecurityUserHessianDeserializer"
   }, {
     "type" : "net.ideahut.quarkus.security.SecurityUserHessianSerializer"
   }, {
@@ -47548,6 +48552,8 @@
       "name" : "<init>",
       "parameterTypes" : [ "java.util.Map" ]
     } ]
+  }, {
+    "type" : "net.ideahut.quarkus.sysparam.dto.SysCodesMapDtoHessianDeserializer"
   }, {
     "type" : "net.ideahut.quarkus.sysparam.dto.SysCodesMapDtoHessianSerializer"
   }, {
@@ -52527,18 +53533,6 @@
     }, {
       "name" : "setTo",
       "parameterTypes" : [ "java.util.List" ]
-    } ]
-  }, {
-    "type" : "net.ideahut.quarkus.template.controller.test.MailController$Form$quarkusjacksondeserializer",
-    "fields" : [ {
-      "name" : "TRANSLATABLE_FIELD_NAMES"
-    } ],
-    "methods" : [ {
-      "name" : "<init>",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "deserialize",
-      "parameterTypes" : [ "com.fasterxml.jackson.core.JsonParser", "com.fasterxml.jackson.databind.DeserializationContext" ]
     } ]
   }, {
     "type" : "net.ideahut.quarkus.template.controller.test.MailController$Form_Bean",
@@ -57578,15 +58572,6 @@
       "parameterTypes" : [ "java.lang.Long" ]
     } ]
   }, {
-    "type" : "net.ideahut.quarkus.template.object.CacheData$quarkusjacksonserializer",
-    "methods" : [ {
-      "name" : "<init>",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "serializeContent",
-      "parameterTypes" : [ "java.lang.Object", "com.fasterxml.jackson.core.JsonGenerator", "com.fasterxml.jackson.databind.SerializerProvider" ]
-    } ]
-  }, {
     "type" : "net.ideahut.quarkus.template.object.ReportData",
     "fields" : [ {
       "name" : "description"
@@ -57626,21 +58611,6 @@
     }, {
       "name" : "setUuid",
       "parameterTypes" : [ "java.lang.String" ]
-    } ]
-  }, {
-    "type" : "net.ideahut.quarkus.template.object.SerializedStrings$quarkusjacksonserializer",
-    "fields" : [ {
-      "name" : "content"
-    }, {
-      "name" : "group"
-    }, {
-      "name" : "key"
-    }, {
-      "name" : "timestamp"
-    } ],
-    "methods" : [ {
-      "name" : "<init>",
-      "parameterTypes" : [ ]
     } ]
   }, {
     "type" : "net.ideahut.quarkus.template.object.UserData",
@@ -60816,11 +61786,65 @@
       "parameterTypes" : [ "java.lang.String" ]
     } ]
   }, {
+    "type" : "org.hibernate.community.dialect.DB2LegacyDialect"
+  }, {
+    "type" : "org.hibernate.community.dialect.DB2iLegacyDialect"
+  }, {
+    "type" : "org.hibernate.community.dialect.DB2zLegacyDialect"
+  }, {
+    "type" : "org.hibernate.community.dialect.DerbyDialect"
+  }, {
+    "type" : "org.hibernate.community.dialect.H2LegacyDialect"
+  }, {
+    "type" : "org.hibernate.community.dialect.HSQLLegacyDialect"
+  }, {
+    "type" : "org.hibernate.community.dialect.MariaDBLegacyDialect"
+  }, {
+    "type" : "org.hibernate.community.dialect.MySQLLegacyDialect"
+  }, {
+    "type" : "org.hibernate.community.dialect.OracleLegacyDialect"
+  }, {
+    "type" : "org.hibernate.community.dialect.PostgreSQLLegacyDialect"
+  }, {
+    "type" : "org.hibernate.community.dialect.PostgresPlusLegacyDialect"
+  }, {
+    "type" : "org.hibernate.community.dialect.SQLServerLegacyDialect"
+  }, {
+    "type" : "org.hibernate.dialect.DB2Dialect"
+  }, {
+    "type" : "org.hibernate.dialect.DB2iDialect"
+  }, {
+    "type" : "org.hibernate.dialect.DB2zDialect"
+  }, {
+    "type" : "org.hibernate.dialect.DerbyDialect"
+  }, {
     "type" : "org.hibernate.dialect.DialectLogging_$logger",
     "methods" : [ {
       "name" : "<init>",
       "parameterTypes" : [ "org.jboss.logging.Logger" ]
     } ]
+  }, {
+    "type" : "org.hibernate.dialect.H2Dialect"
+  }, {
+    "type" : "org.hibernate.dialect.HSQLDialect"
+  }, {
+    "type" : "org.hibernate.dialect.MariaDBDialect"
+  }, {
+    "type" : "org.hibernate.dialect.MySQLDialect"
+  }, {
+    "type" : "org.hibernate.dialect.Oracle8iDialect"
+  }, {
+    "type" : "org.hibernate.dialect.Oracle9Dialect"
+  }, {
+    "type" : "org.hibernate.dialect.OracleDialect"
+  }, {
+    "type" : "org.hibernate.dialect.PostgreSQL81Dialect"
+  }, {
+    "type" : "org.hibernate.dialect.PostgreSQLDialect"
+  }, {
+    "type" : "org.hibernate.dialect.PostgresPlusDialect"
+  }, {
+    "type" : "org.hibernate.dialect.SQLServerDialect"
   }, {
     "type" : "org.hibernate.engine.config.internal.ConfigurationServiceImpl"
   }, {
@@ -61573,6 +62597,8 @@
   }, {
     "type" : "org.jboss.resteasy.reactive.common.core.ResteasyReactiveCallbackContext"
   }, {
+    "type" : "org.jboss.resteasy.reactive.common.jaxrs.RuntimeDelegateImpl"
+  }, {
     "type" : "org.jboss.resteasy.reactive.common.providers.serialisers.AbstractJsonMessageBodyReader"
   }, {
     "type" : "org.jboss.resteasy.reactive.common.types.AllWriteableMarker"
@@ -61580,6 +62606,8 @@
     "type" : "org.jboss.resteasy.reactive.multipart.FileUpload"
   }, {
     "type" : "org.jboss.resteasy.reactive.server.SimpleResourceInfo"
+  }, {
+    "type" : "org.jboss.resteasy.reactive.server.core.ServerResponseBuilderFactory"
   }, {
     "type" : "org.jboss.resteasy.reactive.server.core.multipart.MultipartMessageBodyWriter"
   }, {
@@ -61595,7 +62623,11 @@
   }, {
     "type" : "org.jboss.resteasy.reactive.server.providers.serialisers.ServerBooleanMessageBodyHandler"
   }, {
-    "type" : "org.jboss.resteasy.reactive.server.providers.serialisers.ServerByteArrayMessageBodyHandler"
+    "type" : "org.jboss.resteasy.reactive.server.providers.serialisers.ServerByteArrayMessageBodyHandler",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
   }, {
     "type" : "org.jboss.resteasy.reactive.server.providers.serialisers.ServerCharArrayMessageBodyHandler"
   }, {
@@ -61862,6 +62894,12 @@
     } ]
   }, {
     "type" : "sun.security.provider.NativePRNG",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ "java.security.SecureRandomParameters" ]
+    } ]
+  }, {
+    "type" : "sun.security.provider.NativePRNG$Blocking",
     "methods" : [ {
       "name" : "<init>",
       "parameterTypes" : [ "java.security.SecureRandomParameters" ]
@@ -62550,6 +63588,8 @@
   }, {
     "glob" : "META-INF/services/jakarta.validation.valueextraction.ValueExtractor"
   }, {
+    "glob" : "META-INF/services/jakarta.ws.rs.ext.RuntimeDelegate"
+  }, {
     "glob" : "META-INF/services/jakarta.xml.bind.JAXBContextFactory"
   }, {
     "glob" : "META-INF/services/java.net.spi.InetAddressResolverProvider"
@@ -62629,6 +63669,8 @@
     "glob" : "META-INF/services/org.jboss.logmanager.MDCProvider"
   }, {
     "glob" : "META-INF/services/org.jboss.logmanager.NDCProvider"
+  }, {
+    "glob" : "META-INF/services/org.jboss.resteasy.reactive.common.core.ResponseBuilderFactory"
   }, {
     "glob" : "META-INF/services/org.slf4j.spi.SLF4JServiceProvider"
   }, {
@@ -62725,6 +63767,9 @@
     "glob" : "org/quartz/core/quartz-build.properties"
   }, {
     "module" : "java.base",
+    "glob" : "java/lang/uniName.dat"
+  }, {
+    "module" : "java.base",
     "glob" : "jdk/internal/icu/impl/data/icudt76b/nfc.nrm"
   }, {
     "module" : "java.base",
@@ -62752,15 +63797,29 @@
   "serialization" : [ {
     "type" : "[B"
   }, {
+    "type" : "com.fasterxml.jackson.core.JsonParser$Feature"
+  }, {
     "type" : "com.fasterxml.jackson.core.JsonPointer"
   }, {
+    "type" : "com.fasterxml.jackson.core.StreamReadFeature"
+  }, {
+    "type" : "com.fasterxml.jackson.core.StreamWriteFeature"
+  }, {
+    "type" : "com.fasterxml.jackson.core.TokenStreamFactory"
+  }, {
+    "type" : "com.fasterxml.jackson.databind.AnnotationIntrospector"
+  }, {
+    "type" : "com.fasterxml.jackson.databind.DeserializationFeature"
+  }, {
     "type" : "com.fasterxml.jackson.databind.JsonNode$OverwriteMode"
+  }, {
+    "type" : "com.fasterxml.jackson.databind.MapperFeature"
   }, {
     "type" : "com.fasterxml.jackson.databind.ObjectMapper"
   }, {
     "type" : "com.fasterxml.jackson.databind.ObjectReader"
   }, {
-    "type" : "com.fasterxml.jackson.databind.deser.std.StdDeserializer"
+    "type" : "com.fasterxml.jackson.databind.SerializationFeature"
   }, {
     "type" : "com.fasterxml.jackson.databind.json.JsonMapper"
   }, {
@@ -62776,6 +63835,8 @@
   }, {
     "type" : "com.fasterxml.jackson.databind.node.ObjectNode"
   }, {
+    "type" : "com.fasterxml.jackson.dataformat.xml.XmlMapper"
+  }, {
     "type" : "io.agroal.api.AgroalDataSource"
   }, {
     "type" : "io.agroal.api.configuration.AgroalConnectionFactoryConfiguration$TransactionIsolation"
@@ -62783,8 +63844,6 @@
     "type" : "io.agroal.api.security.NamePrincipal"
   }, {
     "type" : "io.agroal.api.security.SimplePassword"
-  }, {
-    "type" : "io.quarkus.resteasy.reactive.jackson.runtime.mappers.GeneratedSerializer"
   }, {
     "type" : "java.io.Externalizable"
   }, {
@@ -63362,8 +64421,6 @@
   }, {
     "type" : "net.ideahut.quarkus.template.app.AppProperties$TrxDatasource$Type"
   }, {
-    "type" : "net.ideahut.quarkus.template.controller.test.MailController$Form$quarkusjacksondeserializer"
-  }, {
     "type" : "net.ideahut.quarkus.template.entity.AutoGenLongIdHardDel"
   }, {
     "type" : "net.ideahut.quarkus.template.entity.AutoGenStrIdHardDel"
@@ -63413,8 +64470,6 @@
     "type" : "net.ideahut.quarkus.template.entity.UserFavoriteId"
   }, {
     "type" : "net.ideahut.quarkus.template.object.CacheData"
-  }, {
-    "type" : "net.ideahut.quarkus.template.object.CacheData$quarkusjacksonserializer"
   }, {
     "type" : "net.ideahut.quarkus.template.object.ReportData"
   }, {

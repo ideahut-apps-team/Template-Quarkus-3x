@@ -15,10 +15,10 @@
 		<quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
 		<skipITs>true</skipITs>
 		
-		<quarkus.platform.version>3.38.3</quarkus.platform.version>
+		<quarkus.platform.version>3.39.2</quarkus.platform.version>
 		
 		<surefire-plugin.version>3.5.4</surefire-plugin.version>
-		<version.ideahut>26.08.26</version.ideahut>
+		<version.ideahut>26.09.09</version.ideahut>
 
 		<version.commons-beanutils>1.11.0</version.commons-beanutils>
 		<version.commons-dbcp2>2.10.0</version.commons-dbcp2>

@@ -109,9 +109,9 @@
     * [Mandrel](https://github.com/graalvm/mandrel/releases)
 * Setup environment variable, seperti berikut:
     ```shell
-    export GRAALVM_HOME=/Library/Java/JavaVirtualMachines/aarch64/bellsoft-liberica-vm-full-openjdk25-25.0.1/Contents/Home
+    export GRAALVM_HOME=/Library/Java/JavaVirtualMachines/aarch64/bellsoft-liberica-vm-full-openjdk25-25.0.4.1/Contents/Home
     export JAVA_HOME=$GRAALVM_HOME
-    export MAVEN_HOME=/opt/macdev/maven/3.9.9
+    export MAVEN_HOME=/opt/macdev/maven/3.9.16
     export PATH=$PATH:$GRAALVM_HOME/bin:$MAVEN_HOME/bin
     ```
 * Masuk ke directory project.
