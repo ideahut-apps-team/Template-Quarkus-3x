@@ -6748,7 +6748,19 @@
       "parameterTypes" : [ ]
     } ]
   }, {
-    "type" : "com.sun.crypto.provider.HmacCore$HmacSHA256",
+    "type" : "com.sun.crypto.provider.HKDFKeyDerivation$HKDFSHA384",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ "javax.crypto.KDFParameters" ]
+    } ]
+  }, {
+    "type" : "com.sun.crypto.provider.HmacCore$HmacSHA384",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "com.sun.crypto.provider.TlsKeyMaterialGenerator",
     "methods" : [ {
       "name" : "<init>",
       "parameterTypes" : [ ]
@@ -6758,6 +6770,492 @@
     "methods" : [ {
       "name" : "<init>",
       "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "com.sun.crypto.provider.TlsPrfGenerator$V12",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "com.sun.mail.handlers.handler_base",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getData",
+      "parameterTypes" : [ "jakarta.activation.ActivationDataFlavor", "jakarta.activation.DataSource" ]
+    }, {
+      "name" : "getDataFlavors",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getTransferData",
+      "parameterTypes" : [ "jakarta.activation.ActivationDataFlavor", "jakarta.activation.DataSource" ]
+    }, {
+      "name" : "getTransferDataFlavors",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "com.sun.mail.handlers.multipart_mixed",
+    "fields" : [ {
+      "name" : "myDF"
+    } ],
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getContent",
+      "parameterTypes" : [ "jakarta.activation.DataSource" ]
+    }, {
+      "name" : "getDataFlavors",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "writeTo",
+      "parameterTypes" : [ "java.lang.Object", "java.lang.String", "java.io.OutputStream" ]
+    } ]
+  }, {
+    "type" : "com.sun.mail.handlers.text_html",
+    "fields" : [ {
+      "name" : "myDF"
+    } ],
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getDataFlavors",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "com.sun.mail.handlers.text_plain",
+    "fields" : [ {
+      "name" : "myDF"
+    } ],
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getCharset",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "getContent",
+      "parameterTypes" : [ "jakarta.activation.DataSource" ]
+    }, {
+      "name" : "getDataFlavors",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "writeTo",
+      "parameterTypes" : [ "java.lang.Object", "java.lang.String", "java.io.OutputStream" ]
+    } ]
+  }, {
+    "type" : "com.sun.mail.imap.IMAPProvider",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "com.sun.mail.imap.IMAPSSLProvider",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "com.sun.mail.pop3.POP3Provider",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "com.sun.mail.pop3.POP3SSLProvider",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "com.sun.mail.smtp.SMTPProvider",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "com.sun.mail.smtp.SMTPSSLProvider",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "com.sun.mail.smtp.SMTPTransport",
+    "fields" : [ {
+      "name" : "$assertionsDisabled"
+    }, {
+      "name" : "CRLF"
+    }, {
+      "name" : "UNKNOWN"
+    }, {
+      "name" : "UNKNOWN_SA"
+    }, {
+      "name" : "addresses"
+    }, {
+      "name" : "allowutf8"
+    }, {
+      "name" : "authenticators"
+    }, {
+      "name" : "authorizationID"
+    }, {
+      "name" : "chunkSize"
+    }, {
+      "name" : "dataStream"
+    }, {
+      "name" : "debugpassword"
+    }, {
+      "name" : "debugusername"
+    }, {
+      "name" : "defaultAuthenticationMechanisms"
+    }, {
+      "name" : "defaultPort"
+    }, {
+      "name" : "enableSASL"
+    }, {
+      "name" : "exception"
+    }, {
+      "name" : "extMap"
+    }, {
+      "name" : "hexchar"
+    }, {
+      "name" : "host"
+    }, {
+      "name" : "ignoreList"
+    }, {
+      "name" : "invalidAddr"
+    }, {
+      "name" : "isSSL"
+    }, {
+      "name" : "lastReturnCode"
+    }, {
+      "name" : "lastServerResponse"
+    }, {
+      "name" : "lineInputStream"
+    }, {
+      "name" : "localHostName"
+    }, {
+      "name" : "logger"
+    }, {
+      "name" : "message"
+    }, {
+      "name" : "name"
+    }, {
+      "name" : "noauthdebug"
+    }, {
+      "name" : "noopStrict"
+    }, {
+      "name" : "notificationDone"
+    }, {
+      "name" : "ntlmDomain"
+    }, {
+      "name" : "quitOnSessionReject"
+    }, {
+      "name" : "quitWait"
+    }, {
+      "name" : "reportSuccess"
+    }, {
+      "name" : "requireStartTLS"
+    }, {
+      "name" : "saslAuthenticator"
+    }, {
+      "name" : "saslMechanisms"
+    }, {
+      "name" : "saslRealm"
+    }, {
+      "name" : "sendPartiallyFailed"
+    }, {
+      "name" : "serverInput"
+    }, {
+      "name" : "serverOutput"
+    }, {
+      "name" : "serverSocket"
+    }, {
+      "name" : "traceInput"
+    }, {
+      "name" : "traceLogger"
+    }, {
+      "name" : "traceOutput"
+    }, {
+      "name" : "useCanonicalHostName"
+    }, {
+      "name" : "useRset"
+    }, {
+      "name" : "useStartTLS"
+    }, {
+      "name" : "validSentAddr"
+    }, {
+      "name" : "validUnsentAddr"
+    } ],
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ "jakarta.mail.Session", "jakarta.mail.URLName" ]
+    }, {
+      "name" : "<init>",
+      "parameterTypes" : [ "jakarta.mail.Session", "jakarta.mail.URLName", "java.lang.String", "boolean" ]
+    }, {
+      "name" : "access$000",
+      "parameterTypes" : [ "com.sun.mail.smtp.SMTPTransport" ]
+    }, {
+      "name" : "access$100",
+      "parameterTypes" : [ "com.sun.mail.smtp.SMTPTransport" ]
+    }, {
+      "name" : "access$200",
+      "parameterTypes" : [ "com.sun.mail.smtp.SMTPTransport" ]
+    }, {
+      "name" : "access$300",
+      "parameterTypes" : [ "com.sun.mail.smtp.SMTPTransport" ]
+    }, {
+      "name" : "access$400",
+      "parameterTypes" : [ "com.sun.mail.smtp.SMTPTransport" ]
+    }, {
+      "name" : "access$500",
+      "parameterTypes" : [ "com.sun.mail.smtp.SMTPTransport" ]
+    }, {
+      "name" : "access$600",
+      "parameterTypes" : [ "com.sun.mail.smtp.SMTPTransport" ]
+    }, {
+      "name" : "access$700",
+      "parameterTypes" : [ "com.sun.mail.smtp.SMTPTransport" ]
+    }, {
+      "name" : "access$800",
+      "parameterTypes" : [ "com.sun.mail.smtp.SMTPTransport" ]
+    }, {
+      "name" : "access$900",
+      "parameterTypes" : [ "com.sun.mail.smtp.SMTPTransport" ]
+    }, {
+      "name" : "addressesFailed",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "authenticate",
+      "parameterTypes" : [ "java.lang.String", "java.lang.String" ]
+    }, {
+      "name" : "bdat",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "checkConnected",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "close",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "closeConnection",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "connect",
+      "parameterTypes" : [ "java.net.Socket" ]
+    }, {
+      "name" : "convertTo8Bit",
+      "parameterTypes" : [ "jakarta.mail.internet.MimePart" ]
+    }, {
+      "name" : "data",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "ehlo",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "expandGroups",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "finalize",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "finishBdat",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "finishData",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getAuthorizationId",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getExtensionParameter",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "getLastReturnCode",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getLastServerResponse",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getLocalHost",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getNTLMDomain",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getNoopStrict",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getReportSuccess",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getRequireStartTLS",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getSASLEnabled",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getSASLMechanisms",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getSASLRealm",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getStartTLS",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getUseCanonicalHostName",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getUseRset",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "helo",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "initStreams",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "is8Bit",
+      "parameterTypes" : [ "java.io.InputStream" ]
+    }, {
+      "name" : "isConnected",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "isNotLastLine",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "isSSL",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "isTracing",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "issueCommand",
+      "parameterTypes" : [ "java.lang.String", "int" ]
+    }, {
+      "name" : "issueSendCommand",
+      "parameterTypes" : [ "java.lang.String", "int" ]
+    }, {
+      "name" : "mailFrom",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "normalizeAddress",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "notifyTransportListeners",
+      "parameterTypes" : [ "int", "jakarta.mail.Address[]", "jakarta.mail.Address[]", "jakarta.mail.Address[]", "jakarta.mail.Message" ]
+    }, {
+      "name" : "openServer",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "openServer",
+      "parameterTypes" : [ "java.lang.String", "int" ]
+    }, {
+      "name" : "protocolConnect",
+      "parameterTypes" : [ "java.lang.String", "int", "java.lang.String", "java.lang.String" ]
+    }, {
+      "name" : "rcptTo",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "readServerResponse",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "resumeTracing",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "sasllogin",
+      "parameterTypes" : [ "java.lang.String[]", "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.String" ]
+    }, {
+      "name" : "sendCommand",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "sendCommand",
+      "parameterTypes" : [ "byte[]" ]
+    }, {
+      "name" : "sendMessage",
+      "parameterTypes" : [ "jakarta.mail.Message", "jakarta.mail.Address[]" ]
+    }, {
+      "name" : "sendMessageEnd",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "sendMessageStart",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "setAuthorizationID",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "setLocalHost",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "setNTLMDomain",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "setNoopStrict",
+      "parameterTypes" : [ "boolean" ]
+    }, {
+      "name" : "setReportSuccess",
+      "parameterTypes" : [ "boolean" ]
+    }, {
+      "name" : "setRequireStartTLS",
+      "parameterTypes" : [ "boolean" ]
+    }, {
+      "name" : "setSASLEnabled",
+      "parameterTypes" : [ "boolean" ]
+    }, {
+      "name" : "setSASLMechanisms",
+      "parameterTypes" : [ "java.lang.String[]" ]
+    }, {
+      "name" : "setSASLRealm",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "setStartTLS",
+      "parameterTypes" : [ "boolean" ]
+    }, {
+      "name" : "setUseCanonicalHostName",
+      "parameterTypes" : [ "boolean" ]
+    }, {
+      "name" : "setUseRset",
+      "parameterTypes" : [ "boolean" ]
+    }, {
+      "name" : "simpleCommand",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "simpleCommand",
+      "parameterTypes" : [ "byte[]" ]
+    }, {
+      "name" : "startTLS",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "supportsAuthentication",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "supportsExtension",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "suspendTracing",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "toBytes",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "tracePassword",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "traceUser",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "validateCommand",
+      "parameterTypes" : [ "byte[]" ]
+    }, {
+      "name" : "xtext",
+      "parameterTypes" : [ "java.lang.String" ]
+    }, {
+      "name" : "xtext",
+      "parameterTypes" : [ "java.lang.String", "boolean" ]
     } ]
   }, {
     "type" : "com.sun.management.GarbageCollectorMXBean"
@@ -10245,6 +10743,70 @@
   }, {
     "type" : "io.quarkus.jdbc.mysql.runtime.MySQLAgroalConnectionConfigurer"
   }, {
+    "type" : "io.quarkus.mailer.MailTemplate"
+  }, {
+    "type" : "io.quarkus.mailer.SentMail"
+  }, {
+    "type" : "io.quarkus.mailer.runtime.DkimSignOptionsConfig"
+  }, {
+    "type" : "io.quarkus.mailer.runtime.DkimSignOptionsConfig$$CMImpl"
+  }, {
+    "type" : "io.quarkus.mailer.runtime.MailTemplateProducer"
+  }, {
+    "type" : "io.quarkus.mailer.runtime.MailerRuntimeConfig"
+  }, {
+    "type" : "io.quarkus.mailer.runtime.MailerRuntimeConfig$$CMImpl",
+    "methods" : [ {
+      "name" : "getProperties",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.mailer.runtime.MailerSupport"
+  }, {
+    "type" : "io.quarkus.mailer.runtime.Mailers"
+  }, {
+    "type" : "io.quarkus.mailer.runtime.MailersBuildTimeConfig"
+  }, {
+    "type" : "io.quarkus.mailer.runtime.MailersBuildTimeConfig$$CMImpl",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ "io.smallrye.config.ConfigMappingContext" ]
+    }, {
+      "name" : "getProperties",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getSecrets",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.mailer.runtime.MailersRuntimeConfig"
+  }, {
+    "type" : "io.quarkus.mailer.runtime.MailersRuntimeConfig$$CMImpl",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ "io.smallrye.config.ConfigMappingContext" ]
+    }, {
+      "name" : "getProperties",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getSecrets",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.mailer.runtime.NtlmConfig"
+  }, {
+    "type" : "io.quarkus.mailer.runtime.NtlmConfig$$CMImpl"
+  }, {
+    "type" : "io.quarkus.mailer.runtime.TrimmedPatternConverter",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.mailer.runtime.TrustStoreConfig"
+  }, {
+    "type" : "io.quarkus.mailer.runtime.TrustStoreConfig$$CMImpl"
+  }, {
     "type" : "io.quarkus.narayana.jta.RequestScopedTransaction"
   }, {
     "type" : "io.quarkus.narayana.jta.runtime.NarayanaJtaProducers"
@@ -10298,6 +10860,332 @@
     "type" : "io.quarkus.proxy.runtime.config.ProxyConfig$ProxyCredentialProviderConfig"
   }, {
     "type" : "io.quarkus.proxy.runtime.config.ProxyConfig$ProxyCredentialProviderConfig$$CMImpl"
+  }, {
+    "type" : "io.quarkus.qute.Engine"
+  }, {
+    "type" : "io.quarkus.qute.EngineBuilder"
+  }, {
+    "type" : "io.quarkus.qute.ErrorInitializer"
+  }, {
+    "type" : "io.quarkus.qute.NamespaceResolver"
+  }, {
+    "type" : "io.quarkus.qute.ParserHook"
+  }, {
+    "type" : "io.quarkus.qute.RenderedResults"
+  }, {
+    "type" : "io.quarkus.qute.Resolver"
+  }, {
+    "type" : "io.quarkus.qute.SectionHelperFactory"
+  }, {
+    "type" : "io.quarkus.qute.Template"
+  }, {
+    "type" : "io.quarkus.qute.TemplateLocator"
+  }, {
+    "type" : "io.quarkus.qute.ValueResolver"
+  }, {
+    "type" : "io.quarkus.qute.WithPriority"
+  }, {
+    "type" : "io.quarkus.qute.i18n.MessageBundles",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.i18n.MessageTemplateLocator"
+  }, {
+    "type" : "io.quarkus.qute.runtime.ContentTypes"
+  }, {
+    "type" : "io.quarkus.qute.runtime.EngineProducer"
+  }, {
+    "type" : "io.quarkus.qute.runtime.MessageBundleRecorder$BundleContext"
+  }, {
+    "type" : "io.quarkus.qute.runtime.QuteConfig"
+  }, {
+    "type" : "io.quarkus.qute.runtime.QuteConfig$$CMImpl",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ "io.smallrye.config.ConfigMappingContext" ]
+    }, {
+      "name" : "getProperties",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getSecrets",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.QuteDevModeConfig"
+  }, {
+    "type" : "io.quarkus.qute.runtime.QuteDevModeConfig$$CMImpl"
+  }, {
+    "type" : "io.quarkus.qute.runtime.QuteRecorder$QuteContext"
+  }, {
+    "type" : "io.quarkus.qute.runtime.QuteRuntimeConfig"
+  }, {
+    "type" : "io.quarkus.qute.runtime.QuteRuntimeConfig$$CMImpl",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ "io.smallrye.config.ConfigMappingContext" ]
+    }, {
+      "name" : "getProperties",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getSecrets",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.QuteTestModeConfig"
+  }, {
+    "type" : "io.quarkus.qute.runtime.QuteTestModeConfig$$CMImpl"
+  }, {
+    "type" : "io.quarkus.qute.runtime.TemplateProducer"
+  }, {
+    "type" : "io.quarkus.qute.runtime.cache.MissingCacheConfigurator"
+  }, {
+    "type" : "io.quarkus.qute.runtime.debug.QuteDebugConfig"
+  }, {
+    "type" : "io.quarkus.qute.runtime.debug.QuteDebugConfig$$CMImpl"
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.CollectionTemplateExtensions_Extension_ValueResolver_first_c79dcd7e0c0c2e87acbcdb6425088ca1593854ca",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.CollectionTemplateExtensions_Extension_ValueResolver_getByIndex_657afe9a25009c92a9bdafe71a002284cc5c15d2",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.CollectionTemplateExtensions_Extension_ValueResolver_get_61a55da54cd4263e9dff1c28f2ed031026e30ccf",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.CollectionTemplateExtensions_Extension_ValueResolver_last_c79dcd7e0c0c2e87acbcdb6425088ca1593854ca",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.CollectionTemplateExtensions_Extension_ValueResolver_orEmpty_49cd7d5d995da0ed2a0b410e1718aafcfdfbec2b",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.CollectionTemplateExtensions_Extension_ValueResolver_reversed_c79dcd7e0c0c2e87acbcdb6425088ca1593854ca",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.CollectionTemplateExtensions_Extension_ValueResolver_takeLast_61a55da54cd4263e9dff1c28f2ed031026e30ccf",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.CollectionTemplateExtensions_Extension_ValueResolver_take_61a55da54cd4263e9dff1c28f2ed031026e30ccf",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.ConfigTemplateExtensions_Namespace_Extension_ValueResolver_dfba7aade0868074c2861c98e2a9a92f3178a51b_5",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.ConfigTemplateExtensions_Namespace_Extension_ValueResolver_dfba7aade0868074c2861c98e2a9a92f3178a51b_6",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.ConfigTemplateExtensions_Namespace_Extension_ValueResolver_dfba7aade0868074c2861c98e2a9a92f3178a51b_7",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.MapTemplateExtensions_Extension_ValueResolver_containsKey_c312eb3fc6948f9b67e43528a7682ca853ccafa2",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.MapTemplateExtensions_Extension_ValueResolver_get_bc0571c57a00283edd7750dce31b35b7894dab35",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.MapTemplateExtensions_Extension_ValueResolver_map_2916869ff3e33525b6b33460e43bcf5d56e2e69c",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.NumberTemplateExtensions_Extension_ValueResolver_addToInt_7960693d39b2f712668a26c75b53fda89da3fb49",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.NumberTemplateExtensions_Extension_ValueResolver_addToInt_c4c2a444b875632d1f05e7e19edee263d5d3e57a",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.NumberTemplateExtensions_Extension_ValueResolver_addToLong_9c9ad703eaa32c6f532414cf5a53b74af8f4a460",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.NumberTemplateExtensions_Extension_ValueResolver_addToLong_b00a071e584486616d898c53585494d0942de97d",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.NumberTemplateExtensions_Extension_ValueResolver_mod_bd066910099671b808afec3771a44518fddd2bc9",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.NumberTemplateExtensions_Extension_ValueResolver_subtractFromInt_7960693d39b2f712668a26c75b53fda89da3fb49",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.NumberTemplateExtensions_Extension_ValueResolver_subtractFromInt_c4c2a444b875632d1f05e7e19edee263d5d3e57a",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.NumberTemplateExtensions_Extension_ValueResolver_subtractFromLong_9c9ad703eaa32c6f532414cf5a53b74af8f4a460",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.NumberTemplateExtensions_Extension_ValueResolver_subtractFromLong_b00a071e584486616d898c53585494d0942de97d",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.ObjectsTemplateExtensions_Extension_ValueResolver_eq_4ef3e9d546711498e5ea229da4d3b2ee7e77ce15",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.OrOperatorTemplateExtensions_Extension_ValueResolver_or_8f1638f5c0cac882965cb238c12ac4185e0c98f6",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.StringTemplateExtensions_Extension_ValueResolver_fmtInstance_0e0c8527d491c736ae8021d28078331a20315a36",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.StringTemplateExtensions_Extension_ValueResolver_fmtInstance_6f657fb2a556a9885d398f282d9ed1dab1b37921",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.StringTemplateExtensions_Extension_ValueResolver_plus_6966d857ae4e63e2c007193192804f359f04d3e8",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.StringTemplateExtensions_Extension_ValueResolver_plus_e66c3354160ead5dcfb550a04f31e523bc4c1d8a",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.StringTemplateExtensions_Namespace_Extension_ValueResolver_3442496b96dd01591a8cd44b1eec1368ab728aba_-1",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.StringTemplateExtensions_Namespace_Extension_ValueResolver_3442496b96dd01591a8cd44b1eec1368ab728aba_-10",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.StringTemplateExtensions_Namespace_Extension_ValueResolver_3442496b96dd01591a8cd44b1eec1368ab728aba_-2",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.StringTemplateExtensions_Namespace_Extension_ValueResolver_3442496b96dd01591a8cd44b1eec1368ab728aba_0",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.StringTemplateExtensions_Namespace_Extension_ValueResolver_3442496b96dd01591a8cd44b1eec1368ab728aba_1",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.StringTemplateExtensions_Namespace_Extension_ValueResolver_3442496b96dd01591a8cd44b1eec1368ab728aba_2",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.StringTemplateExtensions_Namespace_Extension_ValueResolver_3442496b96dd01591a8cd44b1eec1368ab728aba_3",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.TimeTemplateExtensions_Extension_ValueResolver_format_20fff29d757fefef0946b2d3432680c31e8cb1e1",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.TimeTemplateExtensions_Extension_ValueResolver_format_751439945e2ab1b1668ce644124b107cc3b9867b",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.TimeTemplateExtensions_Extension_ValueResolver_format_9d2fa65ff1dc33288b60815fc775a809a8f911d2",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.extensions.TimeTemplateExtensions_Namespace_Extension_ValueResolver_714eea0f4c980736bde0065fe73f573487f08e3a_5",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "io.quarkus.qute.runtime.jsonobject.JsonObjectValueResolver"
   }, {
     "type" : "io.quarkus.redis.datasource.RedisDataSource"
   }, {
@@ -11244,6 +12132,8 @@
   }, {
     "type" : "jakarta.enterprise.context.control.RequestContextController"
   }, {
+    "type" : "jakarta.enterprise.event.Event"
+  }, {
     "type" : "jakarta.enterprise.inject.Any"
   }, {
     "type" : "jakarta.enterprise.inject.Default"
@@ -11260,6 +12150,77 @@
     "methods" : [ {
       "name" : "value",
       "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "jakarta.mail.Provider",
+    "fields" : [ {
+      "name" : "className"
+    }, {
+      "name" : "protocol"
+    }, {
+      "name" : "type"
+    }, {
+      "name" : "vendor"
+    }, {
+      "name" : "version"
+    } ],
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ "jakarta.mail.Provider$Type", "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.String" ]
+    }, {
+      "name" : "getClassName",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getProtocol",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getType",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getVendor",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "getVersion",
+      "parameterTypes" : [ ]
+    }, {
+      "name" : "toString",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "jakarta.mail.Transport",
+    "fields" : [ {
+      "name" : "transportListeners"
+    } ],
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ "jakarta.mail.Session", "jakarta.mail.URLName" ]
+    }, {
+      "name" : "addTransportListener",
+      "parameterTypes" : [ "jakarta.mail.event.TransportListener" ]
+    }, {
+      "name" : "notifyTransportListeners",
+      "parameterTypes" : [ "int", "jakarta.mail.Address[]", "jakarta.mail.Address[]", "jakarta.mail.Address[]", "jakarta.mail.Message" ]
+    }, {
+      "name" : "removeTransportListener",
+      "parameterTypes" : [ "jakarta.mail.event.TransportListener" ]
+    }, {
+      "name" : "send",
+      "parameterTypes" : [ "jakarta.mail.Message" ]
+    }, {
+      "name" : "send",
+      "parameterTypes" : [ "jakarta.mail.Message", "java.lang.String", "java.lang.String" ]
+    }, {
+      "name" : "send",
+      "parameterTypes" : [ "jakarta.mail.Message", "jakarta.mail.Address[]" ]
+    }, {
+      "name" : "send",
+      "parameterTypes" : [ "jakarta.mail.Message", "jakarta.mail.Address[]", "java.lang.String", "java.lang.String" ]
+    }, {
+      "name" : "send0",
+      "parameterTypes" : [ "jakarta.mail.Message", "jakarta.mail.Address[]", "java.lang.String", "java.lang.String" ]
+    }, {
+      "name" : "sendMessage",
+      "parameterTypes" : [ "jakarta.mail.Message", "jakarta.mail.Address[]" ]
     } ]
   }, {
     "type" : "jakarta.persistence.Access"
@@ -15958,7 +16919,15 @@
       "parameterTypes" : [ ]
     } ]
   }, {
+    "type" : "java.security.interfaces.ECPrivateKey"
+  }, {
+    "type" : "java.security.interfaces.ECPublicKey"
+  }, {
     "type" : "java.security.interfaces.EdECKey"
+  }, {
+    "type" : "java.security.interfaces.RSAPrivateKey"
+  }, {
+    "type" : "java.security.interfaces.RSAPublicKey"
   }, {
     "type" : "java.security.interfaces.XECKey"
   }, {
@@ -22047,10 +23016,6 @@
       "parameterTypes" : [ ]
     } ]
   }, {
-    "type" : "net.ideahut.quarkus.api.ApiAccessHessianDeserializer"
-  }, {
-    "type" : "net.ideahut.quarkus.api.ApiAccessHessianSerializer"
-  }, {
     "type" : "net.ideahut.quarkus.api.ApiAccessInternalService",
     "methods" : [ {
       "name" : "getApiAccessInternal",
@@ -22064,7 +23029,6 @@
     } ]
   }, {
     "type" : "net.ideahut.quarkus.api.ApiAuth",
-    "unsafeAllocated" : true,
     "fields" : [ {
       "name" : "apiAccess"
     }, {
@@ -22115,10 +23079,6 @@
       "name" : "setScheme",
       "parameterTypes" : [ "java.lang.String" ]
     } ]
-  }, {
-    "type" : "net.ideahut.quarkus.api.ApiAuthHessianDeserializer"
-  }, {
-    "type" : "net.ideahut.quarkus.api.ApiAuthHessianSerializer"
   }, {
     "type" : "net.ideahut.quarkus.api.ApiCache",
     "fields" : [ {
@@ -23665,10 +24625,6 @@
       "parameterTypes" : [ ]
     } ]
   }, {
-    "type" : "net.ideahut.quarkus.api.ApiUserHessianDeserializer"
-  }, {
-    "type" : "net.ideahut.quarkus.api.ApiUserHessianSerializer"
-  }, {
     "type" : "net.ideahut.quarkus.api.HelperUnmodifiable$UnmodifiableApiAccess",
     "fields" : [ {
       "name" : "apiAccess"
@@ -25008,12 +25964,7 @@
       "parameterTypes" : [ "java.lang.Character" ]
     } ]
   }, {
-    "type" : "net.ideahut.quarkus.api.dto.ApiRoleDtoHessianDeserializer"
-  }, {
-    "type" : "net.ideahut.quarkus.api.dto.ApiRoleDtoHessianSerializer"
-  }, {
     "type" : "net.ideahut.quarkus.api.dto.ApiRoleRequestDto",
-    "unsafeAllocated" : true,
     "fields" : [ {
       "name" : "apiRole"
     }, {
@@ -25101,10 +26052,6 @@
       "name" : "setProduces",
       "parameterTypes" : [ "java.lang.String" ]
     } ]
-  }, {
-    "type" : "net.ideahut.quarkus.api.dto.ApiRoleRequestDtoHessianDeserializer"
-  }, {
-    "type" : "net.ideahut.quarkus.api.dto.ApiRoleRequestDtoHessianSerializer"
   }, {
     "type" : "net.ideahut.quarkus.api.entity.ApiConnect",
     "fields" : [ {
@@ -48588,6 +49535,7 @@
     "type" : "net.ideahut.quarkus.sysparam.dto.SysCodesMapDtoHessianSerializer"
   }, {
     "type" : "net.ideahut.quarkus.sysparam.dto.SysParamDto",
+    "unsafeAllocated" : true,
     "fields" : [ {
       "name" : "bytes"
     }, {
@@ -48641,6 +49589,8 @@
       "name" : "setValue",
       "parameterTypes" : [ "java.lang.String" ]
     } ]
+  }, {
+    "type" : "net.ideahut.quarkus.sysparam.dto.SysParamDtoHessianDeserializer"
   }, {
     "type" : "net.ideahut.quarkus.sysparam.dto.SysParamDtoHessianSerializer"
   }, {
@@ -53435,176 +54385,53 @@
       "name" : "<init>",
       "parameterTypes" : [ "net.ideahut.quarkus.mail.MailHandler" ]
     }, {
-      "name" : "lambda$sendMail$0",
-      "parameterTypes" : [ "net.ideahut.quarkus.mail.MailObject", "net.ideahut.quarkus.template.controller.test.MailController$Form" ]
+      "name" : "createMail",
+      "parameterTypes" : [ "java.lang.String", "java.util.List", "java.util.List", "java.util.List", "java.lang.String", "java.lang.String", "org.jboss.resteasy.reactive.multipart.FileUpload" ]
     }, {
-      "name" : "lambda$sendMail$1",
-      "parameterTypes" : [ "net.ideahut.quarkus.template.controller.test.MailController$Form", "net.ideahut.quarkus.mail.MailObject" ]
+      "name" : "lambda$createMail$0",
+      "parameterTypes" : [ "net.ideahut.quarkus.mail.MailObject", "java.lang.String" ]
     }, {
-      "name" : "lambda$sendMail$10",
-      "parameterTypes" : [ "net.ideahut.quarkus.mail.MailObject", "boolean" ]
+      "name" : "lambda$createMail$1",
+      "parameterTypes" : [ "java.util.List", "net.ideahut.quarkus.mail.MailObject" ]
     }, {
-      "name" : "lambda$sendMail$11",
-      "parameterTypes" : [ "net.ideahut.quarkus.template.controller.test.MailController$Form", "net.ideahut.quarkus.mail.MailObject", "boolean" ]
+      "name" : "lambda$createMail$10",
+      "parameterTypes" : [ "org.jboss.resteasy.reactive.multipart.FileUpload", "net.ideahut.quarkus.mail.MailObject" ]
     }, {
-      "name" : "lambda$sendMail$2",
+      "name" : "lambda$createMail$2",
       "parameterTypes" : [ "java.lang.String" ]
     }, {
-      "name" : "lambda$sendMail$3",
+      "name" : "lambda$createMail$3",
       "parameterTypes" : [ "java.lang.String" ]
     }, {
-      "name" : "lambda$sendMail$4",
-      "parameterTypes" : [ "net.ideahut.quarkus.template.controller.test.MailController$Form", "net.ideahut.quarkus.mail.MailObject" ]
+      "name" : "lambda$createMail$4",
+      "parameterTypes" : [ "java.util.List", "net.ideahut.quarkus.mail.MailObject" ]
     }, {
-      "name" : "lambda$sendMail$5",
+      "name" : "lambda$createMail$5",
       "parameterTypes" : [ "java.lang.String" ]
     }, {
-      "name" : "lambda$sendMail$6",
+      "name" : "lambda$createMail$6",
       "parameterTypes" : [ "java.lang.String" ]
     }, {
-      "name" : "lambda$sendMail$7",
-      "parameterTypes" : [ "net.ideahut.quarkus.template.controller.test.MailController$Form", "net.ideahut.quarkus.mail.MailObject" ]
+      "name" : "lambda$createMail$7",
+      "parameterTypes" : [ "java.util.List", "net.ideahut.quarkus.mail.MailObject" ]
     }, {
-      "name" : "lambda$sendMail$8",
+      "name" : "lambda$createMail$8",
       "parameterTypes" : [ "java.lang.String" ]
     }, {
-      "name" : "lambda$sendMail$9",
+      "name" : "lambda$createMail$9",
       "parameterTypes" : [ "java.lang.String" ]
     }, {
       "name" : "sendAsync",
-      "parameterTypes" : [ "net.ideahut.quarkus.template.controller.test.MailController$Form" ]
-    }, {
-      "name" : "sendMail",
-      "parameterTypes" : [ "net.ideahut.quarkus.template.controller.test.MailController$Form", "boolean" ]
+      "parameterTypes" : [ "java.lang.String", "java.util.List", "java.util.List", "java.util.List", "java.lang.String", "java.lang.String", "org.jboss.resteasy.reactive.multipart.FileUpload" ]
     }, {
       "name" : "sendSync",
-      "parameterTypes" : [ "net.ideahut.quarkus.template.controller.test.MailController$Form" ]
+      "parameterTypes" : [ "java.lang.String", "java.util.List", "java.util.List", "java.util.List", "java.lang.String", "java.lang.String", "org.jboss.resteasy.reactive.multipart.FileUpload" ]
     }, {
       "name" : "toInternetAddress",
       "parameterTypes" : [ "java.lang.String", "java.lang.String" ]
     } ]
   }, {
-    "type" : "net.ideahut.quarkus.template.controller.test.MailController$Form",
-    "fields" : [ {
-      "name" : "__quarkus_converter__bcc"
-    }, {
-      "name" : "__quarkus_converter__cc"
-    }, {
-      "name" : "__quarkus_converter__to"
-    }, {
-      "name" : "attachment"
-    }, {
-      "name" : "bcc"
-    }, {
-      "name" : "cc"
-    }, {
-      "name" : "content"
-    }, {
-      "name" : "from"
-    }, {
-      "name" : "subject"
-    }, {
-      "name" : "to"
-    } ],
-    "methods" : [ {
-      "name" : "<init>",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "__quarkus_init_converter__bcc",
-      "parameterTypes" : [ "org.jboss.resteasy.reactive.server.core.Deployment" ]
-    }, {
-      "name" : "__quarkus_init_converter__cc",
-      "parameterTypes" : [ "org.jboss.resteasy.reactive.server.core.Deployment" ]
-    }, {
-      "name" : "__quarkus_init_converter__to",
-      "parameterTypes" : [ "org.jboss.resteasy.reactive.server.core.Deployment" ]
-    }, {
-      "name" : "__quarkus_rest_inject",
-      "parameterTypes" : [ "org.jboss.resteasy.reactive.server.injection.ResteasyReactiveInjectionContext" ]
-    }, {
-      "name" : "getAttachment",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "getBcc",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "getCc",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "getContent",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "getFrom",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "getSubject",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "getTo",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "setAttachment",
-      "parameterTypes" : [ "org.jboss.resteasy.reactive.multipart.FileUpload" ]
-    }, {
-      "name" : "setBcc",
-      "parameterTypes" : [ "java.util.List" ]
-    }, {
-      "name" : "setCc",
-      "parameterTypes" : [ "java.util.List" ]
-    }, {
-      "name" : "setContent",
-      "parameterTypes" : [ "java.lang.String" ]
-    }, {
-      "name" : "setFrom",
-      "parameterTypes" : [ "java.lang.String" ]
-    }, {
-      "name" : "setSubject",
-      "parameterTypes" : [ "java.lang.String" ]
-    }, {
-      "name" : "setTo",
-      "parameterTypes" : [ "java.util.List" ]
-    } ]
-  }, {
-    "type" : "net.ideahut.quarkus.template.controller.test.MailController$Form_Bean",
-    "fields" : [ {
-      "name" : "types"
-    } ],
-    "methods" : [ {
-      "name" : "<init>",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "create",
-      "parameterTypes" : [ "jakarta.enterprise.context.spi.CreationalContext" ]
-    }, {
-      "name" : "equals",
-      "parameterTypes" : [ "java.lang.Object" ]
-    }, {
-      "name" : "get",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "get",
-      "parameterTypes" : [ "jakarta.enterprise.context.spi.CreationalContext" ]
-    }, {
-      "name" : "getBeanClass",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "getIdentifier",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "getTypes",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "hashCode",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "isSuppressed",
-      "parameterTypes" : [ ]
-    }, {
-      "name" : "toString",
-      "parameterTypes" : [ ]
-    } ]
-  }, {
-    "type" : "net.ideahut.quarkus.template.controller.test.MailController$quarkusrestinvoker$sendAsync_a2f2bc004cd5e137028c4f5f1aa8b65d298d6372",
+    "type" : "net.ideahut.quarkus.template.controller.test.MailController$quarkusrestinvoker$sendAsync_f8b34d7bb65902e07954df4ceb6a1a63d52cea17",
     "methods" : [ {
       "name" : "<init>",
       "parameterTypes" : [ ]
@@ -53613,7 +54440,7 @@
       "parameterTypes" : [ "java.lang.Object", "java.lang.Object[]" ]
     } ]
   }, {
-    "type" : "net.ideahut.quarkus.template.controller.test.MailController$quarkusrestinvoker$sendSync_d9e6327d17569e11b0162b9ca21115c8f4d1f332",
+    "type" : "net.ideahut.quarkus.template.controller.test.MailController$quarkusrestinvoker$sendSync_d0421ac675c600940570d5a641b7955696e8977e",
     "methods" : [ {
       "name" : "<init>",
       "parameterTypes" : [ ]
@@ -60491,6 +61318,10 @@
       "parameterTypes" : [ "javax.xml.stream.Location" ]
     } ]
   }, {
+    "type" : "org.eclipse.angus.activation.MailcapRegistryProviderImpl"
+  }, {
+    "type" : "org.eclipse.angus.activation.MimeTypeRegistryProviderImpl"
+  }, {
     "type" : "org.eclipse.core.runtime.FileLocator"
   }, {
     "type" : "org.eclipse.microprofile.config.Config"
@@ -62985,6 +63816,18 @@
       "parameterTypes" : [ ]
     } ]
   }, {
+    "type" : "sun.security.provider.JavaKeyStore$DualFormatJKS",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "sun.security.provider.JavaKeyStore$JKS",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
     "type" : "sun.security.provider.MD5",
     "methods" : [ {
       "name" : "<init>",
@@ -63039,6 +63882,12 @@
       "parameterTypes" : [ ]
     } ]
   }, {
+    "type" : "sun.security.provider.certpath.PKIXCertPathValidator",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
     "type" : "sun.security.rsa.PSSParameters",
     "methods" : [ {
       "name" : "<init>",
@@ -63058,6 +63907,12 @@
     } ]
   }, {
     "type" : "sun.security.rsa.RSASignature$SHA224withRSA",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ ]
+    } ]
+  }, {
+    "type" : "sun.security.rsa.RSASignature$SHA256withRSA",
     "methods" : [ {
       "name" : "<init>",
       "parameterTypes" : [ ]
@@ -63112,6 +63967,12 @@
     } ]
   }, {
     "type" : "sun.security.x509.CertificatePoliciesExtension",
+    "methods" : [ {
+      "name" : "<init>",
+      "parameterTypes" : [ "java.lang.Boolean", "java.lang.Object" ]
+    } ]
+  }, {
+    "type" : "sun.security.x509.ExtendedKeyUsageExtension",
     "methods" : [ {
       "name" : "<init>",
       "parameterTypes" : [ "java.lang.Boolean", "java.lang.Object" ]
@@ -63252,7 +64113,25 @@
   }, {
     "glob" : "META-INF/hessian/serializers"
   }, {
+    "glob" : "META-INF/jakarta.mailcap"
+  }, {
+    "glob" : "META-INF/jakarta.mailcap.default"
+  }, {
+    "glob" : "META-INF/jakarta.mime.types"
+  }, {
+    "glob" : "META-INF/jakarta.mimetypes.default"
+  }, {
+    "glob" : "META-INF/javamail.address.map"
+  }, {
     "glob" : "META-INF/javamail.charset.map"
+  }, {
+    "glob" : "META-INF/javamail.default.address.map"
+  }, {
+    "glob" : "META-INF/javamail.default.providers"
+  }, {
+    "glob" : "META-INF/javamail.providers"
+  }, {
+    "glob" : "META-INF/mailcap"
   }, {
     "glob" : "META-INF/maven"
   }, {
@@ -63348,6 +64227,8 @@
   }, {
     "glob" : "META-INF/maven/io.quarkus.arc/arc/pom.xml"
   }, {
+    "glob" : "META-INF/maven/io.quarkus.qute/qute-core/pom.xml"
+  }, {
     "glob" : "META-INF/maven/io.quarkus.resteasy.reactive/resteasy-reactive-common-types/pom.xml"
   }, {
     "glob" : "META-INF/maven/io.quarkus.resteasy.reactive/resteasy-reactive-common/pom.xml"
@@ -63402,6 +64283,8 @@
   }, {
     "glob" : "META-INF/maven/io.quarkus/quarkus-jsonp/pom.xml"
   }, {
+    "glob" : "META-INF/maven/io.quarkus/quarkus-mailer/pom.xml"
+  }, {
     "glob" : "META-INF/maven/io.quarkus/quarkus-mutiny/pom.xml"
   }, {
     "glob" : "META-INF/maven/io.quarkus/quarkus-narayana-jta/pom.xml"
@@ -63409,6 +64292,8 @@
     "glob" : "META-INF/maven/io.quarkus/quarkus-netty/pom.xml"
   }, {
     "glob" : "META-INF/maven/io.quarkus/quarkus-proxy-registry/pom.xml"
+  }, {
+    "glob" : "META-INF/maven/io.quarkus/quarkus-qute/pom.xml"
   }, {
     "glob" : "META-INF/maven/io.quarkus/quarkus-redis-client/pom.xml"
   }, {
@@ -63490,6 +64375,8 @@
   }, {
     "glob" : "META-INF/maven/io.smallrye.reactive/smallrye-mutiny-vertx-core/pom.xml"
   }, {
+    "glob" : "META-INF/maven/io.smallrye.reactive/smallrye-mutiny-vertx-mail-client/pom.xml"
+  }, {
     "glob" : "META-INF/maven/io.smallrye.reactive/smallrye-mutiny-vertx-redis-client/pom.xml"
   }, {
     "glob" : "META-INF/maven/io.smallrye.reactive/smallrye-mutiny-vertx-runtime/pom.xml"
@@ -63521,6 +64408,8 @@
     "glob" : "META-INF/maven/io.vertx/vertx-core/pom.xml"
   }, {
     "glob" : "META-INF/maven/io.vertx/vertx-kafka-client/pom.xml"
+  }, {
+    "glob" : "META-INF/maven/io.vertx/vertx-mail-client/pom.xml"
   }, {
     "glob" : "META-INF/maven/io.vertx/vertx-redis-client/pom.xml"
   }, {
@@ -63662,11 +64551,11 @@
   }, {
     "glob" : "META-INF/microprofile-config.yml"
   }, {
+    "glob" : "META-INF/mime.types"
+  }, {
     "glob" : "META-INF/services/com.fasterxml.jackson.databind.Module"
   }, {
     "glob" : "META-INF/services/io.agroal.api.AgroalDataSourceProvider"
-  }, {
-    "glob" : "META-INF/services/io.jsonwebtoken.io.Serializer"
   }, {
     "glob" : "META-INF/services/io.opentelemetry.context.ContextStorageProvider"
   }, {
@@ -63688,7 +64577,13 @@
   }, {
     "glob" : "META-INF/services/io.vertx.core.spi.VertxServiceProvider"
   }, {
+    "glob" : "META-INF/services/jakarta.activation.spi.MailcapRegistryProvider"
+  }, {
+    "glob" : "META-INF/services/jakarta.activation.spi.MimeTypeRegistryProvider"
+  }, {
     "glob" : "META-INF/services/jakarta.el.ExpressionFactory"
+  }, {
+    "glob" : "META-INF/services/jakarta.mail.Provider"
   }, {
     "glob" : "META-INF/services/jakarta.validation.ConstraintValidator"
   }, {
@@ -63818,6 +64713,8 @@
   }, {
     "glob" : "net/ideahut/quarkus/entity/EntitySoftDelete.class"
   }, {
+    "glob" : "net/ideahut/quarkus/mime/mime.types"
+  }, {
     "glob" : "net/ideahut/quarkus/template/entity/EmbededId.class"
   }, {
     "glob" : "net/ideahut/quarkus/template/entity/MenuId.class"
@@ -63902,6 +64799,8 @@
   } ],
   "serialization" : [ {
     "type" : "[B"
+  }, {
+    "type" : "byte[]"
   }, {
     "type" : "com.fasterxml.jackson.core.JsonParser$Feature"
   }, {

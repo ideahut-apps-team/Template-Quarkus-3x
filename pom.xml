@@ -15,7 +15,7 @@
 		<quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
 		<skipITs>true</skipITs>
 		
-		<quarkus.platform.version>3.39.2</quarkus.platform.version>
+		<quarkus.platform.version>3.39.3</quarkus.platform.version>
 		
 		<surefire-plugin.version>3.5.4</surefire-plugin.version>
 		<version.ideahut>26.09.09</version.ideahut>

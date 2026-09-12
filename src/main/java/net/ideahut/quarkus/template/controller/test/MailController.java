@@ -11,8 +11,6 @@ import jakarta.inject.Inject;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
-import lombok.Getter;
-import lombok.Setter;
 import net.ideahut.quarkus.annotation.Public;
 import net.ideahut.quarkus.helper.ErrorHelper;
 import net.ideahut.quarkus.helper.ObjectHelper;
@@ -38,35 +36,36 @@ class MailController {
 		this.mailHandler = mailHandler;
 	}
 	
-	@Setter
-	@Getter
-	static class Form {
-		@RestForm("from")
-		private String from;
-		@RestForm("to")
-		private List<String> to;
-		@RestForm("cc")
-		private List<String> cc;
-		@RestForm("bcc")
-		private List<String> bcc;
-		@RestForm("subject")
-		private String subject;
-		@RestForm("content")
-		private String content;
-		@RestForm("attachment")
-		private FileUpload attachment;
-	}
-	
 	@POST
 	@Path("/send/sync")
-	public Result sendSync(Form form) {
-		return sendMail(form, false);
+	public Result sendSync(
+		@RestForm("from") String from,
+		@RestForm("to") List<String> to,
+		@RestForm("cc") List<String> cc,
+		@RestForm("bcc") List<String> bcc,
+		@RestForm("subject") String subject,
+		@RestForm("content") String content,
+		@RestForm("attachment") FileUpload attachment	
+	) {
+		MailObject mail = createMail(from, to, cc, bcc, subject, content, attachment);
+		mailHandler.send(mail, false);
+		return Result.success("sync");
 	}
 	
 	@POST
 	@Path("/send/async")
-	public Result sendAsync(Form form) {
-		return sendMail(form, true);
+	public Result sendAsync(
+		@RestForm("from") String from,
+		@RestForm("to") List<String> to,
+		@RestForm("cc") List<String> cc,
+		@RestForm("bcc") List<String> bcc,
+		@RestForm("subject") String subject,
+		@RestForm("content") String content,
+		@RestForm("attachment") FileUpload attachment
+	) {
+		MailObject mail = createMail(from, to, cc, bcc, subject, content, attachment);
+		mailHandler.send(mail, true);
+		return Result.success("async");
 	}
 	
 	private InternetAddress toInternetAddress(
@@ -80,16 +79,23 @@ class MailController {
 		}
 	}
 	
-	private Result sendMail(Form form, boolean async) {
+	private MailObject createMail(
+		String from,
+		List<String> to,
+		List<String> cc,
+		List<String> bcc,
+		String subject,
+		String content,
+		FileUpload attachment
+	) {
 		MailObject mail = new MailObject();
-		mail.setSubject(ObjectHelper.useOrElse(!StringHelper.isBlank(form.getSubject()), form.getSubject(), "Test-Mail"));
-		mail.setHtmlText(ObjectHelper.useOrElse(!StringHelper.isBlank(form.getContent()), form.getContent(), "Ini adalah contoh email"));
-		ObjectHelper.callIf(!StringHelper.isBlank(form.getFrom()), () -> mail.setFrom(toInternetAddress(form.getFrom(), form.getFrom())));
+		mail.setSubject(ObjectHelper.useOrElse(!StringHelper.isBlank(subject), subject, "Test-Mail"));
+		mail.setHtmlText(ObjectHelper.useOrElse(!StringHelper.isBlank(content), content, "Ini adalah contoh email"));
+		ObjectHelper.callIf(!StringHelper.isBlank(from), () -> mail.setFrom(toInternetAddress(from, from)));
 		ObjectHelper.callIf(
-			form.getTo() != null && !form.getTo().isEmpty(), 
+			to != null && !to.isEmpty(), 
 			() -> {
-				List<InternetAddress> lto = form.getTo()
-				.stream()
+				List<InternetAddress> lto = to.stream()
 				.filter(email -> !StringHelper.isBlank(email))
 				.map(email -> toInternetAddress(email, email))
 				.toList();
@@ -97,10 +103,9 @@ class MailController {
 			}
 		);
 		ObjectHelper.callIf(
-			form.getCc() != null && !form.getCc().isEmpty(), 
+			cc != null && !cc.isEmpty(), 
 			() -> {
-				List<InternetAddress> lcc = form.getCc()
-				.stream()
+				List<InternetAddress> lcc = cc.stream()
 				.filter(email -> !StringHelper.isBlank(email))
 				.map(email -> toInternetAddress(email, email))
 				.toList();
@@ -108,39 +113,28 @@ class MailController {
 			}
 		);
 		ObjectHelper.callIf(
-			form.getBcc() != null && !form.getBcc().isEmpty(), 
+			bcc != null && !bcc.isEmpty(), 
 			() -> {
-				List<InternetAddress> lbcc = form.getBcc()
-				.stream()
+				List<InternetAddress> lbcc = bcc.stream()
 				.filter(email -> !StringHelper.isBlank(email))
 				.map(email -> toInternetAddress(email, email))
 				.toList();
 				return mail.setBcc(lbcc.toArray(new InternetAddress[0]));
 			}
 		);
-		return ObjectHelper.callOrElse(
-			form.getAttachment() == null, 
+		ObjectHelper.callIf(
+			attachment != null, 
 			() -> {
-				mailHandler.send(mail, async);
-				return Result.success();
-			},
-			() -> {
-				java.nio.file.Path path = form.getAttachment().uploadedFile();
+				java.nio.file.Path path = attachment.uploadedFile();
 				byte[] bytes = Files.readAllBytes(path);
-				Attachment attachment = Attachment.of("Attachment", bytes, form.getAttachment().contentType());
-				mail
-				.setMultipart(true)
-				.setAttachment(attachment);
-				mailHandler.send(mail, async);
-				Result result = Result.success()
-				.setInfo("name", form.getAttachment().name())
-				.setInfo("fileName", form.getAttachment().fileName())
-				.setInfo("contentType", form.getAttachment().contentType())
-				.setInfo("contentLength", form.getAttachment().size());
 				Files.deleteIfExists(path); // delete attachment from storage
-				return result;
+				Attachment eattach = Attachment.of("Attachment", bytes, attachment.contentType());
+				return mail
+				.setMultipart(true)
+				.setAttachment(eattach);
 			}
 		);
+		return mail;
 	}
 	
 }
