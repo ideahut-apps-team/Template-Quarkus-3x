@@ -1182,7 +1182,7 @@
                       {
                         "key": "Authorization",
                         "value": "Bearer ZTc5YThmMjkyNTFlNDcxMGQ1MWQ1MTk1NDY0ZjNhMzc2Y2JlOTIzNTo6QTExOjptb2JpbGUtYmFja2VuZA==::eyJhbGciOiJIUzI1NiJ9.eyJhdHRyaWJ1dGVzIjp7ImRldmljZUlkIjoiNmY5Yzg4NDJhNDk5Nzk5NmVlMzZiZjIyMTcwNWQ0OTRkN2JmMjQ1YzcyZjhiNzNkYTUxNTY2NGY3ZDYxYjY2YyIsImNoZWNrIjoidHJ1ZSIsImhvc3QiOiIwOjA6MDowOjA6MDowOjEiLCJhZ2VudCI6IlBvc3RtYW5SdW50aW1lLzcuNDAuMCJ9LCJhcGlLZXkiOiJlNzlhOGYyOTI1MWU0NzEwZDUxZDUxOTU0NjRmM2EzNzZjYmU5MjM1IiwiYXBpVXNlciI6eyJhdHRyaWJ1dGVzIjp7ImZ1bGxuYW1lIjoiQWRtaW4ifSwiaWQiOiJVU1IwMDAwLTAwMDAwLTAwMDAtMDAwMDAtMC0wMDAwIiwidXNlcm5hbWUiOiJhZG1pbiJ9LCJ2YWxpZFVudGlsIjoxNzI0MzkzMDc5MzYzLCJzZXJ2aWNlUm9sZSI6eyJpZGVhaHV0LXNwcmluZ2Jvb3QtM3gtdGVtcGxhdGUiOiJURVNUIiwiaWRlYWh1dC1zcHJpbmdib290LXRlbXBsYXRlIjoiVEVTVCIsIm1vYmlsZS1iYWNrZW5kIjoiQURNSU4ifX0.mqtEGoIzQIy7GAaH3ecIQOxAcrf0mhAIBJ2ai9haB8o",
-                        "type": "text"
+                        "disabled": true
                       }
                     ],
                     "body": {
@@ -4851,9 +4851,20 @@
                 },
                 {
                   "name": "Single",
+                  "protocolProfileBehavior": {
+                    "disabledSystemHeaders": {
+                      "accept": true
+                    }
+                  },
                   "request": {
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/xml",
+                        "disabled": true
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n    \"name\": \"LongIdJoinComposite\",\r\n    \"id\": 126\r\n}",
@@ -5677,7 +5688,7 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\r\n    \"name\": \"MenuRole\",\r\n    \"page\": {\r\n        \"index\": 1,\r\n        \"size\": 100,\r\n        \"count\": true\r\n    },\r\n    \"loads\": [\"menu\", \"role\"],\r\n    \"fields\": [\"isActive\"],\r\n    \"filters\": [\r\n        {\r\n            \"field\": \"createdOn\",\r\n            \"condition\": \"NOT_NULL\"\r\n        }\r\n    ],\r\n    \"orders\":[\"-createdOn\"]\r\n}",
+                      "raw": "{\r\n    \"name\": \"MenuRole\",\r\n    \"page\": {\r\n        \"index\": 1,\r\n        \"size\": 100,\r\n        \"count\": true\r\n    },\r\n    \"loads\": [\"menu\", \"role\"],\r\n    \"filters\": [\r\n        {\r\n            \"field\": \"createdOn\",\r\n            \"condition\": \"NOT_NULL\"\r\n        }\r\n    ],\r\n    \"orders\":[\"-createdOn\"]\r\n}",
                       "options": {
                         "raw": {
                           "language": "json"
@@ -6937,7 +6948,7 @@
                         },
                         {
                           "key": "showInfo",
-                          "value": "true",
+                          "value": "false",
                           "disabled": true
                         }
                       ]
@@ -8743,14 +8754,14 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "{{url}}/repo/AutoGenStrIdHardDel/2026-307165-0221-12296-25200-0001",
+                  "raw": "{{url}}/repo/AutoGenStrIdHardDel/2026-309116-2207-31345-25200-0001",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "repo",
                     "AutoGenStrIdHardDel",
-                    "2026-307165-0221-12296-25200-0001"
+                    "2026-309116-2207-31345-25200-0001"
                   ]
                 }
               },
@@ -8798,14 +8809,14 @@
                   }
                 },
                 "url": {
-                  "raw": "{{url}}/repo/AutoGenStrIdHardDel/2026-307165-0221-12296-25200-0001",
+                  "raw": "{{url}}/repo/AutoGenStrIdHardDel/2026-309116-2207-31345-25200-0001",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "repo",
                     "AutoGenStrIdHardDel",
-                    "2026-307165-0221-12296-25200-0001"
+                    "2026-309116-2207-31345-25200-0001"
                   ]
                 }
               },
@@ -8817,14 +8828,14 @@
                 "method": "DELETE",
                 "header": [],
                 "url": {
-                  "raw": "{{url}}/repo/AutoGenStrIdHardDel/2026-206152-2350-16344-25200-0007",
+                  "raw": "{{url}}/repo/AutoGenStrIdHardDel/2026-309116-2207-31345-25200-0001",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "repo",
                     "AutoGenStrIdHardDel",
-                    "2026-206152-2350-16344-25200-0007"
+                    "2026-309116-2207-31345-25200-0001"
                   ]
                 }
               },
@@ -9147,7 +9158,7 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "{{url}}/repo/LongIdJoinComposite/id?id=82",
+                  "raw": "{{url}}/repo/LongIdJoinComposite/id?id=216",
                   "host": [
                     "{{url}}"
                   ],
@@ -9159,7 +9170,7 @@
                   "query": [
                     {
                       "key": "id",
-                      "value": "82"
+                      "value": "216"
                     }
                   ]
                 }
@@ -9208,7 +9219,7 @@
                   }
                 },
                 "url": {
-                  "raw": "{{url}}/repo/LongIdJoinComposite?id=82",
+                  "raw": "{{url}}/repo/LongIdJoinComposite?id=216",
                   "host": [
                     "{{url}}"
                   ],
@@ -9219,7 +9230,7 @@
                   "query": [
                     {
                       "key": "id",
-                      "value": "82"
+                      "value": "216"
                     }
                   ]
                 }
@@ -9232,7 +9243,7 @@
                 "method": "DELETE",
                 "header": [],
                 "url": {
-                  "raw": "{{url}}/repo/LongIdJoinComposite?id=110",
+                  "raw": "{{url}}/repo/LongIdJoinComposite?id=216",
                   "host": [
                     "{{url}}"
                   ],
@@ -9243,7 +9254,7 @@
                   "query": [
                     {
                       "key": "id",
-                      "value": "110"
+                      "value": "216"
                     }
                   ]
                 }
@@ -9674,7 +9685,6 @@
                   {
                     "key": "Authorization",
                     "value": "{{USER_AUTH}}",
-                    "type": "text",
                     "disabled": true
                   }
                 ],
@@ -9701,7 +9711,6 @@
                     {
                       "key": "group",
                       "value": "GROUP-02",
-                      "type": "text",
                       "disabled": true
                     },
                     {
