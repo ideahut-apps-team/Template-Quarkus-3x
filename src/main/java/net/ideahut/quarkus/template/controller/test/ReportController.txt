@@ -1,0 +1,108 @@
+package net.ideahut.quarkus.template.controller.test;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import jakarta.inject.Inject;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.QueryParam;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import net.ideahut.quarkus.annotation.Body;
+import net.ideahut.quarkus.annotation.Public;
+import net.ideahut.quarkus.bean.BeanInitialize;
+import net.ideahut.quarkus.helper.ErrorHelper;
+import net.ideahut.quarkus.helper.FrameworkHelper;
+import net.ideahut.quarkus.helper.StringHelper;
+import net.ideahut.quarkus.report.ReportHandler;
+import net.ideahut.quarkus.report.ReportInput;
+import net.ideahut.quarkus.report.ReportType;
+import net.ideahut.quarkus.template.app.AppProperties;
+import net.ideahut.quarkus.template.object.ReportData;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+
+/*
+ * Contoh penggunaan ReportHandler
+ */
+@Path("/test/report")
+class ReportController implements BeanInitialize {
+	
+	private final AppProperties appProperties;
+	private final ReportHandler reportHandler;
+	
+	private byte[] template;
+	private byte[] imageHeader;
+	private byte[] imageDetail;
+	
+	
+	@Inject
+	ReportController(
+		AppProperties appProperties,
+		ReportHandler reportHandler
+	) {
+		this.appProperties = appProperties;
+		this.reportHandler = reportHandler;
+	}
+	
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		String path = appProperties.reportPath().orElse(null);
+		ErrorHelper.throwBlank(path, () -> "AppProperties.reportPath is required");
+		path = FrameworkHelper.replacePath(path);
+		path = StringHelper.removeEnd(path, "/");
+		template = FrameworkHelper.toByteArray(FrameworkHelper.getResource(path + "/sample.jasper"));
+		imageHeader = FrameworkHelper.toByteArray(FrameworkHelper.getResource(path + "/tree1.png"));
+		imageDetail = FrameworkHelper.toByteArray(FrameworkHelper.getResource(path + "/tree2.png"));
+	}
+	
+	@Public
+	@Body
+	@GET
+	public Response get(
+		@NotBlank @QueryParam("name") String name
+	) {
+		ReportType type = getType(name);
+		try {
+			JasperReport report = (JasperReport) JRLoader.loadObject(new ByteArrayInputStream(template));
+			ReportInput input = new ReportInput();
+			input.setType(type);
+			input.setReport(report);
+			input.setParameter("MAIN_TITLE", "Contoh Report");
+			input.setParameter("SUB_TITLE", type.name());
+			input.setParameter("IMAGE_HEADER", new ByteArrayInputStream(imageHeader));
+			input.setParameter("IMAGE_DETAIL", new ByteArrayInputStream(imageDetail));
+			
+			List<ReportData> datasource = new ArrayList<>();
+			for (long i = 0; i < 100; i++) {
+				ReportData data = new ReportData();
+				data.setDescription("Deskripsi - " + System.nanoTime());
+				data.setName("Name - " + System.nanoTime());
+				data.setNumber(i);
+				data.setUuid(UUID.randomUUID().toString());
+				datasource.add(data);
+			}
+			input.setDatasource(datasource);
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			reportHandler.exportReport(input, baos);
+			byte[] bytes = baos.toByteArray();
+			return Response.ok(bytes, MediaType.valueOf(type.getContentType())).build();
+		} catch (Exception e) {
+			throw ErrorHelper.exception(e);
+		}
+	}
+	
+	private static ReportType getType(String name) {
+		try {
+			return ReportType.valueOf(name.trim().toUpperCase());
+		} catch (Exception e) {
+			return ReportType.PDF;
+		}
+	}
+	
+}

@@ -1,0 +1,60 @@
+config:    
+    #
+    # TRX MANAGER
+    #
+    trxManager:
+        primary:
+            datasource:
+                hikari:
+                    driverClassName: 'com.microsoft.sqlserver.jdbc.SQLServerDriver'
+                    jdbcUrl: 'jdbc:sqlserver://<HOST>:<PORT>;encrypt=true;trustServerCertificate=true;databaseName=template_quarkus_main_1'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
+                agroal:
+                    jdbcUrl: 'jdbc:sqlserver://<HOST>:<PORT>;encrypt=true;trustServerCertificate=true;databaseName=template_quarkus_main_1'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
+                dbcp:
+                    driverClassName: 'com.microsoft.sqlserver.jdbc.SQLServerDriver'
+                    jdbcUrl: 'jdbc:sqlserver://<HOST>:<PORT>;encrypt=true;trustServerCertificate=true;databaseName=template_quarkus_main_1'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
+                basic:
+                    driverClassName: 'com.microsoft.sqlserver.jdbc.SQLServerDriver'
+                    jdbcUrl: 'jdbc:sqlserver://<HOST>:<PORT>;encrypt=true;trustServerCertificate=true;databaseName=template_quarkus_main_1'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
+            settings:
+                hibernate:
+                    legacy_limit_handler: true
+            audit:
+                datasource:
+                    hikari:
+                        driverClassName: 'com.microsoft.sqlserver.jdbc.SQLServerDriver'
+                        jdbcUrl: 'jdbc:sqlserver://<HOST>:<PORT>;encrypt=true;trustServerCertificate=true;databaseName=template_quarkus_audit_1'
+                        username: '<USERNAME>'
+                        password: '<PASSWORD>'
+                settings:
+                    hibernate:
+                        legacy_limit_handler: true
+
+        secondary:
+            datasource:
+                hikari:
+                    driverClassName: 'com.microsoft.sqlserver.jdbc.SQLServerDriver'
+                    jdbcUrl: 'jdbc:sqlserver://<HOST>:<PORT>;encrypt=true;trustServerCertificate=true;databaseName=template_quarkus_main_2'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
+            settings:
+                hibernate:
+                    legacy_limit_handler: true
+            audit:
+                datasource:
+                    hikari:
+                        driverClassName: 'com.microsoft.sqlserver.jdbc.SQLServerDriver'
+                        jdbcUrl: 'jdbc:sqlserver://<HOST>:<PORT>;encrypt=true;trustServerCertificate=true;databaseName=template_quarkus_audit_2'
+                        username: '<USERNAME>'
+                        password: '<PASSWORD>'
+                settings:
+                    hibernate:
+                        legacy_limit_handler: true
