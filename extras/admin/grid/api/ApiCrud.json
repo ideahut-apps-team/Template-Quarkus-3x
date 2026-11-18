@@ -1,7 +1,7 @@
 {
-    "order": 1,
+    "order": 2,
     "name": "ApiCrud",
-    "title": "CRUD Resource",
+    "title": "CRUD",
     "crud": {
         "name": "net.ideahut.quarkus.api.entity.ApiCrud"
     },
@@ -15,15 +15,7 @@
         "separator": "cell",
         "selection": "single",
         "page": {
-            "options": [
-                5,
-                10,
-                15,
-                20,
-                25,
-                30,
-                50
-            ],
+            "options": [5, 10, 15, 20, 25, 30, 50],
             "default": 20,
             "count": false
         },
@@ -57,6 +49,13 @@
                 "condition": "ANY_LIKE"
             },
             {
+                "name": "isStateless",
+                "label": "Stateless",
+                "type": "option",
+                "option": "YES_NO",
+                "condition": "EQUAL"
+            },
+            {
                 "name": "isUseNative",
                 "label": "Use Native",
                 "type": "option",
@@ -71,8 +70,8 @@
                 "condition": "EQUAL"
             },
             {
-                "name": "isStackEnabled",
-                "label": "Stack Enabled",
+                "name": "isJoinEnabled",
+                "label": "Join Enabled",
                 "type": "option",
                 "option": "YES_NO",
                 "condition": "EQUAL"
@@ -84,9 +83,10 @@
             "className",
             "manager",
             "maxLimit",
+            "isStateless",
             "isUseNative",
             "isLoadEnabled",
-            "isStackEnabled",
+            "isJoinEnabled",
             "updatedOn",
             "createdOn"
         ],
@@ -127,6 +127,14 @@
                 "sortable": true
             },
             {
+                "name": "isStateless",
+                "label": "Stateless",
+                "field": "isStateless",
+                "align": "center",
+                "sortable": true,
+                "format": "function(val, row) { return $h.grid.option(val, row, 'YES_NO'); }"
+            },
+            {
                 "name": "isUseNative",
                 "label": "Use Native",
                 "field": "isUseNative",
@@ -143,9 +151,9 @@
                 "format": "function(val, row) { return $h.grid.option(val, row, 'YES_NO'); }"
             },
             {
-                "name": "isStackEnabled",
-                "label": "Stack Enabled",
-                "field": "isStackEnabled",
+                "name": "isJoinEnabled",
+                "label": "Join Enabled",
+                "field": "isJoinEnabled",
                 "align": "center",
                 "sortable": true,
                 "format": "function(val, row) { return $h.grid.option(val, row, 'YES_NO'); }"
@@ -206,6 +214,18 @@
             ]
         },
         {
+            "name": "isStateless",
+            "label": "Stateless",
+            "type": "option",
+            "option": "YES_NO",
+            "nullable": false,
+            "insertable": true,
+            "editable": true,
+            "validations": [
+                "maxlength:1"
+            ]
+        },
+        {
             "name": "isUseNative",
             "label": "Use Native",
             "type": "option",
@@ -214,7 +234,6 @@
             "insertable": true,
             "editable": true,
             "validations": [
-                "required",
                 "maxlength:1"
             ]
         },
@@ -227,20 +246,18 @@
             "insertable": true,
             "editable": true,
             "validations": [
-                "required",
                 "maxlength:1"
             ]
         },
         {
-            "name": "isStackEnabled",
-            "label": "Stack Enabled",
+            "name": "isJoinEnabled",
+            "label": "Join Enabled",
             "type": "option",
             "option": "YES_NO",
             "nullable": false,
             "insertable": true,
             "editable": true,
             "validations": [
-                "required",
                 "maxlength:1"
             ]
         }
@@ -261,15 +278,7 @@
                 "separator": "cell",
                 "selection": "single",
                 "page": {
-                    "options": [
-                        5,
-                        10,
-                        15,
-                        20,
-                        25,
-                        30,
-                        50
-                    ],
+                    "options": [5, 10, 15, 20, 25, 30, 50],
                     "default": 20,
                     "count": false
                 },
@@ -376,15 +385,7 @@
                 "separator": "cell",
                 "selection": "multiple",
                 "page": {
-                    "options": [
-                        5,
-                        10,
-                        15,
-                        20,
-                        25,
-                        30,
-                        50
-                    ],
+                    "options": [5, 10, 15, 20, 25, 30, 50],
                     "default": 20,
                     "count": false
                 },
@@ -475,15 +476,7 @@
                 "separator": "cell",
                 "selection": "multiple",
                 "page": {
-                    "options": [
-                        5,
-                        10,
-                        15,
-                        20,
-                        25,
-                        30,
-                        50
-                    ],
+                    "options": [5, 10, 15, 20, 25, 30, 50],
                     "default": 20,
                     "count": false
                 },

@@ -1,7 +1,6 @@
 package net.ideahut.quarkus.template.service;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -26,11 +25,10 @@ import net.ideahut.quarkus.mapper.DataMapper;
 import net.ideahut.quarkus.message.MessageHandler;
 import net.ideahut.quarkus.message.RedisMessageHandler;
 import net.ideahut.quarkus.message.dto.LanguageDto;
+import net.ideahut.quarkus.object.ListString;
+import net.ideahut.quarkus.object.MapString;
 import net.ideahut.quarkus.object.Message;
 import net.ideahut.quarkus.object.Option;
-import net.ideahut.quarkus.object.StringList;
-import net.ideahut.quarkus.object.StringMap;
-import net.ideahut.quarkus.object.StringSet;
 import net.ideahut.quarkus.redis.RedisCommand;
 import net.ideahut.quarkus.redis.RedisParam;
 import net.ideahut.quarkus.template.app.AppConstant;
@@ -94,19 +92,16 @@ class MessageServiceImpl implements MessageService, BeanReload, BeanConfigure {
 
 	@Override
 	public boolean onReloadBean() throws Exception {
-		return ObjectHelper.callOrElse(
-			configured && !messageHandler.onReloadBean(), 
-			() -> false, 
-			() -> {
-				activeLanguages = new ArrayList<>();
-				for (LanguageDto language : messageHandler.getActiveLanguages().values()) {
-					activeLanguages.add(new Option(language.getLanguageCode(), language.getName()));
-				}
-				clearResources();
-				loadResources();
-				return true;
-			}
-		);
+		if (configured && !messageHandler.onReloadBean()) {
+			return false;
+		}
+		activeLanguages = new ArrayList<>();
+		for (LanguageDto language : messageHandler.getActiveLanguages().values()) {
+			activeLanguages.add(new Option(language.getLanguageCode(), language.getName()));
+		}
+		clearResources();
+		loadResources();
+		return true;
 	}
 	
 	@Override
@@ -127,7 +122,9 @@ class MessageServiceImpl implements MessageService, BeanReload, BeanConfigure {
 		node.put("active", language);
 		String ckey = Keys.resource(redisPrefix, type, language);
 		byte[] bytes = redisCommand.valueGet(ckey);
-		ObjectHelper.callIf(bytes != null, () -> node.set("message", dataMapper.read(bytes, JsonNode.class)));
+		if (bytes != null) {
+			node.set("message", dataMapper.read(bytes, JsonNode.class));
+		}
 		return node;
 	}
 	
@@ -163,45 +160,39 @@ class MessageServiceImpl implements MessageService, BeanReload, BeanConfigure {
 	}
 
 	@Override
-	public StringMap getMap(String... codes) {
+	public MapString getMap(String... codes) {
 		return messageHandler.getMap(codes);
 	}
 
 	@Override
-	public StringList getList(String... codes) {
+	public ListString getList(String... codes) {
 		getRequestLanguage();
 		return messageHandler.getList(codes);
 	}
 
 	private String getRequestLanguage() {
 		String language = RequestContext.currentContext().getAttribute(MessageHandler.Attribute.LANGUAGE + "_REQ");
-		return ObjectHelper.callOrElse(
-			!StringHelper.isBlank(language), 
-			() -> language, 
-			() -> {
-				String acceptLang = RequestContext.currentContext().getAttribute(MessageHandler.Attribute.LANGUAGE);
-				if (!isValidLanguage(acceptLang)) {
-					acceptLang = DEFAULT_LANGUAGE;
-				}
-				RequestContext.currentContext().setAttribute(MessageHandler.Attribute.LANGUAGE + "_REQ", acceptLang);
-				return acceptLang;
-			}
-		);
+		if (!StringHelper.isBlank(language)) {
+			return language;
+		}
+		String acceptLang = RequestContext.currentContext().getAttribute(MessageHandler.Attribute.LANGUAGE);
+		if (!isValidLanguage(acceptLang)) {
+			acceptLang = DEFAULT_LANGUAGE;
+		}
+		RequestContext.currentContext().setAttribute(MessageHandler.Attribute.LANGUAGE + "_REQ", acceptLang);
+		return acceptLang;
 	}
 	
 	private boolean isValidLanguage(String language) {
-		return ObjectHelper.callOrElse(
-			StringHelper.isBlank(language), 
-			() -> false, 
-			() -> {
-				Option option = getActiveLanguages()
-				.stream()
-				.filter(o -> language.equals(o.getValue()))
-				.findAny()
-				.orElse(null);
-				return option != null;
-			}
-		);
+		if (StringHelper.isBlank(language)) {
+			return false;
+		}
+		Option option = getActiveLanguages()
+		.stream()
+		.filter(o -> language.equals(o.getValue()))
+		.findAny()
+		.orElse(null);
+		return option != null;
 	}
 	
 	private Map<String, byte[]> getResources(String type) {
@@ -209,26 +200,19 @@ class MessageServiceImpl implements MessageService, BeanReload, BeanConfigure {
 		String path = FrameworkHelper.replacePath(StringHelper.removeEnd(appProperties.messagePath().orElseThrow(), "/"));
 		Resource[] resources = FrameworkHelper.getResources(path + "/" + type + "/*.json");
 		for (Resource resource : resources) {
-			String filename = ObjectHelper.useOrDefault(resource.getFilename(), "");
-			ObjectHelper.callIf(
-				!filename.isEmpty(), 
-				() -> {
-					String language = filename.replace(".json", "");
-					return ObjectHelper.callIf(
-						isValidLanguage(language), 
-						() -> {
-							byte[] bytes = FrameworkHelper.toByteArray(resource);
-							String ckey = Keys.resource(redisPrefix, type, language);
-							// support format yaml, json, & xml
-							// validasi format sebelum disimpan ke redis dalam format json
-							JsonNode node = FrameworkHelper.loadConfiguration(bytes, JsonNode.class);
-							bytes = dataMapper.writeAsBytes(node, DataMapper.JSON);
-							map.put(ckey, bytes);
-							return null;
-						}
-					);
+			String filename = resource.getFilename();
+			if (filename != null && resource.isReadable()) {
+				String language = filename.replace(".json", "");
+				if (isValidLanguage(language)) {
+					byte[] bytes = FrameworkHelper.toByteArray(resource);
+					String ckey = Keys.resource(redisPrefix, type, language);
+					// support format yaml, json, & xml
+					// validasi format sebelum disimpan ke redis dalam format json
+					JsonNode node = FrameworkHelper.loadConfiguration(bytes, JsonNode.class);
+					bytes = dataMapper.writeAsBytes(node, DataMapper.JSON);
+					map.put(ckey, bytes);
 				}
-			);
+			}
 		}
 		return map;
 	}
@@ -241,37 +225,22 @@ class MessageServiceImpl implements MessageService, BeanReload, BeanConfigure {
 		for (String key : cvalues.keySet()) {
 			bkeys.add(key.getBytes());
 		}
-		ObjectHelper.callIf(
-			!bkeys.isEmpty(), 
-			() -> {
-				redisCommand.listRightPush(Keys.resources(redisPrefix), bkeys);
-				return redisCommand.valueMultiSet(cvalues);
-			}
-		);
+		if (!bkeys.isEmpty()) {
+			redisCommand.listRightPush(Keys.resources(redisPrefix), bkeys);
+			redisCommand.valueMultiSet(cvalues);
+		}
 	}
 	
 	private void clearResources() {
 		String key = Keys.resources(redisPrefix);
 		Long size = redisCommand.listSize(key);
-		ObjectHelper.callIf(
-			size != null && size > 0, 
-			() -> {
-				List<byte[]> bkeys = redisCommand.listLeftPop(key, ObjectHelper.useOrDefault(size, 0L));
-				return ObjectHelper.callIf(
-					bkeys != null && !bkeys.isEmpty(), 
-					() -> {
-						List<byte[]> tkeys = ObjectHelper.useOrDefault(bkeys, Collections::emptyList);
-						StringSet skeys = new StringSet();
-						while (!tkeys.isEmpty()) {
-							skeys.add(new String(tkeys.remove(0)));
-						}
-						redisCommand.keyDelete(skeys);
-						skeys.clear();
-						return null;
-					}
-				);
+		if (size != null && size > 0) {
+			List<byte[]> bkeys = redisCommand.listLeftPop(key, ObjectHelper.useOrDefault(size, 0L));
+			if (bkeys != null && !bkeys.isEmpty()) {
+				List<String> skeys = bkeys.stream().map(String::new).toList();
+				redisCommand.keyDelete(skeys);
 			}
-		);
+		}
 	}
 
 }

@@ -16,7 +16,7 @@ id:
     fields:
         - id
 table:
-    separator: none
+    separator: cell
     selection: single
     page:
         options:

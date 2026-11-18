@@ -8,9 +8,8 @@ import java.util.Properties;
 import org.quartz.impl.StdSchedulerFactory;
 
 import io.quarkus.redis.datasource.RedisDataSource;
-import io.quarkus.runtime.Startup;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
-import jakarta.inject.Singleton;
 import net.ideahut.quarkus.audit.AuditHandler;
 import net.ideahut.quarkus.audit.DatabaseAuditProperties;
 import net.ideahut.quarkus.audit.DatabaseMultiAuditHandler;
@@ -77,7 +76,7 @@ class HandlerConfig {
 	/*
 	 * INIT
 	 */
-	@Singleton
+	@ApplicationScoped
 	InitHandler initHandler() {
 		return new InitHandlerImpl()
 		
@@ -92,8 +91,7 @@ class HandlerConfig {
 	/*
 	 * AUDIT
 	 */
-	@Startup
-	@Singleton
+	@ApplicationScoped
 	AuditHandler auditHandler(
 		AppProperties appProperties,
 		EntityTrxManager entityTrxManager,
@@ -101,8 +99,8 @@ class HandlerConfig {
 		TaskHandler taskHandler
 	) {
 		DatabaseAuditDefinition audit = appProperties.audit().orElseThrow();
-		DatabaseAuditProperties properties = DatabaseAuditDefinition.Properties.toDatabaseAuditProperties(audit.properties().orElse(null));
-		DatabaseAuditProperties.Table table = ObjectHelper.useOrDefault(properties.getTable(), DatabaseAuditProperties.Table::new);
+		DatabaseAuditProperties properties = DatabaseAuditDefinition.Properties.convert(audit.properties().orElse(null));
+		DatabaseAuditProperties.Table table = properties.getTable() != null ? properties.getTable() : new DatabaseAuditProperties.Table();
 		String prefix = ObjectHelper.useOrDefault(table.getPrefix(), "audit_");
 		table.setPrefix(prefix);
 		properties.setTable(table);
@@ -125,7 +123,7 @@ class HandlerConfig {
 	/*
 	 * CACHE GROUP
 	 */
-	@Singleton
+	@ApplicationScoped
 	@Named("cacheGroupHandler")
 	CacheGroupHandler cacheGroupHandler(
 		AppProperties appProperties,
@@ -161,7 +159,7 @@ class HandlerConfig {
 	/*
 	 * CACHE
 	 */
-	@Singleton
+	@ApplicationScoped
 	CacheHandler cacheHandler(
 		AppProperties appProperties,
 		BinarySerializer binarySerializer,
@@ -196,7 +194,7 @@ class HandlerConfig {
 	/*
 	 * MAIL
 	 */
-	@Singleton
+	@ApplicationScoped
 	MailHandler mailHandler(
 		AppProperties appProperties,
 		@Named(AppConstant.Bean.Task.PRIMARY)
@@ -211,7 +209,7 @@ class HandlerConfig {
 	/*
 	 * GRID
 	 */
-	@Singleton
+	@ApplicationScoped
 	GridHandler gridHandler(
 		AppProperties appProperties,
 		BinarySerializer binarySerializer,
@@ -250,7 +248,7 @@ class HandlerConfig {
 	/*
 	 * SYSPARAM
 	 */
-	@Singleton
+	@ApplicationScoped
 	SysParamHandler sysParamHandler(
 		BinarySerializer binarySerializer,
 		@Named(AppConstant.Bean.Redis.PRIMARY)
@@ -263,7 +261,7 @@ class HandlerConfig {
 		.setBinarySerializer(binarySerializer)
 		
 		// Daftar Entity class dan nama trxManager yang terkait dengan SysParamHandler
-		// default semua class di package 'net.ideahut.springboot.sysparam.entity'
+		// default semua class di package 'net.ideahut.quarkus.sysparam.entity'
 		.setEntityClass(null)
 		
 		// EntityTrxManager
@@ -283,8 +281,7 @@ class HandlerConfig {
 	/*
 	 * SCHEDULER
 	 */
-	@Startup
-	@Singleton
+	@ApplicationScoped
 	SchedulerHandler schedulerHandler(
 		EntityTrxManager entityTrxManager,
 		@Named(AppConstant.Bean.Task.PRIMARY)
@@ -305,7 +302,7 @@ class HandlerConfig {
 		return new SchedulerHandlerImpl()
 		
 		// Daftar Entity class dan nama trxManager yang terkait dengan SchedulerHandler
-		// default semua class di package 'net.ideahut.springboot.job.entity'
+		// default semua class di package 'net.ideahut.quarkus.job.entity'
 		//.setEntityClass(null)
 		
 		// EntityTrxManager
@@ -338,7 +335,7 @@ class HandlerConfig {
 	/*
 	 * REST
 	 */
-	@Singleton
+	@ApplicationScoped
 	RestHandler restHandler(
 		AppProperties appProperties,
 		DataMapper dataMapper,
@@ -373,7 +370,7 @@ class HandlerConfig {
 	/*
 	 * KAFKA
 	 */
-	@Singleton
+	@ApplicationScoped
 	KafkaHandler kafkaHandler(
 		AppProperties appProperties,
 		BinarySerializer binarySerializer,
@@ -399,7 +396,7 @@ class HandlerConfig {
 	/*
 	 * REPORT
 	 */
-	@Singleton
+	@ApplicationScoped
 	ReportHandler reportHandler(
 		AppProperties appProperties		
 	) {

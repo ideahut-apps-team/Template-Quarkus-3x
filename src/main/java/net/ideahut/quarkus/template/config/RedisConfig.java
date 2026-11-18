@@ -3,8 +3,8 @@ package net.ideahut.quarkus.template.config;
 import io.quarkus.arc.DefaultBean;
 import io.quarkus.redis.datasource.RedisDataSource;
 import io.vertx.core.Vertx;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
-import jakarta.inject.Singleton;
 import net.ideahut.quarkus.definition.RedisDefinition;
 import net.ideahut.quarkus.redis.RedisHelper;
 import net.ideahut.quarkus.redis.RedisProperties;
@@ -16,7 +16,7 @@ import net.ideahut.quarkus.template.app.AppProperties;
  */
 class RedisConfig {
 	
-	@Singleton
+	@ApplicationScoped
 	@Named(AppConstant.Bean.Redis.PRIMARY)
 	@DefaultBean
 	RedisDataSource primaryRedis(
@@ -27,7 +27,7 @@ class RedisConfig {
 		return RedisHelper.createRedisDataSource(vertx, properties);
 	}
 	
-	@Singleton
+	@ApplicationScoped
 	@Named(AppConstant.Bean.Redis.ACCESS)
 	RedisDataSource accessRedis(
 		AppProperties appProperties,

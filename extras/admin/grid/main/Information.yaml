@@ -1,8 +1,6 @@
 name: Information
 title: Information
-replicas:
-    - 1
-    - 2
+replicas: 2
 crud:
     name: net.ideahut.quarkus.template.entity.Information
 id:
@@ -189,6 +187,7 @@ fields:
 children:
     -
         title: Link
+        enableReplica: true
         crud:
             name: net.ideahut.quarkus.template.entity.InformationLink
         id:
@@ -199,6 +198,7 @@ children:
             -
                 target: information.informationId
                 source: informationId
+                noJoin: true
         labels:
             -
                 title: ID
@@ -206,7 +206,6 @@ children:
             -
                 title: Title
                 value: title
-        enableReplica: true
         table:
             separator: vertical
             selection: single

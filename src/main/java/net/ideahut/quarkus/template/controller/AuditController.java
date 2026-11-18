@@ -9,6 +9,10 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.container.ContainerRequestContext;
 import jakarta.ws.rs.core.Context;
+import jakarta.ws.rs.core.HttpHeaders;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import net.ideahut.quarkus.annotation.Body;
 import net.ideahut.quarkus.audit.AuditHandler;
 import net.ideahut.quarkus.audit.AuditRequest;
 import net.ideahut.quarkus.helper.ErrorHelper;
@@ -43,29 +47,31 @@ class AuditController {
 		byte[] data = WebHelper.getBodyAsBytes(httpRequest);
 		AuditRequest auditRequest = auditHandler.getRequest(data);
 		String entity = ObjectHelper.useOrDefault(auditRequest.getEntity(), "").trim();
-		ObjectHelper.callIf(
-			!StringHelper.isEmpty(entity) && auditRequest.getClassOfEntity() == null, 
-			() -> {
-				Class<?> classOfEntity = ObjectHelper.useOrDefault(
-					ObjectHelper.safeClassOf(entity), 
-					() -> ObjectHelper.safeClassOf(Application.Package.APPLICATION + ".entity." + entity)
-				);
-				ErrorHelper.throwNull(classOfEntity, () -> "Entity not found: " + entity);
-				return auditRequest.setClassOfEntity(classOfEntity);
+		if (!StringHelper.isEmpty(entity) && auditRequest.getClassOfEntity() == null) {
+			Class<?> classOfEntity = ObjectHelper.safeClassOf(entity);
+			if (classOfEntity == null) {
+				classOfEntity = ObjectHelper.safeClassOf(Application.Package.APPLICATION + ".entity." + entity);
 			}
-		);			
+			ErrorHelper.throwNull(classOfEntity, () -> "Entity not found: " + entity);
+			auditRequest.setClassOfEntity(classOfEntity);
+		}			
 		Page page = auditHandler.getList(auditRequest);
 		return Result.success(page);
 	}
 	
+	@Body // <- tambahkan @Body agar bytes langsung dikirim, tidak disusun lagi sesuai standar framework
 	@GET
 	@Path("/bytes")
-	public Result bytes(
+	public Response bytes(
 		@QueryParam("manager") String manager,
 		@NotBlank @QueryParam("id") String id
 	) {
 		byte[] bytes = auditHandler.getBytes(manager, id);
-		return Result.success(bytes);
+		return Response.ok()
+		.entity(bytes)
+		.type(MediaType.APPLICATION_OCTET_STREAM)
+		.header(HttpHeaders.CONTENT_LENGTH, bytes.length)
+		.build();
 	}
 	
 }

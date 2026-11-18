@@ -8,7 +8,7 @@ id:
         - code
         - type
 table:
-    separator: none
+    separator: cell
     selection: single
     page:
         options:

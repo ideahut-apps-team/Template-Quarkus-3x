@@ -1,0 +1,258 @@
+{
+    "order": 1,
+    "name": "ApiGate",
+    "title": "Gate",
+    "crud": {
+        "name": "net.ideahut.quarkus.api.entity.ApiGate"
+    },
+    "id": {
+        "type": "STANDARD",
+        "fields": [
+            "gateId"
+        ]
+    },
+    "table": {
+        "separator": "cell",
+        "selection": "single",
+        "page": {
+            "options": [5, 10, 15, 20, 25, 30, 50],
+            "default": 20,
+            "count": false
+        },
+        "order": {
+            "field": "createdOn",
+            "descending": true
+        },
+        "filters": [
+            {
+                "name": "gateId",
+                "label": "ID",
+                "type": "text",
+                "condition": "ANY_LIKE"
+            },
+            {
+                "name": "name",
+                "label": "Name",
+                "type": "text",
+                "condition": "ANY_LIKE"
+            },
+            {
+                "name": "className",
+                "label": "Class",
+                "type": "text",
+                "condition": "ANY_LIKE"
+            },
+            {
+                "name": "description",
+                "label": "Description",
+                "type": "text",
+                "condition": "ANY_LIKE"
+            }
+        ],
+        "visibles": [
+            "name",
+            "className",
+            "description",
+            "updatedOn",
+            "createdOn"
+        ],
+        "columns": [
+            {
+                "name": "name",
+                "label": "Name",
+                "field": "name",
+                "align": "left",
+                "sortable": true
+            },
+            {
+                "name": "className",
+                "label": "Class",
+                "field": "className",
+                "align": "left",
+                "sortable": true
+            },
+            {
+                "name": "description",
+                "label": "Description",
+                "field": "description",
+                "align": "left",
+                "sortable": true
+            },
+            {
+                "name": "updatedOn",
+                "label": "UpdatedOn",
+                "field": "updatedOn",
+                "align": "center",
+                "sortable": true,
+                "format": "function(val, row) { return $h.grid.date(val, row); }"
+            },
+            {
+                "name": "createdOn",
+                "label": "CreatedOn",
+                "field": "createdOn",
+                "align": "center",
+                "sortable": true,
+                "format": "function(val, row) { return $h.grid.date(val, row); }"
+            }
+        ]
+    },
+    "fields": [
+        {
+            "name": "name",
+            "label": "Name",
+            "type": "text",
+            "nullable": false,
+            "insertable": true,
+            "editable": true,
+            "validations": [
+                "required",
+                "maxlength:128"
+            ]
+        },
+        {
+            "name": "className",
+            "label": "Class",
+            "type": "words",
+            "nullable": false,
+            "insertable": true,
+            "editable": true,
+            "validations": [
+                "required",
+                "maxlength:255"
+            ]
+        },
+        {
+            "name": "description",
+            "label": "Description",
+            "type": "words",
+            "nullable": true,
+            "insertable": true,
+            "editable": true,
+            "validations": [
+                "maxlength:255"
+            ]
+        }
+    ],
+    "children": [
+        {
+            "title": "Parameter",
+            "crud": {
+                "name": "net.ideahut.quarkus.api.entity.ApiGateParam"
+            },
+            "id": {
+                "type": "COMPOSITE",
+                "fields": [
+                    "gateId",
+                    "paramName"
+                ]
+            },
+            "relations": [
+                {
+                    "source": "gateId",
+                    "target": "gateId"
+                }
+            ],
+            "labels": [
+                {
+                    "title": "Name",
+                    "value": "name"
+                },
+                {
+                    "title": "Class",
+                    "value": "className"
+                }
+            ],
+            "table": {
+                "separator": "cell",
+                "selection": "single",
+                "page": {
+                    "options": [5, 10, 15, 20, 25, 30, 50],
+                    "default": 20,
+                    "count": false
+                },
+                "order": {
+                    "field": "createdOn",
+                    "descending": true
+                },
+                "filters": [
+                    {
+                        "name": "paramName",
+                        "label": "ParamName",
+                        "type": "text",
+                        "condition": "ANY_LIKE"
+                    },
+                    {
+                        "name": "description",
+                        "label": "Description",
+                        "type": "text",
+                        "condition": "ANY_LIKE"
+                    }
+                ],
+                "visibles": [
+                    "paramName",
+                    "description",
+                    "updatedOn",
+                    "createdOn"
+                ],
+                "columns": [
+                    {
+                        "name": "paramName",
+                        "label": "ParamName",
+                        "field": "paramName",
+                        "align": "left",
+                        "sortable": true
+                    },
+                    {
+                        "name": "description",
+                        "label": "Description",
+                        "field": "description",
+                        "align": "left",
+                        "sortable": true
+                    },
+                    {
+                        "name": "updatedOn",
+                        "label": "UpdatedOn",
+                        "field": "updatedOn",
+                        "align": "center",
+                        "sortable": true,
+                        "format": "function(val, row) { return $h.grid.date(val, row); }"
+                    },
+                    {
+                        "name": "createdOn",
+                        "label": "CreatedOn",
+                        "field": "createdOn",
+                        "align": "center",
+                        "sortable": true,
+                        "format": "function(val, row) { return $h.grid.date(val, row); }"
+                    }
+                ]
+            },
+            "fields": [
+                {
+                    "name": "paramName",
+                    "label": "ParamName",
+                    "type": "text",
+                    "nullable": false,
+                    "insertable": true,
+                    "editable": false,
+                    "validations": [
+                        "required",
+                        "maxlength:128"
+                    ]
+                },
+                {
+                    "name": "description",
+                    "label": "Description",
+                    "type": "words",
+                    "nullable": true,
+                    "insertable": true,
+                    "editable": true
+                }
+            ]
+        }
+    ],
+    "additionals": [
+        "MONTHS",
+        "DAYS"
+    ]
+}

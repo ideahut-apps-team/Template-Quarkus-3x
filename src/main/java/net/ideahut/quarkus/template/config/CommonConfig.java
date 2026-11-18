@@ -2,7 +2,6 @@ package net.ideahut.quarkus.template.config;
 
 import io.quarkus.arc.DefaultBean;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Singleton;
 import net.ideahut.quarkus.collector.RequestInfoCollector;
 import net.ideahut.quarkus.collector.RequestInfoCollectorImpl;
 import net.ideahut.quarkus.definition.ForeignKeyDefinition;
@@ -127,7 +126,7 @@ class CommonConfig {
 	/*
 	 * REQUEST INFO COLLECTOR
 	 */
-	@Singleton
+	@ApplicationScoped
 	@DefaultBean
 	RequestInfoCollector requestInfoCollector(
 		AppProperties appProperties,
@@ -137,7 +136,7 @@ class CommonConfig {
 		.setDataMapper(dataMapper);
 		appProperties.request().ifPresent(definition -> {
 			Integer loaderType = definition.loader().orElse(null);
-			ClassLoader classLoader = ObjectHelper.callIf(loaderType != null, () -> ObjectHelper.getClassLoader(loaderType));
+			ClassLoader classLoader = loaderType != null ? ObjectHelper.getClassLoader(loaderType) : null;
 			ClassScannerInput classScannerInput = new ClassScannerInput();
 			classScannerInput.setClassLoader(classLoader);
 			definition.packages().ifPresent(classScannerInput::setPackages);

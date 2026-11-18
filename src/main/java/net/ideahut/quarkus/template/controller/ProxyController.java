@@ -1,7 +1,5 @@
 package net.ideahut.quarkus.template.controller;
 
-import java.util.List;
-
 import jakarta.inject.Inject;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.ws.rs.DELETE;
@@ -11,16 +9,17 @@ import jakarta.ws.rs.PATCH;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.container.ContainerRequestContext;
-import jakarta.ws.rs.container.ContainerResponseContext;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.HttpHeaders;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.ResponseBuilder;
+import net.ideahut.quarkus.annotation.Body;
 import net.ideahut.quarkus.annotation.Public;
 import net.ideahut.quarkus.api.ApiService;
-import net.ideahut.quarkus.api.ApiTokenSysParam;
-import net.ideahut.quarkus.helper.ObjectHelper;
-import net.ideahut.quarkus.helper.StringHelper;
+import net.ideahut.quarkus.api.ApiSource;
 import net.ideahut.quarkus.helper.WebHelper;
 import net.ideahut.quarkus.rest.RestMethod;
 import net.ideahut.quarkus.rest.RestRequest;
@@ -48,13 +47,11 @@ class ProxyController {
 	 */
 	@POST
 	@Path("/token")
-	public void token(
+	public String token(
 		@NotBlank @QueryParam("apiName") String apiName
 	) {
-		String token = apiService.getApiTokenService().retrieveApiToken(apiService, apiName);
-		if (!StringHelper.isEmpty(token) && ObjectHelper.isInstance(ApiTokenSysParam.class, apiService.getApiTokenService())) {
-			((ApiTokenSysParam) apiService.getApiTokenService()).updateSysParamApiToken(apiName, token);
-		}
+		ApiSource apiSource = apiService.getApiSource(apiName);
+		return apiService.getApiSourceGate(apiSource).createApiToken(apiSource);
 	}
 
 	/*
@@ -63,99 +60,99 @@ class ProxyController {
 	 * - semua http method diijinkan
 	 * 
 	 */
-	private byte[] request(
+	private Response request(
 		String apiName,
-		ContainerRequestContext httpRequest,
-		ContainerResponseContext httpResponse
+		String apiPath,
+		ContainerRequestContext httpRequest
 	) {
-		// replace prefix path, dan path sisanya akan diappend ke base url service yang dituju
-		String path = httpRequest
-		.getUriInfo()
-		.getPath()
-		.replace("/proxy/request/" + apiName, "");
-		String apiToken = apiService.getApiTokenService().getSysParamApiToken(apiName);
 		RestRequest restRequest = new RestRequest()
-		.setPath(path)
+		.setPath("/" + apiPath)
 		.setMethod(RestMethod.valueOf(httpRequest.getMethod().toUpperCase()))
 		.setQueryString(WebHelper.getQueryString(httpRequest))
 		.setHeaders(WebHelper.getHeaders(httpRequest));
-		ObjectHelper.callOrElse(
-			!RestMethod.GET.equals(restRequest.getMethod()), 
-			() -> {
-				byte[] requestBody = WebHelper.getBodyAsBytes(httpRequest);
-				return restRequest.setBody(requestBody);
-			}, 
-			() -> restRequest.getHeaders().remove(HttpHeaders.CONTENT_LENGTH)
-		);
-		RestResponse restResponse = apiService.callApiEndpoint(apiName, restRequest, apiToken);
-		httpResponse.setStatus(restResponse.getStatus());
+		if (!RestMethod.GET.equals(restRequest.getMethod())) {
+			byte[] requestBody = WebHelper.getBodyAsBytes(httpRequest);
+			restRequest.setBody(requestBody);
+		} else {
+			restRequest.getHeaders().remove(HttpHeaders.CONTENT_LENGTH);
+		}
+		RestResponse restResponse = apiService.callEndpoint(apiName, restRequest).throwError();
+		ResponseBuilder responseBuilder = Response
+		.status(restResponse.getStatus())
+		.entity(restResponse.getBodyAsByteArray());
 		for (String restHeaderName : restResponse.getHeaderNames()) {
-			List<String> restHeaderValues = restResponse.getHeaderValues(restHeaderName);
-			for (String restHeaderValue : restHeaderValues) {
-				httpResponse.getHeaders().add(restHeaderName, restHeaderValue);
+			String restHeaderValue = restResponse.getHeaderValue(restHeaderName);
+			if (restHeaderValue != null) {
+				responseBuilder.header(restHeaderName, restHeaderValue);
 			}
 		}
-		return restResponse.getBodyAsByteArray();
+		return responseBuilder.build();
 	}
 	
 	@GET
-	@Path("/request")
-	public byte[] requestGET(
-		@NotBlank @QueryParam("apiName") String apiName,
-		@Context ContainerRequestContext httpRequest,
-		@Context ContainerResponseContext httpResponse
+	@Body
+	@Path("/request/{apiName}/{apiPath:.*}")
+	public Response requestGET(
+		@NotBlank @PathParam("apiName") String apiName,
+		@PathParam("apiPath") String apiPath,
+		@Context ContainerRequestContext httpRequest
 	) {
-		return request(apiName, httpRequest, httpResponse);
+		return request(apiName, apiPath, httpRequest);
 	}
 	
 	@POST
-	@Path("/request")
-	public byte[] requestPOST(
-		@NotBlank @QueryParam("apiName") String apiName,
-		@Context ContainerRequestContext httpRequest,
-		@Context ContainerResponseContext httpResponse
+	@Body
+	@Path("/request/{apiName}/{apiPath:.*}")
+	public Response requestPOST(
+		@NotBlank @PathParam("apiName") String apiName,
+		@PathParam("apiPath") String apiPath,
+		@Context ContainerRequestContext httpRequest
 	) {
-		return request(apiName, httpRequest, httpResponse);
+		return request(apiName, apiPath, httpRequest);
 	}
 	
 	@PUT
-	@Path("/request")
-	public byte[] requestPUT(
-		@NotBlank @QueryParam("apiName") String apiName,
-		@Context ContainerRequestContext httpRequest,
-		@Context ContainerResponseContext httpResponse
+	@Body
+	@Path("/request/{apiName}/{apiPath:.*}")
+	public Response requestPUT(
+		@NotBlank @PathParam("apiName") String apiName,
+		@PathParam("apiPath") String apiPath,
+		@Context ContainerRequestContext httpRequest
 	) {
-		return request(apiName, httpRequest, httpResponse);
+		return request(apiName, apiPath, httpRequest);
 	}
 	
 	@DELETE
-	@Path("/request")
-	public byte[] requestDELETE(
-		@NotBlank @QueryParam("apiName") String apiName,
-		@Context ContainerRequestContext httpRequest,
-		@Context ContainerResponseContext httpResponse
+	@Body
+	@Path("/request/{apiName}/{apiPath:.*}")
+	public Response requestDELETE(
+		@NotBlank @PathParam("apiName") String apiName,
+		@PathParam("apiPath") String apiPath,
+		@Context ContainerRequestContext httpRequest
 	) {
-		return request(apiName, httpRequest, httpResponse);
+		return request(apiName, apiPath, httpRequest);
 	}
 	
 	@HEAD
-	@Path("/request")
-	public byte[] requestHEAD(
-		@NotBlank @QueryParam("apiName") String apiName,
-		@Context ContainerRequestContext httpRequest,
-		@Context ContainerResponseContext httpResponse
+	@Body
+	@Path("/request/{apiName}/{apiPath:.*}")
+	public Response requestHEAD(
+		@NotBlank @PathParam("apiName") String apiName,
+		@PathParam("apiPath") String apiPath,
+		@Context ContainerRequestContext httpRequest
 	) {
-		return request(apiName, httpRequest, httpResponse);
+		return request(apiName, apiPath, httpRequest);
 	}
 	
 	@PATCH
-	@Path("/request")
-	public byte[] requestPATCH(
-		@NotBlank @QueryParam("apiName") String apiName,
-		@Context ContainerRequestContext httpRequest,
-		@Context ContainerResponseContext httpResponse
+	@Body
+	@Path("/request/{apiName}/{apiPath:.*}")
+	public Response requestPATCH(
+		@NotBlank @PathParam("apiName") String apiName,
+		@PathParam("apiPath") String apiPath,
+		@Context ContainerRequestContext httpRequest
 	) {
-		return request(apiName, httpRequest, httpResponse);
+		return request(apiName, apiPath, httpRequest);
 	}
 	
 }

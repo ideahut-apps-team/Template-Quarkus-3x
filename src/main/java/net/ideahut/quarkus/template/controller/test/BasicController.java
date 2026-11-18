@@ -1,6 +1,11 @@
 package net.ideahut.quarkus.template.controller.test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Files;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 
 import org.jboss.resteasy.reactive.RestForm;
@@ -10,8 +15,14 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.QueryParam;
+import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.core.HttpHeaders;
+import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.StreamingOutput;
 import lombok.extern.slf4j.Slf4j;
+import net.ideahut.quarkus.annotation.Body;
 import net.ideahut.quarkus.annotation.Public;
 import net.ideahut.quarkus.helper.ErrorHelper;
 import net.ideahut.quarkus.helper.StringHelper;
@@ -44,7 +55,7 @@ class BasicController {
 	@GET
 	@Path("/bytes")
 	public byte[] bytes() {
-		return ("BYTES-" + System.nanoTime()).getBytes();
+		return StringHelper.toBytes("BYTES-" + System.nanoTime());
 	}
 	
 	@GET
@@ -61,31 +72,6 @@ class BasicController {
 		.entity("STRRE-" + System.nanoTime())
 		.build();
 	}
-
-	/**
-	@GET
-	@Path("/send")
-	public void send(
-		HttpServletRequest request,
-		HttpServletResponse response
-	) {
-		//WebMvcHelper.sendResponse(request, response, null, false, "SEND-" + System.nanoTime()); //-
-		WebMvcHelper.sendResponse(request, response, "SEND-" + System.nanoTime()); //-
-		//WebMvcHelper.sendResponse(request, response, null, false, System.nanoTime()); //-
-		//WebMvcHelper.sendResponse(request, response, System.nanoTime()); //-
-		//WebMvcHelper.sendResponse(request, response, new Exception("ERROR-SEND-" + System.nanoTime())); //-
-		
-		/**
-		String hval = System.nanoTime() + "";
-		response.setHeader("xxx1", hval);
-		response.setHeader("xxx2", hval);
-		ResponseEntity<Message> re = ResponseEntity.ok()
-		.header("xxx2", "KEREN", "LAGI")
-		.header("yyyy", "NONE")
-		.body(Message.of("YYY", "VALUE"));
-		WebMvcHelper.sendResponse(request, response, re);
-		*/
-	//} //-
 	
 	@GET
 	@Path("/result")
@@ -99,24 +85,90 @@ class BasicController {
 		return Message.of("MSG", "MESSAGE-{}", System.nanoTime());
 	}
 	
-	/**
+	@Body // <- tambahkan annotation ini agar output dikirim sesuai dengan yang disusun di method ini
 	@GET
-	@Path("/outstream")
-	public void outstream(HttpServletResponse response) {
-		ByteArrayOutputStream out = new ByteArrayOutputStream() {
-			private byte[] bytes = ("Haloooo-" + System.nanoTime()).getBytes();
-			@Override
-			public synchronized void writeTo(OutputStream out) throws IOException {
-				out.write(bytes);
+    @Path("/outstream")
+    public Response outstream() {
+        StreamingOutput body = output -> {
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream() {
+                private final byte[] bytes = StringHelper.toBytes("Haloooo-" + System.nanoTime());
+                @Override
+                public synchronized void writeTo(OutputStream outputStream) throws IOException {
+                	outputStream.write(bytes);
+                }
+            };
+            try {
+            	byteArrayOutputStream.writeTo(output);
+                output.flush();
+            } catch (IOException e) {
+                throw ErrorHelper.exception(e);
+            }
+        };
+        return Response.ok(body).build();
+    }
+	
+	@Body // <- tambahkan annotation ini agar output tidak diubah sesuai dengan format framework
+	@GET
+	@Path("/download")
+	public Response download() {
+		StreamingOutput body = output -> {
+			try {
+				for (int i = 0; i < 10; i++) {
+					
+					// simulasi proses write yang lambat
+					TimeUnit.SECONDS.sleep(1);
+					
+					output.write(StringHelper.toBytes("DATA-" + i + "\n"));
+					output.flush();
+				}
+			} catch (InterruptedException e) {
+				Thread.currentThread().interrupt();
 			}
 		};
-		try {
-			out.writeTo(response.getOutputStream());
-		} catch (IOException e) {
-			throw ErrorHelper.exception(e);
-		}
+		return Response.ok(body)
+		.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + System.nanoTime() + ".txt\"")
+		.header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_OCTET_STREAM)
+		.build();
 	}
-	*/
+	
+	// contoh streaming baca request dan kirim response
+	@Body // <- tambahkan annotation ini agar output tidak diubah sesuai dengan format framework
+	@POST
+	@Path("/streaming")
+	public Response streaming(
+		@QueryParam("buffer") Integer buffer, 
+		@QueryParam("delay") Integer delay,
+		InputStream inputStream // <- diambil dari httpRequest
+	) {
+		StreamingOutput body = output -> {
+			try (inputStream) { // Otomatis menutup inputStream setelah selesai
+				int sleep = (delay != null && delay > 0) ? delay : 100;
+				int bufferSize = (buffer != null && buffer > 0) ? buffer : 16;
+				byte[] bytesBuffer = new byte[bufferSize];
+				long totalBytes = 0;
+				int bytesRead;
+				while ((bytesRead = inputStream.read(bytesBuffer)) != -1) {
+					
+					// simulasi proses write yang lambat
+					TimeUnit.MILLISECONDS.sleep(sleep);
+
+					output.write(bytesBuffer, 0, bytesRead);
+					output.flush();
+					totalBytes += bytesRead;
+				}
+				byte[] endStreaming = StringHelper.toBytes("\n\nTotal Bytes: " + totalBytes);
+				output.write(endStreaming, 0, endStreaming.length);
+				output.flush();
+			} catch (InterruptedException e) {
+				Thread.currentThread().interrupt();
+			} catch (Exception e) {
+				throw new WebApplicationException(e);
+			}
+		};
+		return Response.ok(body)
+		.header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_OCTET_STREAM)
+		.build();
+	}
 	
 	@POST
 	@Path("/multipart")
@@ -127,7 +179,7 @@ class BasicController {
 		Result result = Result.success()
 		.setInfo("name", name);
 		if (file != null) {
-			byte[] bytes = Files.readAllBytes(file.uploadedFile()); // coba baca file
+			byte[] bytes = Files.readAllBytes(file.uploadedFile());
 			result
 			.setInfo("length", file.size())
 			.setInfo("bytes", bytes.length)

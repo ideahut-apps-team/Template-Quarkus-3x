@@ -15,15 +15,7 @@
         "separator": "cell",
         "selection": "single",
         "page": {
-            "options": [
-                5,
-                10,
-                15,
-                20,
-                25,
-                30,
-                50
-            ],
+            "options": [5, 10, 15, 20, 25, 30, 50],
             "default": 20,
             "count": false
         },
@@ -180,15 +172,7 @@
                 "separator": "cell",
                 "selection": "single",
                 "page": {
-                    "options": [
-                        5,
-                        10,
-                        15,
-                        20,
-                        25,
-                        30,
-                        50
-                    ],
+                    "options": [5, 10, 15, 20, 25, 30, 50],
                     "default": 20,
                     "count": false
                 },
@@ -261,15 +245,7 @@
                 "separator": "cell",
                 "selection": "single",
                 "page": {
-                    "options": [
-                        5,
-                        10,
-                        15,
-                        20,
-                        25,
-                        30,
-                        50
-                    ],
+                    "options": [5, 10, 15, 20, 25, 30, 50],
                     "default": 20,
                     "count": false
                 },
@@ -355,15 +331,7 @@
                 "separator": "cell",
                 "selection": "single",
                 "page": {
-                    "options": [
-                        5,
-                        10,
-                        15,
-                        20,
-                        25,
-                        30,
-                        50
-                    ],
+                    "options": [5, 10, 15, 20, 25, 30, 50],
                     "default": 20,
                     "count": false
                 },
@@ -417,7 +385,7 @@
                     {
                         "name": "net.ideahut.quarkus.job.entity.JobGroup",
                         "alias": "JobGroup",
-                        "store": "group",
+                        "store": "jobGroup",
                         "match": "exact",
                         "relations": [
                             {
@@ -429,7 +397,7 @@
                     {
                         "name": "net.ideahut.quarkus.job.entity.JobType",
                         "alias": "JobType",
-                        "store": "type",
+                        "store": "jobType",
                         "match": "exact",
                         "relations": [
                             {
@@ -441,7 +409,7 @@
                     {
                         "name": "net.ideahut.quarkus.job.entity.JobInstance",
                         "alias": "JobInstance",
-                        "store": "instance",
+                        "store": "jobInstance",
                         "match": "contain",
                         "relations": [
                             {
@@ -478,15 +446,7 @@
                 "separator": "cell",
                 "selection": "single",
                 "page": {
-                    "options": [
-                        5,
-                        10,
-                        15,
-                        20,
-                        25,
-                        30,
-                        50
-                    ],
+                    "options": [5, 10, 15, 20, 25, 30, 50],
                     "default": 20,
                     "count": false
                 },
@@ -839,15 +799,7 @@
                         "separator": "cell",
                         "selection": "single",
                         "page": {
-                            "options": [
-                                5,
-                                10,
-                                15,
-                                20,
-                                25,
-                                30,
-                                50
-                            ],
+                            "options": [5, 10, 15, 20, 25, 30, 50],
                             "default": 20,
                             "count": false
                         },

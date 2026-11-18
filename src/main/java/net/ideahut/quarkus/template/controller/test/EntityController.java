@@ -1,5 +1,6 @@
 package net.ideahut.quarkus.template.controller.test;
 
+import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -143,7 +144,7 @@ class EntityController {
 		entity.setId("2026-205167-1817-52019-25200-0001");
 		entity.setName("cfcfcfcf (Edited)");
 		entity.setCondition(Condition.BETWEEN);
-		entity.setDate(LocalDateTime.now());
+		entity.setDate(LocalDateTime.now(Clock.systemDefaultZone()));
 		entity.setIsActive(ObjectHelper.TRUE);
 		return entityTrxManager.getDefaultTrxManagerInfo().transaction(true, (StatelessSession session) -> EntityHelper.update(session, entity));
 	}
@@ -161,7 +162,7 @@ class EntityController {
 			.addFilter(Filter.or("name", Condition.ANY_LIKE, "cob"))
 			.addFilter(Filter.or("name", Condition.ANY_LIKE, "tesxx"))
 		)
-		.addFilter(Filter.and("date", Condition.BETWEEN, "2024-01-01 00:00:00", "2024-01-31 23:59:59"))
+		.addFilter(Filter.and("date", Condition.BETWEEN, "2026-01-01 00:00:00", "2026-12-31 23:59:59"))
 		.addOrder("-createdOn");
 		request.getProperties().setUseNative(useNative);
 		log.info("\n" + FrameworkHelper.defaultDataMapper().writeAsString(request, 0, true));

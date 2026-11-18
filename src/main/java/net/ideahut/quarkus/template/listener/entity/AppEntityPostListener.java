@@ -10,7 +10,6 @@ import net.ideahut.quarkus.api.ApiHandler;
 import net.ideahut.quarkus.audit.AuditHandler;
 import net.ideahut.quarkus.bean.BeanConfigure;
 import net.ideahut.quarkus.entity.EntityPostListener;
-import net.ideahut.quarkus.helper.ObjectHelper;
 import net.ideahut.quarkus.module.ModuleApi;
 import net.ideahut.quarkus.module.ModuleSysParam;
 import net.ideahut.quarkus.sysparam.SysParamHandler;
@@ -58,7 +57,9 @@ class AppEntityPostListener implements EntityPostListener, BeanConfigure {
 		auditHandler.save("INSERT", entity);
 		taskHandler.execute(() -> {
 			EntityPostListener listener = listeners.get(entity.getClass());
-			ObjectHelper.runIf(listener != null, () -> listener.onPostInsert(entity));
+			if (listener != null) {
+				listener.onPostInsert(entity);
+			}
 		});
 	}
 
@@ -67,7 +68,9 @@ class AppEntityPostListener implements EntityPostListener, BeanConfigure {
 		auditHandler.save("UPDATE", entity);
 		taskHandler.execute(() -> {
 			EntityPostListener listener = listeners.get(entity.getClass());
-			ObjectHelper.runIf(listener != null, () -> listener.onPostUpdate(entity));
+			if (listener != null) {
+				listener.onPostUpdate(entity);
+			}
 		});
 	}
 	
@@ -76,7 +79,9 @@ class AppEntityPostListener implements EntityPostListener, BeanConfigure {
 		auditHandler.save("DELETE", entity);
 		taskHandler.execute(() -> {
 			EntityPostListener listener = listeners.get(entity.getClass());
-			ObjectHelper.runIf(listener != null, () -> listener.onPostDelete(entity));
+			if (listener != null) {
+				listener.onPostDelete(entity);
+			}
 		});
 	}
 	

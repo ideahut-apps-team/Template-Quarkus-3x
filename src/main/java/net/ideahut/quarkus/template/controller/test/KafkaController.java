@@ -11,6 +11,7 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.QueryParam;
 import net.ideahut.quarkus.annotation.Public;
+import net.ideahut.quarkus.helper.StringHelper;
 import net.ideahut.quarkus.helper.ThreadHelper;
 import net.ideahut.quarkus.kafka.KafkaHandler;
 import net.ideahut.quarkus.kafka.KafkaSender;
@@ -81,7 +82,7 @@ class KafkaController {
 	) {
 		KafkaSender<String, byte[]> bytesSender = kafkaHandler.getStaticSender("SAMPLE.BYTES");
 		for (int i = 0; i < total; i++) {
-			bytesSender.send((text + "::BYTES::" + System.nanoTime()).getBytes());
+			bytesSender.send(StringHelper.toBytes(text + "::BYTES::" + System.nanoTime()));
 		}
 		return Result.success();
 	}

@@ -153,15 +153,16 @@ config:
             corePoolSize: 8
             maxPoolSize: 100
             waitForJobsToCompleteOnShutdown: true
+            #alwaysUsePool: true
 
     #
     # REDIS
     #
     redis:
         primary:
-            connectionString: "redis://<HOST>:<PORT>/0"
+            connectionString: "redis://127.0.0.1:6379/0"
         access:
-            connectionString: "redis://<HOST>:<PORT>/1"
+            connectionString: "redis://127.0.0.1:6379/1"
                 
     #
     # ADMIN
@@ -169,8 +170,9 @@ config:
     admin:
         handler:
             configurationFile: 'file:{user.dir}/extras/admin/configuration.yaml'
-            apiPath: /_/api
-            webPath: /_/web
+            apiPath: '/_/api'
+            webPath: '/_/web'
+            webIndex: 'index.html'
             webLocation: 'file:{user.dir}/extras/admin/web/'
             webEnabled: true
             storageKeyParam:
@@ -183,7 +185,7 @@ config:
             
             # LocalMemoryCredential
             checkInterval:
-                unit: SECONDS
+                timeUnit: SECONDS
                 value: 30
 
             # RedisMemoryCredential
@@ -215,37 +217,47 @@ config:
                 prefix: API-HANDLER
                 appIdEnabled: true
                 encryptEnabled: true
+            defaultRestTimeout:
+                timeUnit: SECONDS
+                connect: 10
+                read: 60
+                #call:
+                #write:
+            #apiTokenSysParamClass:
+            #defaultApiTokenStorageClass:
+            #defaultRestClientCreatorClass:
         service:
             apiName: TEMPLATE-QUARKUS-3X
+            debug: true
+            throwApiAccessError: true
             cacheExpiry:
                 timeUnit: MINUTES
                 accessNull: 2
-                accessObject: 5
-                consumerNull: 2
-                consumerObject: 10
+                accessExist: 5
+                tokenNull: 2
+                tokenExist: 10
             cacheKeyParam:
                 prefix: API-SERVICE
                 appIdEnabled: true
                 encryptEnabled: true
-        token:
-            consumerTokenStorageIndex: 1
-            useApiTokenInProcessor: true
-            processorJwtParam:
+        support:
+            apiSourceGateTokenStorageIndex: 1
+            apiSourceGateTimeSpan:
+                timeUnit: SECONDS
+                lower: 60
+                upper: 60
+            apiRoleGateJwtParam:
                 secret: 77ea06ac-808b-4399-895c-a546b033d533
                 digest: SHA-256
                 expiry:
-                    unit: MINUTES
+                    timeUnit: MINUTES
                     value: 60
-            consumerJwtParam:
+            apiConsumerJwtParam:
                 secret: df7c7d71-ec05-4ad4-9b36-1580b1a6590f
                 digest: SHA-256
                 expiry:
-                    unit: HOURS
+                    timeUnit: HOURS
                     value: 24
-            ## toleransi waktu atas/bawah timestamp
-            signatureTimeSpan:
-                unit: SECONDS
-                value: 60
     
     #
     # REST
@@ -280,7 +292,7 @@ config:
         
         # local memory
         expiryCheckInterval:
-            unit: SECONDS
+            timeUnit: SECONDS
             value: 5
             
         # redis
@@ -292,16 +304,16 @@ config:
         groups:
             -
                 name: GROUP-01
-                limit: 20
+                limit: 100
                 expiry:
-                    unit: SECONDS
+                    timeUnit: SECONDS
                     value: 3600
                 nullable: true
             -
                 name: GROUP-02
                 limit: -1
                 expiry:
-                    unit: SECONDS
+                    timeUnit: SECONDS
                     value: 0
                 nullable: false
 
@@ -322,8 +334,8 @@ config:
     mail:
         host: 'smtp.gmail.com'
         port: 587
-        username: '<USERNAME>'
-        password: '<PASSWORD>'
+        username: 'socrates.apps.team@gmail.com'
+        password: 'csbyvmyazduwlamw'
         properties:
             mail.smtp.host: smtp.gmail.com
             mail.smtp.ssl.trust: smtp.gmail.com
@@ -357,17 +369,17 @@ config:
                 type: HIKARI
                 hikari:
                     connectionTimeout:
-                        unit: SECONDS
+                        timeUnit: SECONDS
                         value: 15
                     minimumIdle: 10
                     maximumPoolSize: 10
                     idleTimeout:
-                        unit: SECONDS
+                        timeUnit: SECONDS
                         value: 600
                     maxLifetime:
-                        unit: SECONDS
+                        timeUnit: SECONDS
                         value: 1800
-                    poolName: PrimaryMain
+                    poolName: 'PrimaryMainPool'
                     enableVirtualThread: true
                 agroal:
                     initialSize: 10
@@ -378,9 +390,9 @@ config:
                     initialSize: 10
                     maxIdle: 10
                     maxTotal: 10
-                    jmxName: PrimaryMain
+                    jmxName: 'PrimaryMainDataSource'
                 basic:
-                    #jndiName: TemplateQuarkusJNDI
+                    #jndiName: 'TemplateQuarkusJNDI'
             settings:
                 hibernate:
                     hbm2ddl:
@@ -465,7 +477,7 @@ config:
                 datasource:
                     type: HIKARI
                     hikari:
-                        poolName: PrimaryAudit
+                        poolName: 'PrimaryAuditPool'
                         enableVirtualThread: true
                 settings:
                     hibernate:
@@ -477,17 +489,17 @@ config:
                 type: HIKARI
                 hikari:
                     connectionTimeout:
-                        unit: SECONDS
+                        timeUnit: SECONDS
                         value: 15
                     minimumIdle: 10
                     maximumPoolSize: 10
                     idleTimeout:
-                        unit: SECONDS
+                        timeUnit: SECONDS
                         value: 600
                     maxLifetime:
-                        unit: SECONDS
+                        timeUnit: SECONDS
                         value: 1800
-                    poolName: SecondaryMain
+                    poolName: 'SecondaryMainPool'
                     enableVirtualThread: true
             settings:
                 hibernate:
@@ -504,7 +516,7 @@ config:
                 datasource:
                     type: HIKARI
                     hikari:
-                        poolName: SecondaryAudit
+                        poolName: 'SecondaryAuditPool'
                         enableVirtualThread: true
                 settings:
                     hibernate:

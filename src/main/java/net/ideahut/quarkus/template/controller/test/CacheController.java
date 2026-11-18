@@ -1,7 +1,6 @@
 package net.ideahut.quarkus.template.controller.test;
 
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -20,7 +19,6 @@ import jakarta.ws.rs.container.ContainerRequestContext;
 import jakarta.ws.rs.core.Context;
 import lombok.extern.slf4j.Slf4j;
 import net.ideahut.quarkus.annotation.Public;
-import net.ideahut.quarkus.bean.BeanConfigure;
 import net.ideahut.quarkus.cache.CacheGroupHandler;
 import net.ideahut.quarkus.cache.CacheGroupProperties;
 import net.ideahut.quarkus.cache.CacheHandler;
@@ -30,6 +28,7 @@ import net.ideahut.quarkus.helper.StringHelper;
 import net.ideahut.quarkus.helper.TimeHelper;
 import net.ideahut.quarkus.helper.WebHelper;
 import net.ideahut.quarkus.mapper.DataMapper;
+import net.ideahut.quarkus.object.ListObject;
 import net.ideahut.quarkus.object.Result;
 import net.ideahut.quarkus.task.TaskListExecutor;
 import net.ideahut.quarkus.template.app.AppProperties;
@@ -41,7 +40,7 @@ import net.ideahut.quarkus.template.object.CacheData;
 @Slf4j
 @Public
 @Path("/test/cache")
-class CacheController implements BeanConfigure {
+class CacheController {
 	
 	private static final String GROUP = "group";
 	private static final String KEY = "key";
@@ -66,19 +65,13 @@ class CacheController implements BeanConfigure {
 		this.cacheSingleHandler = cacheSingleHandler;
 	}
 	
-	private List<CacheGroupProperties> groups = Collections.emptyList();
-	
-	@Override
-	public void onConfigureBean() throws Exception {
-		groups = CacheGroupDefinition.convert(appProperties.cache().orElseThrow().groups().orElseThrow());
-	}
-	
 	@GET
 	@Path("/groups")
 	public ArrayNode groups() {
 		ArrayNode items = dataMapper.createArrayNode();
+		List<CacheGroupProperties> groups = CacheGroupDefinition.convert(appProperties.cache().orElseThrow().groups().orElseThrow());
 		for (CacheGroupProperties group : groups) {
-			if (0 != group.getLimit()) {
+			if (group.getLimit() > 0) {
 				Long size = cacheGroupHandler.size(group.getName());
 				ObjectNode item = items.addObject();
 				item.put("name", group.getName());
@@ -126,10 +119,14 @@ class CacheController implements BeanConfigure {
 	@GET
 	@Path("/keys")
 	public Result keys(
-		@QueryParam(GROUP) String inGroup
+		@QueryParam(GROUP) String inGroup,
+		@QueryParam("start") Long start,
+		@QueryParam("end") Long end
 	) {
 		String group = getCacheGroup(inGroup);
-		List<String> keys = cacheGroupHandler.keys(group);
+		start = ObjectHelper.useOrElse(start != null && start > 0, start, 0L);
+		end = end != null && end > 0 ? end : cacheGroupHandler.size(group);
+		List<String> keys = cacheGroupHandler.keys(group, start, end);
 		return Result.success(keys)
 		.setInfo(GROUP, group);
 	}
@@ -164,17 +161,17 @@ class CacheController implements BeanConfigure {
 		@QueryParam(GROUP) String group, 
 		@NotBlank @QueryParam(KEY) String key
 	) {
-		return ObjectHelper.callOrElse(
-			!StringHelper.isBlank(group),
-			() -> cacheGroupHandler.get(CacheData.class, group, key, () -> {
+		if (!StringHelper.isBlank(group)) {
+			return cacheGroupHandler.get(CacheData.class, group, key, () -> {
 				log.info("--- Group-Callable, group: {}, key: {}", group, key);
 				return createCacheData(group, key);
-			}), 
-			() -> cacheSingleHandler.get(CacheData.class, key, () -> {
+			});
+		} else {
+			return cacheSingleHandler.get(CacheData.class, key, () -> {
 				log.info("--- Single-Callable, key: {}", key);
 				return createCacheData(group, key);
-			})
-		);
+			});
+		}
 	}
 	
 	@GET
@@ -184,11 +181,10 @@ class CacheController implements BeanConfigure {
 		@Context ContainerRequestContext httpRequest
 	) {
 		List<String> keys = WebHelper.getParameters(httpRequest, KEY);
-		return ObjectHelper.callOrElse(
-			!StringHelper.isBlank(group),
-			() -> cacheGroupHandler.multiList(CacheData.class, group, keys), 
-			() -> cacheSingleHandler.multiList(CacheData.class, keys)
-		);
+		return 
+		!StringHelper.isBlank(group) ?
+		cacheGroupHandler.multiList(CacheData.class, group, keys) : 
+		cacheSingleHandler.multiList(CacheData.class, keys);
 	}
 	
 	@GET
@@ -198,11 +194,10 @@ class CacheController implements BeanConfigure {
 		@Context ContainerRequestContext httpRequest
 	) {
 		List<String> keys = WebHelper.getParameters(httpRequest, KEY);
-		return ObjectHelper.callOrElse(
-			!StringHelper.isBlank(group),
-			() -> cacheGroupHandler.multiMap(CacheData.class, group, keys), 
-			() -> cacheSingleHandler.multiMap(CacheData.class, keys)
-		);
+		return 
+		!StringHelper.isBlank(group) ?
+		cacheGroupHandler.multiMap(CacheData.class, group, keys) : 
+		cacheSingleHandler.multiMap(CacheData.class, keys);
 	}
 	
 	/*
@@ -211,39 +206,41 @@ class CacheController implements BeanConfigure {
 	 */
 	@GET
 	@Path("/concurrent")
-	public List<Object> concurrent(
+	public ListObject concurrent(
 		@QueryParam(GROUP) String group,
-		@QueryParam("concurrency") Integer concurrency
+		@QueryParam("concurrency") Integer concurrency,
+		@QueryParam("disableVirtualThread") Boolean disableVirtualThread
 	) {
 		String key = UUID.randomUUID().toString();
-		int threads = ObjectHelper.useOrElse(concurrency != null && concurrency > 0, concurrency, 100);
-		TaskListExecutor executor = TaskListExecutor.of(threads);
+		long sleep = 4; // detik
+		int threads = concurrency != null && concurrency > 0 ? concurrency : 100;
+		TaskListExecutor executor = TaskListExecutor.of(Boolean.TRUE.equals(disableVirtualThread), threads, true);
 		for (int i = 0; i < threads; i++) {
 			int fi = i;
-			executor.add(() -> getCacheData(fi, group, key));
+			executor.add(() -> getCacheData(fi, group, key, sleep));
 		}
 		return executor.getObjects();
 	}
 	
 	
 	private String getCacheGroup(String inGroup) {
-		return ObjectHelper.callOrElse(!StringHelper.isBlank(inGroup), () -> inGroup, () -> DEFAULT_GROUP);
+		return !StringHelper.isBlank(inGroup) ? inGroup : DEFAULT_GROUP;
 	}
 	
-	private CacheData getCacheData(int index, String group, String key) {
-		return ObjectHelper.callOrElse(
-			!StringHelper.isBlank(group),
-			() -> cacheGroupHandler.get(CacheData.class, group, key, () -> {
-				TimeUnit.SECONDS.sleep(2);
+	private CacheData getCacheData(int index, String group, String key, long sleep) {
+		if (!StringHelper.isBlank(group)) {
+			return cacheGroupHandler.get(CacheData.class, group, key, () -> {
+				TimeUnit.SECONDS.sleep(sleep);
 				log.info("--- Group-Concurrent, group: {}, key: {}, index: {}", group, key, index);
 				return createCacheData(group, key);
-			}), 
-			() -> cacheSingleHandler.get(CacheData.class, key, () -> {
-				TimeUnit.SECONDS.sleep(2);
+			});
+		} else {
+			return cacheSingleHandler.get(CacheData.class, key, () -> {
+				TimeUnit.SECONDS.sleep(sleep);
 				log.info("--- Single-Concurrent: key: {}, index: {}", key, index);
 				return createCacheData(group, key);
-			})
-		);
+			});
+		}
 	}
 	
 	private CacheData createCacheData(String group, String key) {

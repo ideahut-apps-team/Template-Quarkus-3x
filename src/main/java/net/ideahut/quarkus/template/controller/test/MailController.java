@@ -45,9 +45,9 @@ class MailController {
 		@RestForm("bcc") List<String> bcc,
 		@RestForm("subject") String subject,
 		@RestForm("content") String content,
-		@RestForm("attachment") FileUpload attachment	
-	) {
-		MailObject mail = createMail(from, to, cc, bcc, subject, content, attachment);
+		@RestForm("attachment") FileUpload file	
+	) throws Exception {
+		MailObject mail = createMail(from, to, cc, bcc, subject, content, file);
 		mailHandler.send(mail, false);
 		return Result.success("sync");
 	}
@@ -61,9 +61,9 @@ class MailController {
 		@RestForm("bcc") List<String> bcc,
 		@RestForm("subject") String subject,
 		@RestForm("content") String content,
-		@RestForm("attachment") FileUpload attachment
-	) {
-		MailObject mail = createMail(from, to, cc, bcc, subject, content, attachment);
+		@RestForm("attachment") FileUpload file
+	) throws Exception {
+		MailObject mail = createMail(from, to, cc, bcc, subject, content, file);
 		mailHandler.send(mail, true);
 		return Result.success("async");
 	}
@@ -86,54 +86,47 @@ class MailController {
 		List<String> bcc,
 		String subject,
 		String content,
-		FileUpload attachment
-	) {
+		FileUpload file
+	) throws Exception {
 		MailObject mail = new MailObject();
 		mail.setSubject(ObjectHelper.useOrElse(!StringHelper.isBlank(subject), subject, "Test-Mail"));
 		mail.setHtmlText(ObjectHelper.useOrElse(!StringHelper.isBlank(content), content, "Ini adalah contoh email"));
-		ObjectHelper.callIf(!StringHelper.isBlank(from), () -> mail.setFrom(toInternetAddress(from, from)));
-		ObjectHelper.callIf(
-			to != null && !to.isEmpty(), 
-			() -> {
-				List<InternetAddress> lto = to.stream()
-				.filter(email -> !StringHelper.isBlank(email))
-				.map(email -> toInternetAddress(email, email))
-				.toList();
-				return mail.setTo(lto.toArray(new InternetAddress[0]));
-			}
-		);
-		ObjectHelper.callIf(
-			cc != null && !cc.isEmpty(), 
-			() -> {
-				List<InternetAddress> lcc = cc.stream()
-				.filter(email -> !StringHelper.isBlank(email))
-				.map(email -> toInternetAddress(email, email))
-				.toList();
-				return mail.setCc(lcc.toArray(new InternetAddress[0]));
-			}
-		);
-		ObjectHelper.callIf(
-			bcc != null && !bcc.isEmpty(), 
-			() -> {
-				List<InternetAddress> lbcc = bcc.stream()
-				.filter(email -> !StringHelper.isBlank(email))
-				.map(email -> toInternetAddress(email, email))
-				.toList();
-				return mail.setBcc(lbcc.toArray(new InternetAddress[0]));
-			}
-		);
-		ObjectHelper.callIf(
-			attachment != null, 
-			() -> {
-				java.nio.file.Path path = attachment.uploadedFile();
-				byte[] bytes = Files.readAllBytes(path);
-				Files.deleteIfExists(path); // delete attachment from storage
-				Attachment eattach = Attachment.of("Attachment", bytes, attachment.contentType());
-				return mail
-				.setMultipart(true)
-				.setAttachment(eattach);
-			}
-		);
+		if (!StringHelper.isBlank(from)) {
+			mail.setFrom(toInternetAddress(from, from));
+		}
+		if (to != null && !to.isEmpty()) {
+			List<InternetAddress> lto = to
+			.stream()
+			.filter(email -> !StringHelper.isBlank(email))
+			.map(email -> toInternetAddress(email, email))
+			.toList();
+			mail.setTo(lto.toArray(new InternetAddress[0]));
+		}
+		if (cc != null && !cc.isEmpty()) {
+			List<InternetAddress> lcc = cc
+			.stream()
+			.filter(email -> !StringHelper.isBlank(email))
+			.map(email -> toInternetAddress(email, email))
+			.toList();
+			mail.setCc(lcc.toArray(new InternetAddress[0]));
+		}
+		if (bcc != null && !bcc.isEmpty()) {
+			List<InternetAddress> lbcc = bcc
+			.stream()
+			.filter(email -> !StringHelper.isBlank(email))
+			.map(email -> toInternetAddress(email, email))
+			.toList();
+			mail.setBcc(lbcc.toArray(new InternetAddress[0]));
+		}
+		if (file != null) {
+			java.nio.file.Path path = file.uploadedFile();
+			byte[] bytes = Files.readAllBytes(path);
+			Files.deleteIfExists(path); // delete attachment from storage
+			Attachment attachment = Attachment.of("Attachment", bytes, file.contentType());
+			 mail
+	        .setMultipart(true)
+	        .setAttachment(attachment);
+		}
 		return mail;
 	}
 	

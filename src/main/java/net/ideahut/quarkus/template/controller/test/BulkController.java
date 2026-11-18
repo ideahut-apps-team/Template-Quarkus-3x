@@ -22,7 +22,7 @@ import net.ideahut.quarkus.crud.Relation;
 import net.ideahut.quarkus.entity.EntityInfo;
 import net.ideahut.quarkus.entity.TrxManagerInfo;
 import net.ideahut.quarkus.helper.ObjectHelper;
-import net.ideahut.quarkus.object.MapStringObject;
+import net.ideahut.quarkus.object.MapObject;
 import net.ideahut.quarkus.object.Page;
 import net.ideahut.quarkus.object.Result;
 import net.ideahut.quarkus.template.entity.AutoGenStrIdHardDel;
@@ -48,7 +48,7 @@ class BulkController {
 	) {
 		this.crudHandler = crudHandler;
 	}
-	
+
 	@GET
 	@Path("/list")
 	public List<Result> list(
@@ -64,7 +64,7 @@ class BulkController {
 		BulkList list = new BulkList()
 		.setUseNative(useNative)
 		.setStateless(!Boolean.FALSE.equals(stateless))
-		.setTrxManagerInfo(ObjectHelper.callIf(Boolean.TRUE.equals(oneSession), () -> trxManagerInfo));
+		.setTrxManagerInfo(Boolean.TRUE.equals(oneSession) ? trxManagerInfo : null);
 		
 		CompositeHardDel compositeHardDel = new CompositeHardDel(1, "A");
 		compositeHardDel.setName("COBA");
@@ -88,9 +88,9 @@ class BulkController {
 			.setAfter(0)
 			.addValue(
 				CrudRequest.value(longIdJoinComposite)
-				.setValue("composite", new MapStringObject()
-					.setValue("type", "{[0].type}")
-					.setValue("code", "{[0].code}")
+				.assign("composite", new MapObject()
+					.assign("type", "{[0].type}")
+					.assign("code", "{[0].code}")
 				)
 			)
 		);
@@ -118,7 +118,7 @@ class BulkController {
 				.addFilter(Filter.or("name", Condition.ANY_LIKE, "cobxx"))
 				.addFilter(Filter.or("name", Condition.ANY_LIKE, "tesxx"))
 			)
-			.addFilter(Filter.and("date", Condition.BETWEEN, "2024-01-01 00:00:00", "2024-01-31 23:59:59"))
+			.addFilter(Filter.and("date", Condition.BETWEEN, "2026-01-01 00:00:00", "2026-12-31 23:59:59"))
 			.addOrder("-createdOn")
 		);
 		
@@ -139,7 +139,7 @@ class BulkController {
 		BulkMap map = new BulkMap()
 		.setUseNative(useNative)
 		.setStateless(!Boolean.FALSE.equals(stateless))
-		.setTrxManagerInfo(ObjectHelper.callIf(Boolean.TRUE.equals(oneSession), () -> trxManagerInfo));
+		.setTrxManagerInfo(Boolean.TRUE.equals(oneSession) ? trxManagerInfo : null);
 		
 		EmbeddedHardDel embeddedHardDel = new EmbeddedHardDel(new EmbededId(1, "A"));
 		embeddedHardDel.setName("COBA");
@@ -166,10 +166,10 @@ class BulkController {
 			.setAfter("EmbeddedHardDel-Save")
 			.addValue(
 				CrudRequest.value(longIdJoinEmbedded)
-				.setValue("embedded", new MapStringObject()
-					.setValue("id", new MapStringObject()
-						.setValue("type", "{[EmbeddedHardDel-Save].id.type}")
-						.setValue("code", "{[EmbeddedHardDel-Save].id.code}")
+				.assign("embedded", new MapObject()
+					.assign("id", new MapObject()
+						.assign("type", "{[EmbeddedHardDel-Save].id.type}")
+						.assign("code", "{[EmbeddedHardDel-Save].id.code}")
 					)
 				)
 			)
@@ -220,7 +220,7 @@ class BulkController {
 		BulkList list = new BulkList()
 		.setUseNative(useNative)
 		.setStateless(!Boolean.FALSE.equals(stateless))
-		.setTrxManagerInfo(ObjectHelper.callIf(Boolean.TRUE.equals(oneSession), () -> trxManagerInfo))
+		.setTrxManagerInfo(Boolean.TRUE.equals(oneSession) ? trxManagerInfo : null)
 		
 		.addRequest(
 			BulkRequest.list(eiCompositeHardDel)

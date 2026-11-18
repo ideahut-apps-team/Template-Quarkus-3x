@@ -1,8 +1,18 @@
-order: 3
+order: 4
 name: ApiProvider
-title: Provider
+title: Source
 crud:
     name: net.ideahut.quarkus.api.entity.ApiProvider
+    joins:
+        -
+            name: net.ideahut.quarkus.api.entity.ApiGate
+            alias: ApiGate
+            store: apiGate
+            match: contain
+            relations:
+                -
+                    source: gateId
+                    target: gateId
 id:
     type: STANDARD
     fields:
@@ -24,8 +34,25 @@ table:
             type: text
             condition: ANY_LIKE
         -
+            name: ApiGate.name
+            label: Gate
+            type: text
+            condition: ANY_LIKE
+        -
             name: isActive
             label: Active
+            type: option
+            option: YES_NO
+            condition: EQUAL
+        -
+            name: isCheckHost
+            label: Check Host
+            type: option
+            option: YES_NO
+            condition: EQUAL
+        -
+            name: isCheckTime
+            label: Check Time
             type: option
             option: YES_NO
             condition: EQUAL
@@ -42,11 +69,21 @@ table:
             condition: ANY_LIKE
     visibles:
         - apiName
+        - ApiGate.name
         - isActive
         - digest
+        - isCheckHost
         - baseUrl
-        - accessUrl
-        - tokenUrl
+        - accessEndpoint
+        - connectTimeout
+        - readTimeout
+        - isCheckTime
+        - lowerTimeSpan
+        - upperTimeSpan
+        - accessNullExpiry
+        - accessExistExpiry
+        - tokenNullExpiry
+        - tokenExistExpiry
         - updatedOn
         - createdOn
     columns:
@@ -56,6 +93,14 @@ table:
             field: apiName
             align: left
             sortable: true
+        -
+            name: ApiGate.name
+            label: Gate
+            field: apiGate
+            align: left
+            sortable: true
+            format: >-
+                function(val, row) { return $h.grid.field(val, 'name'); }
         -
             name: isActive
             label: Active
@@ -79,22 +124,80 @@ table:
             align: left
             sortable: true
         -
+            name: isCheckHost
+            label: Check Host
+            field: isCheckHost
+            align: center
+            sortable: true
+            format: >-
+                function(val, row) { return $h.grid.option(val, row, 'YES_NO'); }
+        -
             name: baseUrl
-            label: BaseUrl
+            label: Base Url
             field: baseUrl
             align: left
             sortable: true
         -
-            name: accessUrl
-            label: AccessUrl
-            field: accessUrl
+            name: accessEndpoint
+            label: Access Endpoint
+            field: accessEndpoint
             align: left
             sortable: true
         -
-            name: tokenUrl
-            label: TokenUrl
-            field: tokenUrl
-            align: left
+            name: connectTimeout
+            label: Connect Timeout (Seconds)
+            field: connectTimeout
+            align: right
+            sortable: true
+        -
+            name: readTimeout
+            label: Read Timeout (Seconds)
+            field: readTimeout
+            align: right
+            sortable: true
+        -
+            name: isCheckTime
+            label: Check Time
+            field: isCheckTime
+            align: center
+            sortable: true
+            format: >-
+                function(val, row) { return $h.grid.option(val, row, 'YES_NO'); }
+        -
+            name: lowerTimeSpan
+            label: Lower Time Span (Seconds)
+            field: lowerTimeSpan
+            align: right
+            sortable: true
+        -
+            name: upperTimeSpan
+            label: Upper Time Span (Seconds)
+            field: upperTimeSpan
+            align: right
+            sortable: true
+        -
+            name: accessNullExpiry
+            label: Access Null Expiry (Seconds)
+            field: accessNullExpiry
+            align: right
+            sortable: true
+        -
+            name: accessExistExpiry
+            label: Access Exist Expiry (Seconds)
+            field: accessExistExpiry
+            align: right
+            sortable: true
+        -
+            name: tokenNullExpiry
+            label: Token Null Expiry (Seconds)
+            field: tokenNullExpiry
+            align: right
+            sortable: true
+        -
+            name: tokenExistExpiry
+            label: Token Exist Expiry (Seconds)
+            field: tokenExistExpiry
+            align: right
             sortable: true
         -
             name: updatedOn
@@ -123,6 +226,18 @@ fields:
         validations:
             - required
             - 'maxlength:128'
+    -
+        name: gateId
+        label: Gate
+        type: pick
+        nullable: true
+        insertable: true
+        editable: true
+        pick: providerGate
+        format: >-
+            function(val, row) { return $h.grid.field(val?.apiGate || row?.apiGate, 'name'); }
+        toValue: >-
+            function(val) { try { return {'gateId': val.gateId}; } catch(e) { return null; } }
     -
         name: isActive
         label: Active
@@ -154,6 +269,16 @@ fields:
         validations:
             - 'maxlength:255'
     -
+        name: isCheckHost
+        label: Check Host
+        type: option
+        option: YES_NO
+        nullable: true
+        insertable: true
+        editable: true
+        validations:
+            - 'maxlength:1'
+    -
         name: baseUrl
         label: BaseUrl
         type: words
@@ -163,8 +288,8 @@ fields:
         validations:
             - 'maxlength:1024'
     -
-        name: accessUrl
-        label: AccessUrl
+        name: accessEndpoint
+        label: Access Endpoint
         type: words
         nullable: true
         insertable: true
@@ -180,23 +305,96 @@ fields:
         editable: true
         validations:
             - 'maxlength:1024'
+    -
+        name: connectTimeout
+        label: Connect Timeout (Seconds)
+        type: number
+        nullable: true
+        insertable: true
+        editable: true
+    -
+        name: readTimeout
+        label: Read Timeout (Seconds)
+        type: number
+        nullable: true
+        insertable: true
+        editable: true
+    -
+        name: isCheckTime
+        label: Check Time
+        type: option
+        option: YES_NO
+        nullable: true
+        insertable: true
+        editable: true
+        validations:
+            - 'maxlength:1'
+    -
+        name: lowerTimeSpan
+        label: Lower Time Span (Seconds)
+        type: number
+        nullable: true
+        insertable: true
+        editable: true
+    -
+        name: upperTimeSpan
+        label: Upper Time Span (Seconds)
+        type: number
+        nullable: true
+        insertable: true
+        editable: true
+    -
+        name: accessNullExpiry
+        label: Access Null Expiry (Seconds)
+        type: number
+        nullable: true
+        insertable: true
+        editable: true
+    -
+        name: accessExistExpiry
+        label: Access Exist Expiry (Seconds)
+        type: number
+        nullable: true
+        insertable: true
+        editable: true
+    -
+        name: tokenNullExpiry
+        label: Token Null Expiry (Seconds)
+        type: number
+        nullable: true
+        insertable: true
+        editable: true
+    -
+        name: tokenExistExpiry
+        label: Token Exist Expiry (Seconds)
+        type: number
+        nullable: true
+        insertable: true
+        editable: true
 children:
     #
-    # CONFIGURAION
+    # GATE
     #
     -
-        title: Configuration
+        title: Gate
         crud:
-            name: net.ideahut.quarkus.api.entity.ApiProviderConfig
+            name: net.ideahut.quarkus.api.entity.ApiProviderGate
+            joins:
+                -
+                    name: net.ideahut.quarkus.api.entity.ApiGate
+                    alias: ApiGate
+                    store: apiGate
+                    match: contain
+                    relations:
+                        -
+                            source: gateId
+                            target: gateId
         id:
             type: COMPOSITE
             fields:
                 - apiName
-                - configName
+                - gateId
         copy: false
-        action:
-            exclude:
-                - PAGE
         relations:
             -
                 source: apiName
@@ -216,48 +414,150 @@ children:
                 default: 20
                 count: false
             order:
-                field: configName
+                field: ApiGate.name
                 descending: false
             filters:
                 -
-                    name: configName
+                    name: ApiGate.name
                     label: Name
                     type: text
                     condition: ANY_LIKE
             visibles:
-                - configName
-                - configValue
+                - ApiGate.name
+                - ApiGate.description
             columns:
                 -
-                    name: configName
+                    name: ApiGate.name
                     label: Name
-                    field: configName
+                    field: apiGate
                     align: left
                     sortable: true
+                    format: >-
+                        function(val, row) { return $h.grid.field(val, 'name'); }
                 -
-                    name: configValue
-                    label: Value
-                    field: configValue
+                    name: ApiGate.description
+                    label: Description
+                    field: apiGate
                     align: left
                     sortable: true
+                    format: >-
+                        function(val, row) { return $h.grid.field(val, 'description'); }
         fields:
             -
-                name: configName
-                label: Name
-                type: text
+                name: apiGate
+                label: Gate
+                type: pick
+                pick: gate
                 nullable: false
                 insertable: true
                 editable: false
                 validations:
                     - required
-                    - 'maxlength:128'
+                format: >-
+                    function(val, row) { try { let o = val || row; return o.name; } catch(e) { return val; } }
+                toValue: >-
+                    function(val) { try { return {'gateId': val.gateId}; } catch(e) { return null; } }
+        children:
+            #
+            # CONFIGURATION
+            #
             -
-                name: configValue
-                label: Value
-                type: text
-                nullable: true
-                insertable: true
-                editable: true
+                title: Configuration
+                crud:
+                    name: net.ideahut.quarkus.api.entity.ApiProviderGateConfig
+                    joins:
+                        -
+                            name: net.ideahut.quarkus.api.entity.ApiGateParam
+                            alias: ApiGateParam
+                            store: apiGateParam
+                            match: contain
+                            relations:
+                                -
+                                    source: gateId
+                                    target: gateId
+                                -
+                                    source: paramName
+                                    target: paramName
+                id:
+                    type: COMPOSITE
+                    fields:
+                        - apiName
+                        - gateId
+                        - paramName
+                relations:
+                    -
+                        source: apiName
+                        target: apiName
+                    -
+                        source: gateId
+                        target: gateId
+                labels:
+                    -
+                        title: ApiName
+                        value: apiName
+                    -
+                        title: Gate
+                        value: apiGate.name
+                table:
+                    separator: cell
+                    selection: single
+                    page:
+                        options: [5, 10, 15, 20, 25, 30, 50]
+                        default: 20
+                        count: false
+                    order:
+                        field: paramName
+                        descending: false
+                    visibles:
+                        - paramName
+                        - configValue
+                        - ApiGateParam.description
+                    columns:
+                        -
+                            name: paramName
+                            label: Name
+                            field: paramName
+                            align: left
+                            sortable: true
+                        -
+                            name: configValue
+                            label: Value
+                            field: configValue
+                            align: left
+                            sortable: true
+                        -
+                            name: ApiGateParam.description
+                            label: Description
+                            field: apiGateParam
+                            align: left
+                            sortable: true
+                            format: >-
+                                function(val, row) { return $h.grid.field(val, 'description'); }                                       
+                fields:
+                    -
+                        name: paramName
+                        label: Name
+                        type: pick
+                        pick: gateParam
+                        nullable: false
+                        insertable: true
+                        editable: false
+                        validations:
+                            - required
+                            - 'maxlength:128'
+                        format: >-
+                            function(val, row) { try { return $h.isString(val) ? val : val.paramName; } catch(e) { return val; } }
+                        toValue: >-
+                            function(val) { try { return { 'paramName': val.paramName }; } catch(e) { return null; } }
+                    -
+                        name: configValue
+                        label: Value
+                        type: words
+                        nullable: true
+                        insertable: true
+                        editable: true
+                        validations:
+                            - 'maxlength:255'
     #
     # HOST
     #            
@@ -799,10 +1099,190 @@ children:
                     val.produces }; } catch(e) { return null; } }  
 picks:
     #
+    # GATE
+    #
+    gate:
+        title: Gate
+        crud:
+            name: net.ideahut.quarkus.api.entity.ApiGate
+        id:
+            type: STANDARD
+            fields:
+                - gateId
+        table:
+            separator: cell
+            selection: single
+            page:
+                options: [5, 10, 15, 20, 25, 30, 50]
+                default: 20
+                count: false
+            order:
+                field: createdOn
+                descending: true
+            filters:
+                -
+                    name: gateId
+                    label: ID
+                    type: text
+                    condition: ANY_LIKE
+                -
+                    name: name
+                    label: Name
+                    type: text
+                    condition: ANY_LIKE
+                -
+                    name: className
+                    label: Class
+                    type: text
+                    condition: ANY_LIKE
+                -
+                    name: description
+                    label: Description
+                    type: text
+                    condition: ANY_LIKE
+            visibles:
+                - name
+                - className
+                - description
+            columns:
+                -
+                    name: name
+                    label: Name
+                    field: name
+                    align: left
+                    sortable: true
+                -
+                    name: className
+                    label: Class
+                    field: className
+                    align: left
+                    sortable: true
+                -
+                    name: description
+                    label: Description
+                    field: description
+                    align: left
+                    sortable: true
+    #
+    # GATE PARAM
+    #
+    gateParam:
+        title: Parameter
+        crud:
+            name: net.ideahut.quarkus.api.entity.ApiGateParam
+        id:
+            type: STANDARD
+            fields:
+                - gateId
+                - paramName
+        relations:
+            -
+                source: gateId
+                target: gateId
+        table:
+            separator: cell
+            selection: single
+            page:
+                options: [5, 10, 15, 20, 25, 30, 50]
+                default: 20
+                count: false
+            order:
+                field: paramName
+                descending: false
+            filters:
+                -
+                    name: paramName
+                    label: Name
+                    type: text
+                    condition: ANY_LIKE
+            visibles:
+                - paramName
+                - description
+            columns:
+                -
+                    name: paramName
+                    label: Name
+                    field: paramName
+                    align: left
+                    sortable: true
+                -
+                    name: description
+                    label: Description
+                    field: description
+                    align: left
+                    sortable: true
+    #
+    # PROVIDER GATE
+    #
+    providerGate:
+        title: Gate
+        crud:
+            name: net.ideahut.quarkus.api.entity.ApiProviderGate
+            joins:
+                -
+                    name: net.ideahut.quarkus.api.entity.ApiGate
+                    alias: ApiGate
+                    store: apiGate
+                    match: contain
+                    relations:
+                    -
+                        source: gateId
+                        target: gateId
+        id:
+            type: COMPOSITE
+            fields:
+                - apiName
+                - gateId
+        relations:
+            -
+                source: apiName
+                target: apiName
+        table:
+            separator: cell
+            selection: single
+            page:
+                options: [5, 10, 15, 20, 25, 30, 50]
+                default: 20
+                count: false
+            order:
+                field: ApiGate.name
+                descending: false
+            filters:
+                -
+                    name: ApiGate.name
+                    label: Name
+                    type: text
+                    condition: ANY_LIKE
+                -
+                    name: ApiGate.description
+                    label: Description
+                    type: text
+                    condition: ANY_LIKE
+            visibles:
+                - ApiGate.name
+                - ApiGate.description
+            columns:
+                -
+                    name: ApiGate.name
+                    label: Name
+                    field: apiGate
+                    align: left
+                    sortable: true
+                    format: >-
+                        function(val, row) { return $h.grid.field(val, 'name'); }
+                -
+                    name: ApiGate.description
+                    label: Description
+                    field: apiGate
+                    align: left
+                    sortable: true
+                    format: >-
+                        function(val, row) { return $h.grid.field(val, 'description'); }
+    #
     # CRUD
     #
     crud:
-        title: CRUD Resource
+        title: CRUD
         crud:
             name: net.ideahut.quarkus.api.entity.ApiCrud
         id:

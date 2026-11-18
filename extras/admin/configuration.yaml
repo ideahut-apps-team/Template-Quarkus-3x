@@ -4,63 +4,73 @@ showOnlyExecutableRedis: true
 maskingPasswordProperties: true
 
 central:
-   webEndpoint: "https://central.ideahut.net/sync/web"
-   tokenEndpoint: "https://central.ideahut.net/sync/token"
-
+    webEndpoint: "https://raw.githubusercontent.com/ideahut-apps-team/Ideahut-Admin/refs/heads/main/release/admin"
+    tokenEndpoint: "https://central.ideahut.net/sync/token"
+    
 api:
-   timeout: 30
-   debug: true
-
+    timeout: 30
+    debug: true
+    
 web:
-   title: "Template-Quarkus-3x"
-   indexFile: "index.html"
-   alwaysToIndex: true
-   color:
-      ## css color
-      header: ""
-      title: ""
-      primary: ""
-      secondary: ""
-      accent: ""
-      dark: ""
-      positive: ""
-      negative: ""
-      info: ""
-      warning: ""
-   menuTitle:
-      # title berdasarkan menu yang aktif
-      parentMenu: true
-      separator: " &rarr; "
-   allowedPaths:
-      ## path yang diizinkan untuk diakses
-      - "assets"
-      - "icons"
-      - "favicon.ico"
-      - "index.html"
-
+    title: "Template-Quarkus-3x"
+    alwaysToIndex: true
+    color:
+        ## css color
+        header: ""
+        title: ""
+        primary: ""
+        secondary: ""
+        accent: ""
+        dark: ""
+        positive: ""
+        negative: ""
+        info: ""
+        warning: ""
+    menuTitle:
+        # title berdasarkan menu yang aktif
+        parentMenu: true
+        separator: " &rarr; "
+    ## path yang diizinkan untuk diakses   
+    allowedPaths: ["assets", "icons", "favicon.ico", "index.html", "logo.png"]
+    
 grid:
-   enable: true
-   location: "file:{user.dir}/extras/admin/grid/**/*.yaml"
-   definition: "file:{user.dir}/extras/admin/grid/grid.def"
-
+    enable: true
+    location: "file:{user.dir}/extras/admin/grid/**/*.yaml"
+    definition: "file:{user.dir}/extras/admin/grid/grid.def"
+    
 crud:
-   maxLimit: 200
-   useNative: false
-
+    maxLimit: 200
+    useNative: false
+    
 role:
-   definitionFile: "file:{user.dir}/extras/admin/roles.yaml"
-
+    definitionFile: "file:{user.dir}/extras/admin/roles.yaml"
+    
 modules:
-   reload:
-      #title:
-      #enable:
-      #order:
-      #path:
-   cache: null
-   redis: null
-   grid: null
-   audit: null
-   entity: null
-   scheduler: null
-   task: null
-   request: null
+    reload:
+        icon: "cloud_sync"
+    cache:
+        icon: "outbox"
+        #visibles: ["label", "limit"]
+    lister:
+        icon: "list"
+    redis:
+        icon: "storage"
+        #visibles: ["label"]
+    grid:
+        icon: "grid_on"
+    audit:
+        icon: "receipt_long"
+    kafka:
+        icon: "air"
+    entity:
+        icon: "schema"
+        #visibles: ["type", "id"]
+    scheduler:
+        icon: "schedule"
+    task:
+        icon: "pending_actions"
+        #visibles: ["name", "label", "maxConcurrency", "isVirtualThread", "isThreadPool", "queueSize", "activeCount"]
+    request:
+        icon: "route"
+        title: "Endpoint"
+        #visibles: ["patternValues", "handler.bean", "handler.function"]

@@ -14,14 +14,14 @@ crud:
             enableReplica: true
             relations:
                 -
-                    source: information
+                    source: information.informationId
                     target: informationId
 id:
     type: STANDARD
     fields:
         - linkId
 table:
-    separator: none
+    separator: cell
     selection: single
     page:
         options:

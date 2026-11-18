@@ -8,7 +8,6 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
 import net.ideahut.quarkus.bean.BeanInitialize;
 import net.ideahut.quarkus.entity.EntityPreListener;
-import net.ideahut.quarkus.helper.ObjectHelper;
 import net.ideahut.quarkus.task.TaskHandler;
 import net.ideahut.quarkus.template.app.AppConstant;
 
@@ -36,7 +35,9 @@ class AppEntityPreListener implements EntityPreListener, BeanInitialize {
 	public void onPreInsert(Object entity) {
 		taskHandler.execute(() -> {
 			EntityPreListener listener = listeners.get(entity.getClass());
-			ObjectHelper.runIf(listener != null, () -> listener.onPreInsert(entity));
+			if (listener != null) {
+				listener.onPreInsert(entity);
+			}
 		});
 	}
 	
@@ -44,7 +45,9 @@ class AppEntityPreListener implements EntityPreListener, BeanInitialize {
 	public void onPreUpdate(Object entity) {
 		taskHandler.execute(() -> {
 			EntityPreListener listener = listeners.get(entity.getClass());
-			ObjectHelper.runIf(listener != null, () -> listener.onPreUpdate(entity));
+			if (listener != null) {
+				listener.onPreUpdate(entity);
+			}
 		});
 	}
 
@@ -52,7 +55,9 @@ class AppEntityPreListener implements EntityPreListener, BeanInitialize {
 	public void onPreDelete(Object entity) {
 		taskHandler.execute(() -> {
 			EntityPreListener listener = listeners.get(entity.getClass());
-			ObjectHelper.runIf(listener != null, () -> listener.onPreDelete(entity));
+			if (listener != null) {
+				listener.onPreDelete(entity);
+			}
 		});
 	}
 	

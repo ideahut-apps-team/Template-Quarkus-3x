@@ -2,7 +2,7 @@ package net.ideahut.quarkus.template.config;
 
 import java.util.Set;
 
-import jakarta.inject.Singleton;
+import jakarta.enterprise.context.ApplicationScoped;
 import net.ideahut.quarkus.api.ApiAccess;
 import net.ideahut.quarkus.api.ApiService;
 import net.ideahut.quarkus.crud.CrudAction;
@@ -28,7 +28,7 @@ class CrudConfig {
 	/*
 	 * CRUD HANDLER
 	 */
-	@Singleton
+	@ApplicationScoped
 	CrudHandler crudHandler(
 		AppProperties appProperties,
 		EntityTrxManager entityTrxManager,
@@ -67,7 +67,7 @@ class CrudConfig {
 	/*
 	 * CRUD RESOURCE
 	 */
-	@Singleton
+	@ApplicationScoped
 	CrudResource crudResource(
 		AppProperties appProperties,
 		EntityTrxManager entityTrxManager,
@@ -81,7 +81,7 @@ class CrudConfig {
 			 // - Parameter name = crudCode
 			return (manager, name) -> {
 				ApiAccess apiAccess = ApiAccess.fromContext();
-				CrudProperties properties = apiService.getApiCrudProperties(apiAccess, name);
+				CrudProperties properties = apiService.getCrudProperties(apiAccess, name);
 				ErrorHelper.throwNull(properties, () -> StringHelper.format("CrudProperties not found, name: {}", name));
 				return properties;
 			};
@@ -105,7 +105,7 @@ class CrudConfig {
 	/*
 	 * CRUD PRERMISSION
 	 */
-	@Singleton
+	@ApplicationScoped
 	CrudPermission crudPermission(
 		AppProperties appProperties	
 	) {

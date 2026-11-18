@@ -1,11 +1,8 @@
 package net.ideahut.quarkus.template.config;
 
-import java.util.Arrays;
-
 import io.vertx.ext.web.RoutingContext;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
-import jakarta.inject.Singleton;
 import jakarta.ws.rs.NotFoundException;
 import jakarta.ws.rs.container.ContainerRequestContext;
 import jakarta.ws.rs.container.ContainerRequestFilter;
@@ -41,7 +38,7 @@ class WebConfig {
 			WebInterceptor webInterceptor
 		) {
 			setAutoDetect(true)
-			.setInterceptors(Arrays.asList(webInterceptor));
+			.setInterceptors(webInterceptor);
 		}
 
 		@Context
@@ -114,7 +111,7 @@ class WebConfig {
 	/*
 	 * WEB INTERCEPTOR
 	 */
-	@Singleton
+	@ApplicationScoped
 	WebInterceptor webInterceptor(
 		AppProperties appProperties,
 		AdminHandler adminHandler,
@@ -125,12 +122,10 @@ class WebConfig {
 		ApiService apiService
 	) {
 		return new DefaultWebInterceptor()
-		.setAdminCredential(adminCredential)
 		.setAdminHandler(adminHandler)
 		.setAdminSecurity(adminSecurity)
 		.setApiService(apiService)
-		.setPublicApiAccess(ApiAccess.unmodifiable(new ApiAccess().setApiRole(AppConstant.Default.API_ROLE)))
-		.setPublicAuditor("PUBLIC");
+		.setPublicApiAccess(ApiAccess.unmodifiable(new ApiAccess().setApiRole("PUBLIC")));
 	}
 	
 }

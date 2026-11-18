@@ -3,18 +3,9 @@ package net.ideahut.quarkus.template.app;
 public final class AppConstant {
 	private AppConstant() {}
 	
-	// Default
-	public static class Default {
-		private Default() {}
-		public static final String TIMEZONE = "+07:00";
-		public static final String AUDITOR = "_SYSTEM_";
-		public static final String API_ROLE = "PUBLIC";
-	}
-	
 	// Profile
 	public static class Profile {
 		private Profile() {}
-		public static final String SYSTEM 	= "__SYSTEM__";		
 		public static class Status {
 			private Status() {}
 			public static final char REGISTER	= 'R';

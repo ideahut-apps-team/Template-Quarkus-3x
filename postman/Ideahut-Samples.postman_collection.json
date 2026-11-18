@@ -178,7 +178,7 @@
                     },
                     {
                       "key": "className",
-                      "value": "net.ideahut.springboot",
+                      "value": "net.ideahut.quarkus",
                       "disabled": true
                     },
                     {
@@ -774,7 +774,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"name\":\"net.ideahut.springboot.api.entity.ApiRole\",\r\n    \"value\":{\r\n        \"apiRoleCode\":\"XXX\",\r\n        \"description\":\"description\",\r\n        \"isActive\": \"Y\"\r\n    }\r\n}\r\n\r\n",
+              "raw": "{\r\n    \"name\":\"net.ideahut.quarkus.api.entity.ApiRole\",\r\n    \"value\":{\r\n        \"apiRoleCode\":\"XXX\",\r\n        \"description\":\"description\",\r\n        \"isActive\": \"Y\"\r\n    }\r\n}\r\n\r\n",
               "options": {
                 "raw": {
                   "language": "json"

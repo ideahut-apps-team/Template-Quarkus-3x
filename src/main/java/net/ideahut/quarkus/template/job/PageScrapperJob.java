@@ -2,9 +2,10 @@ package net.ideahut.quarkus.template.job;
 
 import java.net.URL;
 
-import org.apache.commons.io.IOUtils;
 import org.quartz.JobExecutionContext;
 
+import net.ideahut.quarkus.helper.FrameworkHelper;
+import net.ideahut.quarkus.helper.StringHelper;
 import net.ideahut.quarkus.job.JobBase;
 
 public class PageScrapperJob extends JobBase {
@@ -13,8 +14,8 @@ public class PageScrapperJob extends JobBase {
 	protected void run(JobExecutionContext context) throws Exception {
 		String source = getConfigValue(context, String.class, "URL", "https://google.com");
 		URL url = new URL(source);
-		byte[] bytes = IOUtils.toByteArray(url);
-		String content = new String(bytes);
+		byte[] bytes = FrameworkHelper.toByteArray(url.openStream());
+		String content = StringHelper.toString(bytes);
 		logger().info(content);
 	}
 

@@ -140,7 +140,7 @@ public interface AppProperties {
 		Optional<DbcpDefinition> dbcp();
 		public static DatasourceDefinition getDefinition(TrxDatasource datasource) {
 			if (datasource != null) {
-				Type type = ObjectHelper.useOrDefault(datasource.type().orElse(null), () -> Type.BASIC);
+				Type type = ObjectHelper.useOrDefault(datasource.type().orElse(null), Type.BASIC);
 				switch (type) {
 				case HIKARI:
 					return datasource.hikari().orElse(null);

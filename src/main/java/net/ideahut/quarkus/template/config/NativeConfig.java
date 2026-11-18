@@ -10,9 +10,8 @@ import org.apache.commons.io.FileUtils;
 
 import lombok.extern.slf4j.Slf4j;
 import net.ideahut.quarkus.helper.NativeImageHelper;
-import net.ideahut.quarkus.helper.ObjectHelper;
 import net.ideahut.quarkus.module.ModuleApi;
-import net.ideahut.quarkus.object.StringSet;
+import net.ideahut.quarkus.object.SetString;
 import net.ideahut.quarkus.serializer.DataMapperBinarySerializer;
 import net.ideahut.quarkus.serializer.HessianBinarySerializer;
 import net.ideahut.quarkus.serializer.JdkBinarySerializer;
@@ -27,14 +26,13 @@ public class NativeConfig {
 	//private static final File metadataFile = new File("src/main/resources/META-INF/native-image/"); //-
 	
 	public static void registerToNativeImageAgent() {
-		ObjectHelper.runIf(
-			NativeImageHelper.isAgentEnabled(), 
-			() -> NativeImageHelper.registerMetadata(collectClasses(), serializationFile)
-		);
+		if (NativeImageHelper.isAgentEnabled()) {
+			NativeImageHelper.registerMetadata(collectClasses(), serializationFile);
+		}
 	}
 	
 	private static Collection<Class<?>> collectClasses() {
-		StringSet names = new StringSet(NativeImageHelper.Module.allModuleClassNames());
+		SetString names = new SetString(NativeImageHelper.Module.allModuleClassNames());
 		names.addAll(NativeImageHelper.Module.getJsonWebTokenClassNames());
 		names.addAll(NativeImageHelper.allClassNameInPackage(
 			Application.Package.APPLICATION + ".app",
@@ -50,7 +48,7 @@ public class NativeConfig {
 		));
 		
 		Set<Class<?>> classes = new LinkedHashSet<>(NativeImageHelper.convertToClasses(names));
-		NativeImageHelper.addToClasses(classes, true, ModuleApi.getDefaultProcessors().toArray(new Class<?>[0]));
+		NativeImageHelper.addToClasses(classes, true, ModuleApi.getDefaultApiRoleGates().toArray(new Class<?>[0]));
 		NativeImageHelper.addToClasses(classes, true,
 			DataMapperBinarySerializer.class,
 			JdkBinarySerializer.class,
@@ -74,10 +72,12 @@ public class NativeConfig {
 			"META-INF/services/org.hibernate.bytecode.spi.BytecodeProvider"::equals
 		);
 		NativeImageHelper.beautifyMetadata(metadataFile);
-		try {
-			FileUtils.copyFile(serializationFile, binaryFile);
-		} catch (Exception e) {
-			log.error("Copy", e);
+		if (serializationFile.isFile()) {
+			try {
+				FileUtils.copyFile(serializationFile, binaryFile);
+			} catch (Exception e) {
+				log.error("", e);
+			}
 		}
 	}
 	

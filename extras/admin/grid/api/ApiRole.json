@@ -1,5 +1,5 @@
 {
-    "order": 2,
+    "order": 3,
     "name": "ApiRole",
     "title": "Role",
     "crud": {
@@ -15,15 +15,7 @@
         "separator": "cell",
         "selection": "single",
         "page": {
-            "options": [
-                5,
-                10,
-                15,
-                20,
-                25,
-                30,
-                50
-            ],
+            "options": [5, 10, 15, 20, 25, 30, 50],
             "default": 20,
             "count": false
         },
@@ -182,15 +174,7 @@
                 "separator": "cell",
                 "selection": "single",
                 "page": {
-                    "options": [
-                        5,
-                        10,
-                        15,
-                        20,
-                        25,
-                        30,
-                        50
-                    ],
+                    "options": [5, 10, 15, 20, 25, 30, 50],
                     "default": 20,
                     "count": false
                 },
@@ -343,15 +327,7 @@
                         "separator": "cell",
                         "selection": "multiple",
                         "page": {
-                            "options": [
-                                5,
-                                10,
-                                15,
-                                20,
-                                25,
-                                30,
-                                50
-                            ],
+                            "options": [5, 10, 15, 20, 25, 30, 50],
                             "default": 20,
                             "count": false
                         },
@@ -423,15 +399,7 @@
                         "separator": "cell",
                         "selection": "single",
                         "page": {
-                            "options": [
-                                5,
-                                10,
-                                15,
-                                20,
-                                25,
-                                30,
-                                50
-                            ],
+                            "options": [5, 10, 15, 20, 25, 30, 50],
                             "default": 20,
                             "count": false
                         },
@@ -582,15 +550,7 @@
                 "separator": "cell",
                 "selection": "single",
                 "page": {
-                    "options": [
-                        5,
-                        10,
-                        15,
-                        20,
-                        25,
-                        30,
-                        50
-                    ],
+                    "options": [5, 10, 15, 20, 25, 30, 50],
                     "default": 20,
                     "count": false
                 },
@@ -728,15 +688,7 @@
                 "separator": "cell",
                 "selection": "single",
                 "page": {
-                    "options": [
-                        5,
-                        10,
-                        15,
-                        20,
-                        25,
-                        30,
-                        50
-                    ],
+                    "options": [5, 10, 15, 20, 25, 30, 50],
                     "default": 20,
                     "count": false
                 },
@@ -823,15 +775,7 @@
                 "separator": "cell",
                 "selection": "single",
                 "page": {
-                    "options": [
-                        5,
-                        10,
-                        15,
-                        20,
-                        25,
-                        30,
-                        50
-                    ],
+                    "options": [5, 10, 15, 20, 25, 30, 50],
                     "default": 20,
                     "count": false
                 },

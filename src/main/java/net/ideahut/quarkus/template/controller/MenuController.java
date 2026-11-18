@@ -20,10 +20,8 @@ import net.ideahut.quarkus.template.entity.MenuId;
 @Path("/menu")
 class MenuController {
 	
-	private static class Strings {
-		private static final String GRID_PREFIX = "grid_";
-		private static final String MENU_ICON = "table_view";
-	}
+	private static final String GRID_PREFIX = "grid_";
+	private static final String MENU_ICON = "table_view";
 
 	private final DataMapper dataMapper;
 	private final GridHandler gridHandler;
@@ -76,9 +74,9 @@ class MenuController {
 			Menu proot = dataMapper.copy(root, Menu.class);
 			for (GridSource source : parent.getSources()) {
 				Menu menu = new Menu();
-				menu.setId(new MenuId(Strings.GRID_PREFIX + source.getName(), ""));
+				menu.setId(new MenuId(GRID_PREFIX + source.getName(), ""));
 				menu.setTitle(source.getTitle());
-				menu.setIcon(Strings.MENU_ICON);
+				menu.setIcon(MENU_ICON);
 				menu.setLink("/grid?name=" + source.getName() + "&parent=" + parent.getName());
 				menu.setParent(proot);
 				root.getChildren().add(menu);
@@ -87,17 +85,17 @@ class MenuController {
 			Menu proot = dataMapper.copy(root, Menu.class);
 			for (GridParent parent : parents) {
 				Menu menu = new Menu();
-				menu.setId(new MenuId(Strings.GRID_PREFIX + parent.getName(), ""));
+				menu.setId(new MenuId(GRID_PREFIX + parent.getName(), ""));
 				menu.setTitle(parent.getTitle());
-				menu.setIcon(Strings.MENU_ICON);
+				menu.setIcon(MENU_ICON);
 				menu.setParent(proot);
 				Menu pmenu = dataMapper.copy(menu, Menu.class);
 				root.getChildren().add(menu);
 				for (GridSource source : parent.getSources()) {
 					Menu child = new Menu();
-					child.setId(new MenuId(Strings.GRID_PREFIX + parent.getName() + "_" + source.getName(), ""));
+					child.setId(new MenuId(GRID_PREFIX + parent.getName() + "_" + source.getName(), ""));
 					child.setTitle(source.getTitle());
-					child.setIcon(Strings.MENU_ICON);
+					child.setIcon(MENU_ICON);
 					child.setLink("/grid?name=" + source.getName() + "&parent=" + parent.getName());
 					child.setParent(pmenu);
 					menu.getChildren().add(child);

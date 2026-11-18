@@ -1,6 +1,6 @@
-order: 1
+order: 2
 name: ApiCrud
-title: CRUD Resource
+title: CRUD
 crud:
     name: net.ideahut.quarkus.api.entity.ApiCrud
 id:
@@ -39,6 +39,12 @@ table:
             type: text
             condition: ANY_LIKE
         -
+            name: isStateless
+            label: Stateless
+            type: option
+            option: YES_NO
+            condition: EQUAL
+        -
             name: isUseNative
             label: Use Native
             type: option
@@ -51,8 +57,8 @@ table:
             option: YES_NO
             condition: EQUAL
         -
-            name: isStackEnabled
-            label: Stack Enabled
+            name: isJoinEnabled
+            label: Join Enabled
             type: option
             option: YES_NO
             condition: EQUAL
@@ -62,9 +68,10 @@ table:
         - className
         - manager
         - maxLimit
+        - isStateless
         - isUseNative
         - isLoadEnabled
-        - isStackEnabled
+        - isJoinEnabled
         - updatedOn
         - createdOn
     columns:
@@ -99,6 +106,14 @@ table:
             align: right
             sortable: true
         -
+            name: isStateless
+            label: Stateless
+            field: isStateless
+            align: center
+            sortable: true
+            format: >-
+                function(val, row) { return $h.grid.option(val, row, 'YES_NO'); }
+        -
             name: isUseNative
             label: Use Native
             field: isUseNative
@@ -115,9 +130,9 @@ table:
             format: >-
                 function(val, row) { return $h.grid.option(val, row, 'YES_NO'); }
         -
-            name: isStackEnabled
-            label: Stack Enabled
-            field: isStackEnabled
+            name: isJoinEnabled
+            label: Join Enabled
+            field: isJoinEnabled
             align: center
             sortable: true
             format: >-
@@ -181,6 +196,16 @@ fields:
             - required
             - number
     -
+        name: isStateless
+        label: Stateless
+        type: option
+        option: YES_NO
+        nullable: false
+        insertable: true
+        editable: true
+        validations:
+            - 'maxlength:1'
+    -
         name: isUseNative
         label: Use Native
         type: option
@@ -189,7 +214,6 @@ fields:
         insertable: true
         editable: true
         validations:
-            - required
             - 'maxlength:1'
     -
         name: isLoadEnabled
@@ -200,18 +224,16 @@ fields:
         insertable: true
         editable: true
         validations:
-            - required
             - 'maxlength:1'
     -
-        name: isStackEnabled
-        label: Stack Enabled
+        name: isJoinEnabled
+        label: Join Enabled
         type: option
         option: YES_NO
         nullable: false
         insertable: true
         editable: true
         validations:
-            - required
             - 'maxlength:1'
 picks:
     entity:

@@ -12,9 +12,9 @@ import jakarta.ws.rs.core.Context;
 import net.ideahut.quarkus.annotation.Public;
 import net.ideahut.quarkus.helper.FrameworkHelper;
 import net.ideahut.quarkus.helper.WebHelper;
-import net.ideahut.quarkus.object.StringList;
-import net.ideahut.quarkus.object.StringMap;
-import net.ideahut.quarkus.object.StringSet;
+import net.ideahut.quarkus.object.ListString;
+import net.ideahut.quarkus.object.MapString;
+import net.ideahut.quarkus.object.SetString;
 import net.ideahut.quarkus.template.service.MessageService;
 
 /*
@@ -47,21 +47,21 @@ class MessageController {
 	
 	@POST
 	@Path("/translate/map")
-	public StringMap translateMap(
+	public MapString translateMap(
 		@Context ContainerRequestContext httpRequest
 	) {
 		byte[] bytes = WebHelper.getBodyAsBytes(httpRequest);
-		StringSet codes = FrameworkHelper.defaultDataMapper().read(bytes, StringSet.class);
+		SetString codes = FrameworkHelper.defaultDataMapper().read(bytes, SetString.class);
 		return messageService.getMap(codes.toArray(new String[0]));
 	}
 	
 	@POST
 	@Path("/translate/list")
-	public StringList translateList(
+	public ListString translateList(
 		@Context ContainerRequestContext httpRequest
 	) {
 		byte[] bytes = WebHelper.getBodyAsBytes(httpRequest);
-		StringList codes = FrameworkHelper.defaultDataMapper().read(bytes, StringList.class);
+		ListString codes = FrameworkHelper.defaultDataMapper().read(bytes, ListString.class);
 		return messageService.getList(codes.toArray(new String[0]));
 	}
 	

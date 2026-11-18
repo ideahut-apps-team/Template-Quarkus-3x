@@ -9,10 +9,10 @@
 client:
     bootstrapServers: 'localhost:9092'
     requestTimeout:
-        unit: SECONDS
+        timeUnit: SECONDS
         value: 15
     connectionMaxIdle:
-        unit: SECONDS
+        timeUnit: SECONDS
         value: 10
 
 
@@ -126,19 +126,19 @@ consumer:
         autoStartup: true
         concurrency: 1
         topicCheckTimeout:
-            unit: SECONDS
+            timeUnit: SECONDS
             value: 30
         configs:
             auto.commit.interval.ms: 1000
     containers:
         -
-            groupId: 'GROUP-KEREN-{id}:{port}-{random}'
+            groupId: 'GROUP-TEXT-PARAMS-{id}:{port}-{random}'
             keyType: java.lang.String
             valueType: java.lang.String
             listeners:
                 -
                     topic:
-                        name: 'TOPIC-KEREN-$enc({id}:{port})'
+                        name: 'TOPIC-TEXT-PARAMS-$enc({id}:{port})'
                     beanName: sampleStringBeanMethodMessageListener
                     methodName: message
         -

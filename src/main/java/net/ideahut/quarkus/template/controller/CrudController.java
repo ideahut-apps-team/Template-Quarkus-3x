@@ -3,6 +3,7 @@ package net.ideahut.quarkus.template.controller;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import jakarta.inject.Inject;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.HttpMethod;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
@@ -33,26 +35,26 @@ import net.ideahut.quarkus.task.TaskHandler;
  * Untuk di level Controller hanya akan berlaku di setiap pemanggilan endpoint Crud
  */
 
-//@Public(always = true)
 @Public
 @Path("/crud")
 class CrudController extends CrudControllerBase {
 	
-	private static final List<CrudAction> CRUD_ACTION_GET = Arrays.asList(
-		CrudAction.UNIQUE, CrudAction.SINGLE, CrudAction.PAGE, CrudAction.LIST, CrudAction.MAP
-	);
-	
-	private static final List<CrudAction> CRUD_ACTION_POST = Arrays.asList(
-		CrudAction.CREATE, CrudAction.CREATES, CrudAction.SAVE, CrudAction.SAVES
-	);
-	
-	private static final List<CrudAction> CRUD_ACTION_PUT = Arrays.asList(
-		CrudAction.UPDATE, CrudAction.UPDATES, CrudAction.SAVE, CrudAction.SAVES
-	);
-	
-	private static final List<CrudAction> CRUD_ACTION_DELETE = Arrays.asList(
-		CrudAction.DELETE, CrudAction.DELETES
-	);
+	private static final Map<String, Collection<CrudAction>> METHOD_CRUD_ACTIONS;
+	static {
+		METHOD_CRUD_ACTIONS = new HashMap<>();
+		METHOD_CRUD_ACTIONS.put(HttpMethod.GET, Arrays.asList(
+			CrudAction.UNIQUE, CrudAction.SINGLE, CrudAction.PAGE, CrudAction.LIST, CrudAction.MAP
+		));
+		METHOD_CRUD_ACTIONS.put(HttpMethod.POST, Arrays.asList(
+			CrudAction.CREATE, CrudAction.CREATES, CrudAction.SAVE, CrudAction.SAVES
+		));
+		METHOD_CRUD_ACTIONS.put(HttpMethod.PUT, Arrays.asList(
+			CrudAction.UPDATE, CrudAction.UPDATES, CrudAction.SAVE, CrudAction.SAVES
+		));
+		METHOD_CRUD_ACTIONS.put(HttpMethod.DELETE, Arrays.asList(
+			CrudAction.DELETE, CrudAction.DELETES
+		));
+	}
 	
 	private final CrudHandler crudHandler;
 	private final CrudResource crudResource;
@@ -138,11 +140,16 @@ class CrudController extends CrudControllerBase {
 	/*
 	 * PARAMETER
 	 */
-	private void checkAction(
-		Collection<CrudAction> actions,
-		CrudAction action
+	private Result parameter(
+		String action, 
+		ContainerRequestContext httpRequest
 	) {
-		ErrorHelper.throwIf(!actions.contains(action), () -> StringHelper.format("Invald action: {}", action));
+		String httpMethod = httpRequest.getMethod();
+		CrudAction crudAction = CrudAction.of(action);
+		Collection<CrudAction> crudActions = METHOD_CRUD_ACTIONS.get(httpMethod);
+		ErrorHelper.throwEmpty(crudActions, () -> StringHelper.format("Unsupported method: {}", httpMethod));
+		ErrorHelper.throwIf(!crudActions.contains(crudAction), () -> StringHelper.format("Invald action: {} for method: {}", crudAction, httpMethod));
+		return super.parameter(crudAction, httpRequest);
 	}
 	
 	@GET
@@ -151,9 +158,7 @@ class CrudController extends CrudControllerBase {
 		@NotBlank @PathParam("action") String action,
 		@Context ContainerRequestContext httpRequest
 	) {
-		CrudAction crudAction = CrudAction.of(action);
-		checkAction(CRUD_ACTION_GET, crudAction);
-		return super.parameter(crudAction, httpRequest);		
+		return parameter(action, httpRequest);
 	}
 	
 	@POST
@@ -162,9 +167,7 @@ class CrudController extends CrudControllerBase {
 		@NotBlank @PathParam("action") String action,
 		@Context ContainerRequestContext httpRequest
 	) {
-		CrudAction crudAction = CrudAction.of(action);
-		checkAction(CRUD_ACTION_POST, crudAction);
-		return super.parameter(crudAction, httpRequest);		
+		return parameter(action, httpRequest);		
 	}
 	
 	@PUT
@@ -173,9 +176,7 @@ class CrudController extends CrudControllerBase {
 		@NotBlank @PathParam("action") String action,
 		@Context ContainerRequestContext httpRequest
 	) {
-		CrudAction crudAction = CrudAction.of(action);
-		checkAction(CRUD_ACTION_PUT, crudAction);
-		return super.parameter(crudAction, httpRequest);	
+		return parameter(action, httpRequest);	
 	}
 	
 	@DELETE
@@ -184,21 +185,7 @@ class CrudController extends CrudControllerBase {
 		@NotBlank @PathParam("action") String action,
 		@Context ContainerRequestContext httpRequest
 	) {
-		CrudAction crudAction = CrudAction.of(action);
-		checkAction(CRUD_ACTION_DELETE, crudAction);
-		return super.parameter(crudAction, httpRequest);	
-	}
-	
-	/*
-	 * SINGLE
-	 */
-	@Override
-	@GET
-	@Path("/rest")
-	public Result single(
-		@Context ContainerRequestContext httpRequest
-	) {
-		return super.single(httpRequest);
+		return parameter(action, httpRequest);	
 	}
 	
 	/*
@@ -211,6 +198,18 @@ class CrudController extends CrudControllerBase {
 		@Context ContainerRequestContext httpRequest		
 	) {
 		return super.page(httpRequest);
+	}
+	
+	/*
+	 * SINGLE
+	 */
+	@Override
+	@GET
+	@Path("/rest")
+	public Result single(
+		@Context ContainerRequestContext httpRequest
+	) {
+		return super.single(httpRequest);
 	}
 	
 	/*

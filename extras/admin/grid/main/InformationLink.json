@@ -16,7 +16,7 @@
                 "enableReplica": true,
                 "relations": [
                     {
-                        "source": "information",
+                        "source": "information.informationId",
                         "target": "informationId"
                     }
                 ]
@@ -30,7 +30,7 @@
         ]
     },
     "table": {
-        "separator": "none",
+        "separator": "cell",
         "selection": "single",
         "page": {
             "options": [

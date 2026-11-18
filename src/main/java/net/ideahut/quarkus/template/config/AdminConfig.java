@@ -6,8 +6,9 @@ import java.util.Set;
 
 import io.quarkus.arc.DefaultBean;
 import io.quarkus.redis.datasource.RedisDataSource;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
-import jakarta.inject.Singleton;
+import lombok.extern.slf4j.Slf4j;
 import net.ideahut.quarkus.admin.AdminHandler;
 import net.ideahut.quarkus.admin.AdminHandlerImpl;
 import net.ideahut.quarkus.admin.AdminSecurity;
@@ -15,11 +16,9 @@ import net.ideahut.quarkus.collector.RequestInfoCollector;
 import net.ideahut.quarkus.definition.AdminDefinition;
 import net.ideahut.quarkus.definition.StorageKeyDefinition;
 import net.ideahut.quarkus.definition.TimeValueDefinition;
-import net.ideahut.quarkus.helper.ObjectHelper;
 import net.ideahut.quarkus.mapper.DataMapper;
-import net.ideahut.quarkus.module.ModuleAdmin;
-import net.ideahut.quarkus.object.StringMap;
-import net.ideahut.quarkus.object.StringSet;
+import net.ideahut.quarkus.object.MapString;
+import net.ideahut.quarkus.object.SetString;
 import net.ideahut.quarkus.redis.RedisParam;
 import net.ideahut.quarkus.rest.RestHandler;
 import net.ideahut.quarkus.security.LocalMemoryCredential;
@@ -39,12 +38,13 @@ import net.ideahut.quarkus.template.support.GridSupport;
  * http://<host>:<port>/_/web
  */
 
+@Slf4j
 class AdminConfig {
 	
 	/*
 	 * ADMIN HANDLER
 	 */
-	@Singleton
+	@ApplicationScoped
 	@DefaultBean
 	AdminHandler adminHandler(
 		AppProperties appProperties,
@@ -58,8 +58,10 @@ class AdminConfig {
 		
 		return new AdminHandlerImpl()
 				
-		// Memperbaharui data-data di javascript & html resource admin sesuai dengan konfigurasi, seperti: judul, timeout, dll
-		.setAfterReload(h -> ModuleAdmin.afterReload(h, ""))
+		// Custom memperbaharui data-data di javascript & html resource admin sesuai dengan konfigurasi, seperti: judul, timeout, dll
+		// Default sudah tersedia
+		/** .setAfterReload(h -> { try { ModuleAdmin.afterReload(h, ""); } catch (Exception e) { log.error("ModuleAdmin.afterReload", e); } }) */
+		.setAfterReload(null)
 		
 		// Path untuk mengakses API Admin
 		.setApiPath(handler.apiPath().orElse(null))
@@ -67,8 +69,8 @@ class AdminConfig {
 		// Serialize & deserialize byte array ke redis
 		.setBinarySerializer(binarySerializer)
 		
-		// Custom cek token ke central, secara default sudah tersedia
-		//.setCheckTokenCentral(null)
+		// Custom ambil user ke central berdasarkan token, secara default sudah tersedia
+		.setCentralUser(null)
 		
 		// Lokasi konfigurasi file untuk fitur admin
 		.setConfigurationFile(handler.configurationFile().orElse(null))
@@ -88,17 +90,14 @@ class AdminConfig {
 		// Untuk menyimpan data-data admin, seperti: template grid, authorization, dll
 		.setRedisDataSource(redisDataSource)
 		
-		// Menggunakan nama bean, jika RequestMappingHandlerMapping di application context lebih dari satu
-		//.setRequestMappingHandlerMappingBeanName(null)
-		
 		// Untuk sinkronisasi ke central
 		.setRestHandler(restHandler)
 		
 		// Mekanisme penyimpanan key di storage (redis / local memory)
 		.setStorageKeyParam(StorageKeyDefinition.convert(handler.storageKeyParam().orElse(null)))
 		
-		// Custom sinkronisasi ke central, secara default sudah tersedia 
-		//.setSyncToCentral(null)
+		// Custom sinkronisasi ke central untuk mengambil template terbaru, secara default sudah tersedia
+		.setCentralSync(null)
 		
 		// Umur cache resource Admin UI
 		.setWebCacheMaxAge(TimeValueDefinition.convert(handler.webCacheMaxAge().orElse(null)))
@@ -112,6 +111,10 @@ class AdminConfig {
 		// Context Path untuk mengakses Admin UI
 		.setWebPath(handler.webPath().orElse(null))
 		
+		// File index web
+		// default: index.html
+		.setWebIndex(handler.webIndex().orElse(null))
+		
 		// Flag resource chain atau tidak
 		.setWebResourceChain(handler.webResourceChain().orElse(null))
 		
@@ -124,7 +127,7 @@ class AdminConfig {
 	/*
 	 * ADMIN CREDENTIAL
 	 */
-	@Singleton
+	@ApplicationScoped
 	@Named(AppConstant.Bean.Credential.ADMIN)
 	SecurityCredential adminCredential(
 		AppProperties appProperties,
@@ -137,8 +140,8 @@ class AdminConfig {
 		credential.users().orElse(Collections.emptyList())
 		.forEach(user ->
 			users.add(new SecurityUser()
-				.setAttributes(ObjectHelper.callIf(null != user.attributes(), () -> new StringMap(user.attributes())))
-				.setHosts(ObjectHelper.callIf(null != user.hosts().orElse(null), () -> new StringSet(user.hosts().orElse(null))))
+				.setAttributes(user.attributes() != null ? new MapString(user.attributes()) : null)
+				.setHosts(user.hosts().orElse(null) != null ? new SetString(user.hosts().orElse(null)) : null)
 				.setPassword(user.password().orElse(null))
 				.setRole(user.role().orElse(null))
 				.setUsername(user.username().orElse(null))
@@ -200,7 +203,7 @@ class AdminConfig {
 	/*
 	 * ADMIN SECURITY
 	 */
-	@Singleton
+	@ApplicationScoped
 	@Named(AppConstant.Bean.Security.ADMIN)
 	WebSecurity adminSecurity(
 		AppProperties appProperties,

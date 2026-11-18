@@ -1,8 +1,8 @@
 package net.ideahut.quarkus.template.config;
 
 import io.quarkus.arc.DefaultBean;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
-import jakarta.inject.Singleton;
 import net.ideahut.quarkus.definition.TaskDefinition;
 import net.ideahut.quarkus.task.TaskHandler;
 import net.ideahut.quarkus.task.TaskHandlerImpl;
@@ -16,7 +16,7 @@ import net.ideahut.quarkus.template.app.AppProperties;
  */
 class TaskConfig {
 	
-	@Singleton
+	@ApplicationScoped
 	@Named(AppConstant.Bean.Task.PRIMARY)
 	@DefaultBean
     TaskHandler primaryTask(
@@ -26,7 +26,7 @@ class TaskConfig {
 		return new TaskHandlerImpl().setTaskProperties(properties);
     }
 	
-	@Singleton
+	@ApplicationScoped
 	@Named(AppConstant.Bean.Task.AUDIT)
 	TaskHandler auditTask(
 		AppProperties appProperties		
@@ -35,7 +35,7 @@ class TaskConfig {
 		return new TaskHandlerImpl().setTaskProperties(properties);
     }
 	
-	@Singleton
+	@ApplicationScoped
 	@Named(AppConstant.Bean.Task.REST)
 	TaskHandler restTask(
 		AppProperties appProperties		
@@ -44,7 +44,7 @@ class TaskConfig {
 		return new TaskHandlerImpl().setTaskProperties(properties);
     }
 	
-	@Singleton
+	@ApplicationScoped
 	@Named(AppConstant.Bean.Task.WEB_ASYNC)
 	TaskHandler webAsyncTask(
 		AppProperties appProperties		
