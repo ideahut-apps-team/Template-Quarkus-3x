@@ -257,7 +257,7 @@
                 "type": "COMPOSITE",
                 "fields": [
                     "typeId",
-                    "name"
+                    "paramName"
                 ]
             },
             "relations": [
@@ -289,12 +289,12 @@
                     "count": false
                 },
                 "order": {
-                    "field": "name",
+                    "field": "paramName",
                     "descending": false
                 },
                 "filters": [
                     {
-                        "name": "name",
+                        "name": "paramName",
                         "label": "Name",
                         "type": "text",
                         "condition": "ANY_LIKE"
@@ -307,16 +307,16 @@
                     }
                 ],
                 "visibles": [
-                    "name",
+                    "paramName",
                     "description",
                     "updatedOn",
                     "createdOn"
                 ],
                 "columns": [
                     {
-                        "name": "name",
+                        "name": "paramName",
                         "label": "Name",
-                        "field": "name",
+                        "field": "paramName",
                         "align": "left",
                         "sortable": true
                     },
@@ -347,7 +347,7 @@
             },
             "fields": [
                 {
-                    "name": "name",
+                    "name": "paramName",
                     "label": "Name",
                     "type": "text",
                     "nullable": false,

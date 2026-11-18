@@ -270,10 +270,10 @@ picks:
             type: COMPOSITE
             fields:
                 - typeId
-                - name
+                - paramName
         relations:
             -
-                source: type.typeId
+                source: jobType.typeId
                 target: typeId
         table:
             separator: cell
@@ -283,11 +283,11 @@ picks:
                 default: 20
                 count: false
             order:
-                field: name
+                field: paramName
                 descending: false
             filters:
                 -
-                    name: name
+                    name: paramName
                     label: Name
                     type: text
                     condition: ANY_LIKE
@@ -297,13 +297,13 @@ picks:
                     type: text
                     condition: ANY_LIKE
             visibles:
-                - name
+                - paramName
                 - description
             columns:
                 -
-                    name: name
+                    name: paramName
                     label: Name
-                    field: name
+                    field: paramName
                     align: left
                     sortable: true
                 -
@@ -327,7 +327,7 @@ children:
                 -
                     name: net.ideahut.quarkus.job.entity.JobGroup
                     alias: JobGroup
-                    store: group
+                    store: jobGroup
                     match: exact
                     relations:
                         -
@@ -336,8 +336,8 @@ children:
                 -
                     name: net.ideahut.quarkus.job.entity.JobType
                     alias: JobType
-                    store: type
-                    match: exact
+                    store: jobType
+                    match: contain
                     relations:
                         -
                             source: typeId
@@ -345,7 +345,7 @@ children:
                 -
                     name: net.ideahut.quarkus.job.entity.JobInstance
                     alias: JobInstance
-                    store: instance
+                    store: jobInstance
                     match: contain
                     relations:
                         -
@@ -432,7 +432,7 @@ children:
                 -
                     name: JobType.name
                     label: Type
-                    field: type
+                    field: jobType
                     align: left
                     sortable: true
                     format: >-
@@ -478,7 +478,7 @@ children:
                 -
                     name: JobInstance.name
                     label: Instance
-                    field: instance
+                    field: jobInstance
                     align: left
                     sortable: true
                     format: >-
@@ -537,7 +537,7 @@ children:
                     - required
                     - 'maxlength:100'
             -
-                name: type
+                name: jobType
                 label: Type
                 type: pick
                 pick: type
@@ -624,7 +624,7 @@ children:
                 validations:
                     - 'maxlength:255'
             -
-                name: instance
+                name: jobInstance
                 label: Instance
                 type: pick
                 pick: instance
@@ -632,7 +632,7 @@ children:
                 insertable: true
                 editable: true
                 rowToValue: >-
-                    function(row) { try { return {'instanceId': row.instance.instanceId, 'name': row.instance.name}; } catch(e) { return null; } }
+                    function(row) { try { return {'instanceId': row.jobInstance.instanceId, 'name': row.jobInstance.name}; } catch(e) { return null; } }
                 format: >-
                     function(val, row) { try { if(val) { return val.name; } else { return ''; } } catch(e) { return val; } }
                 toValue: >-
@@ -654,7 +654,7 @@ children:
                     fields:
                         - triggerId
                         - typeId
-                        - name
+                        - paramName
                 copy: false
                 action:
                     exclude:
@@ -664,7 +664,7 @@ children:
                         source: triggerId
                         target: triggerId
                     -
-                        source: type.typeId
+                        source: jobType.typeId
                         target: typeId
                 labels:
                     -
@@ -672,10 +672,10 @@ children:
                         value: name
                     -
                         title: Group
-                        value: group.name
+                        value: jobGroup.name
                     -
                         title: Type
-                        value: type.name
+                        value: jobType.name
                 table:
                     separator: cell
                     selection: single
@@ -684,24 +684,24 @@ children:
                         default: 20
                         count: false
                     order:
-                        field: name
+                        field: paramName
                         descending: false
                     visibles:
-                        - name
-                        - value
+                        - paramName
+                        - configValue
                         - updatedOn
                         - createdOn
                     columns:
                         -
-                            name: name
+                            name: paramName
                             label: Name
-                            field: name
+                            field: paramName
                             align: left
                             sortable: true
                         -
-                            name: value
+                            name: configValue
                             label: Value
-                            field: value
+                            field: configValue
                             align: left
                             sortable: true
                         -
@@ -722,7 +722,7 @@ children:
                                 function(val, row) { return $h.grid.date(val, row); } 
                 fields:
                     -
-                        name: name
+                        name: paramName
                         label: Name
                         type: pick
                         pick: parameter
@@ -733,11 +733,11 @@ children:
                             - required
                             - 'maxlength:100'
                         format: >-
-                            function(val, row) { try { return val.name || row.name; } catch(e) { return val.name; } }
+                            function(val, row) { try { return val.paramName || row.paramName; } catch(e) { return val.paramName; } }
                         toValue: >-
-                            function(val) { try { return {'name': val.name}; } catch(e) { return null; } }
+                            function(val) { try { return {'paramName': val.paramName}; } catch(e) { return null; } }
                     -
-                        name: value
+                        name: configValue
                         label: Value
                         type: text
                         nullable: true
