@@ -7,42 +7,42 @@ config:
             datasource:
                 hikari:
                     driverClassName: 'com.mysql.cj.jdbc.Driver'
-                    jdbcUrl: 'jdbc:mysql://localhost:3306/template_quarkus_main_1?createDatabaseIfNotExist=true&autoReconnect=true'
-                    username: 'root'
-                    password: 'a3213c419771fbd1a05cdde7127e6393ef852db97328b21a45de700e9bbe85db'
+                    jdbcUrl: 'jdbc:mysql://<HOST>:<PORT>/template_quarkus_main_1?createDatabaseIfNotExist=true&autoReconnect=true'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
                 agroal:
-                    jdbcUrl: 'jdbc:mysql://localhost:3306/template_quarkus_main_1?createDatabaseIfNotExist=true&autoReconnect=true'
-                    username: 'root'
-                    password: 'a3213c419771fbd1a05cdde7127e6393ef852db97328b21a45de700e9bbe85db'
+                    jdbcUrl: 'jdbc:mysql://<HOST>:<PORT>/template_quarkus_main_1?createDatabaseIfNotExist=true&autoReconnect=true'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
                 dbcp:
                     driverClassName: 'com.mysql.cj.jdbc.Driver'
-                    jdbcUrl: 'jdbc:mysql://localhost:3306/template_quarkus_main_1?createDatabaseIfNotExist=true&autoReconnect=true'
-                    username: 'root'
-                    password: 'a3213c419771fbd1a05cdde7127e6393ef852db97328b21a45de700e9bbe85db'
+                    jdbcUrl: 'jdbc:mysql://<HOST>:<PORT>/template_quarkus_main_1?createDatabaseIfNotExist=true&autoReconnect=true'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
                 basic:
                     driverClassName: 'com.mysql.cj.jdbc.Driver'
-                    jdbcUrl: 'jdbc:mysql://localhost:3306/template_quarkus_main_1?createDatabaseIfNotExist=true&autoReconnect=true'
-                    username: 'root'
-                    password: 'a3213c419771fbd1a05cdde7127e6393ef852db97328b21a45de700e9bbe85db'
+                    jdbcUrl: 'jdbc:mysql://<HOST>:<PORT>/template_quarkus_main_1?createDatabaseIfNotExist=true&autoReconnect=true'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
             audit:
                 datasource:
                     hikari:
                         driverClassName: 'com.mysql.cj.jdbc.Driver'
-                        jdbcUrl: 'jdbc:mysql://localhost:3306/template_quarkus_audit_1?createDatabaseIfNotExist=true&autoReconnect=true'
-                        username: 'root'
-                        password: 'a3213c419771fbd1a05cdde7127e6393ef852db97328b21a45de700e9bbe85db'
+                        jdbcUrl: 'jdbc:mysql://<HOST>:<PORT>/template_quarkus_audit_1?createDatabaseIfNotExist=true&autoReconnect=true'
+                        username: '<USERNAME>'
+                        password: '<PASSWORD>'
 
         secondary:
             datasource:
                 hikari:
                     driverClassName: 'com.mysql.cj.jdbc.Driver'
-                    jdbcUrl: 'jdbc:mysql://localhost:3306/template_quarkus_main_2?createDatabaseIfNotExist=true&autoReconnect=true'
-                    username: 'root'
-                    password: 'a3213c419771fbd1a05cdde7127e6393ef852db97328b21a45de700e9bbe85db'
+                    jdbcUrl: 'jdbc:mysql://<HOST>:<PORT>/template_quarkus_main_2?createDatabaseIfNotExist=true&autoReconnect=true'
+                    username: '<USERNAME>'
+                    password: '<PASSWORD>'
             audit:
                 datasource:
                     hikari:
                         driverClassName: 'com.mysql.cj.jdbc.Driver'
-                        jdbcUrl: 'jdbc:mysql://localhost:3306/template_quarkus_audit_2?createDatabaseIfNotExist=true&autoReconnect=true'
-                        username: 'root'
-                        password: 'a3213c419771fbd1a05cdde7127e6393ef852db97328b21a45de700e9bbe85db'
+                        jdbcUrl: 'jdbc:mysql://<HOST>:<PORT>/template_quarkus_audit_2?createDatabaseIfNotExist=true&autoReconnect=true'
+                        username: '<USERNAME>'
+                        password: '<PASSWORD>'

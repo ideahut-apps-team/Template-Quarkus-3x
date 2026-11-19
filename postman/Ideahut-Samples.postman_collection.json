@@ -178,7 +178,7 @@
                     },
                     {
                       "key": "className",
-                      "value": "net.ideahut.quarkus",
+                      "value": "net.ideahut.springboot",
                       "disabled": true
                     },
                     {
@@ -774,7 +774,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"name\":\"net.ideahut.quarkus.api.entity.ApiRole\",\r\n    \"value\":{\r\n        \"apiRoleCode\":\"XXX\",\r\n        \"description\":\"description\",\r\n        \"isActive\": \"Y\"\r\n    }\r\n}\r\n\r\n",
+              "raw": "{\r\n    \"name\":\"net.ideahut.springboot.api.entity.ApiRole\",\r\n    \"value\":{\r\n        \"apiRoleCode\":\"XXX\",\r\n        \"description\":\"description\",\r\n        \"isActive\": \"Y\"\r\n    }\r\n}\r\n\r\n",
               "options": {
                 "raw": {
                   "language": "json"
@@ -809,7 +809,7 @@
               {
                 "key": "Authorization",
                 "value": "{{USER_AUTH}}",
-                "type": "text"
+                "disabled": true
               }
             ],
             "body": {
@@ -842,7 +842,7 @@
               {
                 "key": "Authorization",
                 "value": "{{USER_AUTH}}",
-                "type": "text"
+                "disabled": true
               }
             ],
             "url": {
@@ -1042,18 +1042,15 @@
               {
                 "key": "Api-Type",
                 "value": "A00",
-                "type": "text",
                 "disabled": true
               },
               {
                 "key": "Api-Type",
-                "value": "A02",
-                "type": "text"
+                "value": "A02"
               },
               {
                 "key": "Jwt-Check",
                 "value": "true",
-                "type": "text",
                 "disabled": true
               }
             ],
@@ -4828,7 +4825,7 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\r\n    \"name\": \"LongIdJoinComposite\",\r\n    \"loads\": [\"composite\"],\r\n    \"id\": 1\r\n}",
+                      "raw": "{\r\n    \"name\": \"LongIdJoinComposite\",\r\n    \"loads\": [\"composite\"],\r\n    \"id\": 224\r\n}",
                       "options": {
                         "raw": {
                           "language": "json"
@@ -4867,7 +4864,7 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\r\n    \"name\": \"LongIdJoinComposite\",\r\n    \"id\": 126\r\n}",
+                      "raw": "{\r\n    \"name\": \"LongIdJoinComposite\",\r\n    \"id\": 224\r\n}",
                       "options": {
                         "raw": {
                           "language": "json"
@@ -4963,7 +4960,7 @@
                     "header": [],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\r\n    \"name\": \"LongIdJoinComposite\",\r\n    \"id\": 78,\r\n    \"value\": {\r\n        \"name\": \"COBA (Edited)\",\r\n        \"composite\": {\r\n            \"type\": 1,\r\n            \"code\": \"A\"\r\n        }\r\n    }\r\n}",
+                      "raw": "{\r\n    \"name\": \"LongIdJoinComposite\",\r\n    \"id\": 224,\r\n    \"value\": {\r\n        \"name\": \"COBA (Edited)\",\r\n        \"composite\": {\r\n            \"type\": 1,\r\n            \"code\": \"A\"\r\n        }\r\n    }\r\n}",
                       "options": {
                         "raw": {
                           "language": "json"
@@ -7163,7 +7160,7 @@
               {
                 "key": "Authorization",
                 "value": "{{USER_AUTH}}",
-                "type": "text"
+                "disabled": true
               }
             ],
             "url": {
@@ -7178,7 +7175,7 @@
               "query": [
                 {
                   "key": "",
-                  "value": null
+                  "value": ""
                 }
               ]
             }
@@ -9453,7 +9450,6 @@
                   {
                     "key": "Content-Type",
                     "value": "multipart/form-data; boundary=PlaceOurCustomBoundaryValueHere",
-                    "type": "text",
                     "disabled": true
                   }
                 ],
@@ -9463,14 +9459,14 @@
                     {
                       "key": "name",
                       "value": "MULTIPART",
-                      "type": "text",
-                      "uuid": "a5b92521-396c-4fa2-a6dc-de071fb4bb9d"
+                      "type": "text"
                     },
                     {
                       "key": "file",
                       "type": "file",
-                      "uuid": "28d470cf-43dc-4494-bdee-0c2ad2c0eb2c",
-                      "src": "/Users/thomson/Downloads/18290182.png"
+                      "src": [
+                        "/Users/thomson/Downloads/1729423103_c2e5c9d9fe96017ed9df.jpg"
+                      ]
                     }
                   ]
                 },
@@ -9483,6 +9479,72 @@
                     "test",
                     "basic",
                     "multipart"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Download",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/test/basic/download",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "test",
+                    "basic",
+                    "download"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Streaming",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "Streaming langsung atau live streaming telah membentuk kembali cara orang menyampaikan dan terhubung dengan konten.\nPemirsa mendapatkan akses global real-time ke acara seperti konser, siaran olahraga, peluncuran produk, webinar, \ndan streaming video game, sementara bisnis dan distributor konten dapat dengan mudah ditayangkan \nuntuk memberikan konten yang lebih mendalam (dan langsung).\n\nPlatform streaming langsung dapat mengodekan data dengan menggunakan perangkat pengodean khusus (encoder perangkat keras), \nyang menyediakan kapasitas streaming yang diperlukan untuk siaran langsung profesional dengan kinerja tinggi. \nNamun demikian, mereka juga dapat menggunakan aplikasi komputer sebagai penyandi (disebut penyandi perangkat lunak), \nyang menawarkan opsi yang lebih fleksibel dan hemat biaya untuk melakukan streaming produksi berskala lebih kecil.",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/test/basic/streaming",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "test",
+                    "basic",
+                    "streaming"
+                  ],
+                  "query": [
+                    {
+                      "key": "buffer",
+                      "value": "32",
+                      "description": "bytes",
+                      "disabled": true
+                    },
+                    {
+                      "key": "delay",
+                      "value": "500",
+                      "description": "milliseconds",
+                      "disabled": true
+                    }
                   ]
                 }
               },
@@ -9813,7 +9875,7 @@
                   }
                 },
                 "url": {
-                  "raw": "{{url}}/test/cache/delete?key=test1",
+                  "raw": "{{url}}/test/cache/delete?key=KEY-01",
                   "host": [
                     "{{url}}"
                   ],
@@ -9830,7 +9892,7 @@
                     },
                     {
                       "key": "key",
-                      "value": "test1"
+                      "value": "KEY-01"
                     }
                   ]
                 }
@@ -9993,7 +10055,7 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "{{url}}/test/cache/concurrent?group=GROUP-01&concurrency=50",
+                  "raw": "{{url}}/test/cache/concurrent?group=GROUP-01&concurrency=500",
                   "host": [
                     "{{url}}"
                   ],
@@ -10009,7 +10071,12 @@
                     },
                     {
                       "key": "concurrency",
-                      "value": "50"
+                      "value": "500"
+                    },
+                    {
+                      "key": "disableVirtualThread",
+                      "value": "true",
+                      "disabled": true
                     }
                   ]
                 }
@@ -10295,11 +10362,9 @@
                     {
                       "key": "attachment",
                       "type": "file",
-                      "fileNotInWorkingDirectoryWarning": "This file isn't in your working directory. Teammates you share this request with won't be able to use this file. To make collaboration easier you can setup your working directory in Settings.",
-                      "filesNotInWorkingDirectory": [
-                        "/opt/macdev/project/zamples/ideahut-springboot-3x/src/main/resources/report/tree2.png"
-                      ],
-                      "src": "/Users/thomson/Downloads/18290182.png"
+                      "src": [
+                        "/Users/thomson/Downloads/18290182.png"
+                      ]
                     }
                   ]
                 },
@@ -10365,12 +10430,9 @@
                     {
                       "key": "attachment",
                       "type": "file",
-                      "fileNotInWorkingDirectoryWarning": "This file isn't in your working directory. Teammates you share this request with won't be able to use this file. To make collaboration easier you can setup your working directory in Settings.",
-                      "filesNotInWorkingDirectory": [
-                        "/opt/macdev/project/zamples/ideahut-springboot-3x/src/main/resources/report/tree1.png",
-                        "/opt/macdev/project/zamples/ideahut-springboot-3x/src/main/resources/report/tree2.png"
-                      ],
-                      "src": "/Users/thomson/Downloads/1750313727_c3d56d646c7372042c5f.jpg"
+                      "src": [
+                        "/Users/thomson/Downloads/1750313727_c3d56d646c7372042c5f.jpg"
+                      ]
                     }
                   ]
                 },
@@ -10527,24 +10589,13 @@
           "name": "Report",
           "item": [
             {
-              "name": "Sample",
+              "name": "Resource",
               "protocolProfileBehavior": {
                 "disableBodyPruning": true
               },
               "request": {
                 "method": "GET",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Bearer ZmI2Zjg5YjMxMDlmMDIxY2FmYzI0Yjc2YWQ2ODU3MmMyODM2YTA0ODo6QTAyOjptb2JpbGUtYmFja2VuZA==::eyJhbGciOiJIUzI1NiJ9.eyJhdHRyaWJ1dGVzIjp7ImRldmljZUlkIjoiNmY5Yzg4NDJhNDk5Nzk5NmVlMzZiZjIyMTcwNWQ0OTRkN2JmMjQ1YzcyZjhiNzNkYTUxNTY2NGY3ZDYxYjY2YyIsImNoZWNrIjoidHJ1ZSJ9LCJhcGlLZXkiOiJmYjZmODliMzEwOWYwMjFjYWZjMjRiNzZhZDY4NTcyYzI4MzZhMDQ4IiwiYXBpVXNlciI6eyJhdHRyaWJ1dGVzIjp7ImZ1bGxuYW1lIjoiQWRtaW4ifSwiaWQiOiJVU1IwMDAwLTAwMDAwLTAwMDAtMDAwMDAtMC0wMDAwIiwidXNlcm5hbWUiOiJhZG1pbiJ9LCJ2YWxpZFVudGlsIjoxNzI0Mzk1OTM1MDQ2LCJzZXJ2aWNlUm9sZSI6eyJpZGVhaHV0LXNwcmluZ2Jvb3QtdGVtcGxhdGUiOiJURVNUIiwibW9iaWxlLWJhY2tlbmQiOiJBRE1JTiJ9fQ.LmIJyG7khvip6-K6WqT7INJ3ygYrn_WeMu7i70YziAU",
-                    "disabled": true
-                  },
-                  {
-                    "key": "Access-Token",
-                    "value": "ZTU2NGJlYmJlZGIyNGFhOGJkYjRhZjcyNjFhMTY5MmEyOTliYjllODo6QTE6OkFQUDAw::e1ef8f25-e31f-421f-bd37-84c1e2fd77be",
-                    "disabled": true
-                  }
-                ],
+                "header": [],
                 "body": {
                   "mode": "raw",
                   "raw": "",
@@ -10555,13 +10606,96 @@
                   }
                 },
                 "url": {
-                  "raw": "{{url}}/test/report?name=pdf",
+                  "raw": "{{url}}/test/report/resource?name=pdf",
                   "host": [
                     "{{url}}"
                   ],
                   "path": [
                     "test",
-                    "report"
+                    "report",
+                    "resource"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "pdf"
+                    },
+                    {
+                      "key": "name",
+                      "value": "xls",
+                      "disabled": true
+                    },
+                    {
+                      "key": "name",
+                      "value": "xlsx",
+                      "disabled": true
+                    },
+                    {
+                      "key": "name",
+                      "value": "rtf",
+                      "disabled": true
+                    },
+                    {
+                      "key": "name",
+                      "value": "docx",
+                      "disabled": true
+                    },
+                    {
+                      "key": "name",
+                      "value": "pptx",
+                      "disabled": true
+                    },
+                    {
+                      "key": "name",
+                      "value": "csv",
+                      "disabled": true
+                    },
+                    {
+                      "key": "name",
+                      "value": "xml",
+                      "disabled": true
+                    },
+                    {
+                      "key": "name",
+                      "value": "json",
+                      "disabled": true
+                    },
+                    {
+                      "key": "name",
+                      "value": "html",
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Stream",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/test/report/stream?name=pdf",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "test",
+                    "report",
+                    "stream"
                   ],
                   "query": [
                     {

@@ -160,9 +160,9 @@ config:
     #
     redis:
         primary:
-            connectionString: "redis://127.0.0.1:6379/0"
+            connectionString: "redis://<HOST>:<PORT>/0"
         access:
-            connectionString: "redis://127.0.0.1:6379/1"
+            connectionString: "redis://<HOST>:<PORT>/1"
                 
     #
     # ADMIN
@@ -325,7 +325,7 @@ config:
         storageKeyParam:
             appIdEnabled: true
             encryptEnabled: true
-        location: 'file:{user.dir}/extras/grid/**/*.json'
+        location: 'file:{user.dir}/extras/grid/**/*.yaml'
         #definition: 'file:{user.dir}/extras/grid/grid.def'
     
     #
@@ -334,8 +334,8 @@ config:
     mail:
         host: 'smtp.gmail.com'
         port: 587
-        username: 'socrates.apps.team@gmail.com'
-        password: 'csbyvmyazduwlamw'
+        username: '<USERNAME>'
+        password: '<PASSWORD>'
         properties:
             mail.smtp.host: smtp.gmail.com
             mail.smtp.ssl.trust: smtp.gmail.com
