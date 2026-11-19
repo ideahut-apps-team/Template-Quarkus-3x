@@ -4,7 +4,7 @@ showOnlyExecutableRedis: true
 maskingPasswordProperties: true
 
 central:
-    webEndpoint: "https://raw.githubusercontent.com/ideahut-apps-team/Ideahut-Admin/refs/heads/main/release/admin"
+    webEndpoint: "https://raw.githubusercontent.com/ideahut-apps-team/share/refs/heads/main/admin"
     tokenEndpoint: "https://central.ideahut.net/sync/token"
     
 api:
