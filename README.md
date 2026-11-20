@@ -8,7 +8,7 @@
 |:---------:|:----------:|
 |__ideahut-quarkus-3x__|<small>(wajib di semua quarkus versi 3)</small>|
 |ideahut-quarkus-3.3x.1|__3.30.0 - 3.31.4__|
-|ideahut-quarkus-3.3x.2|__3.32.0 - Terbaru__|
+|ideahut-quarkus-3.3x.2|__3.32.0 - 3.40.1.2__|
 
 ##
 

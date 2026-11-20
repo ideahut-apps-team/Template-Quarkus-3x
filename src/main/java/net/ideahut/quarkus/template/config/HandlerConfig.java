@@ -8,6 +8,7 @@ import java.util.Properties;
 import org.quartz.impl.StdSchedulerFactory;
 
 import io.quarkus.redis.datasource.RedisDataSource;
+import io.quarkus.runtime.Startup;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
 import net.ideahut.quarkus.audit.AuditHandler;
@@ -281,6 +282,7 @@ class HandlerConfig {
 	/*
 	 * SCHEDULER
 	 */
+	@Startup
 	@ApplicationScoped
 	SchedulerHandler schedulerHandler(
 		EntityTrxManager entityTrxManager,

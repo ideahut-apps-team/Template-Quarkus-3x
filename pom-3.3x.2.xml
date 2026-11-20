@@ -15,7 +15,7 @@
 		<quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
 		<skipITs>true</skipITs>
 		
-		<!-- SUPPORT VERSI: 3.32.0 - Terbaru -->
+		<!-- SUPPORT VERSI: 3.32.0 - 3.40.1.2 -->
 		<quarkus.platform.version>3.32.1</quarkus.platform.version>
 		
 		<surefire-plugin.version>3.5.4</surefire-plugin.version>
